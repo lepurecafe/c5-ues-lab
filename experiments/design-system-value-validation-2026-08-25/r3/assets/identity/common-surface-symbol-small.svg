@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">COMMON SURFACE C/S 소형 심벌 R3</title>
+  <desc id="desc">24픽셀 이상에서 쓰는 단순화 심벌</desc>
+  <path fill="#1A1713" d="M0 0h19v5H5v5h11l4 2-4 2H5v5h14v5H0V14l4-2-4-2z"/>
+  <path fill="#C7382C" d="M8 5h16v7h-5V9h-7l-4 3 4 3h7v4H8l-5-4 4-3-4-3z"/>
+  <path fill="#F3EFE7" d="M12 9h7v3h-3l-4-2zM12 15h7v2h-5z"/>
+</svg>

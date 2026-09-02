@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+  <rect width="1200" height="820" fill="#f7f7f2"/>
+  <rect x="34" y="34" width="1132" height="752" fill="#fff" stroke="#121212" stroke-width="4"/>
+  <text x="78" y="98" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="3" fill="#777">FIGMA MCP BUILDER / A-B PILOT</text>
+  <text x="78" y="170" font-family="Arial, sans-serif" font-size="60" font-weight="800" fill="#121212">조금 빨라졌지만,</text>
+  <text x="78" y="232" font-family="Arial, sans-serif" font-size="60" font-weight="800" fill="#ff704b">훨씬 비싸졌다.</text>
+  <line x1="78" y1="275" x2="1120" y2="275" stroke="#cdd1c9" stroke-width="3"/>
+  <text x="78" y="330" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#777">제작 시간</text>
+  <text x="78" y="378" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#121212">수동 15:22</text>
+  <text x="475" y="378" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#121212">플러그인 14:39</text>
+  <rect x="80" y="405" width="360" height="30" fill="#cdd1c9"/>
+  <rect x="475" y="405" width="343" height="30" fill="#c9f329"/>
+  <text x="850" y="432" font-family="Arial, sans-serif" font-size="31" font-weight="800" fill="#121212">−43초 / −4.7%</text>
+  <text x="78" y="510" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#777">Codex 총 토큰</text>
+  <text x="78" y="558" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#121212">수동 2,126,577</text>
+  <text x="475" y="558" font-family="Arial, sans-serif" font-size="36" font-weight="800" fill="#121212">플러그인 3,864,287</text>
+  <rect x="80" y="585" width="360" height="30" fill="#cdd1c9"/>
+  <rect x="475" y="585" width="655" height="30" fill="#ff704b"/>
+  <text x="78" y="692" font-family="Arial, sans-serif" font-size="44" font-weight="800" fill="#121212">+1,737,710 tokens</text>
+  <text x="78" y="739" font-family="Arial, sans-serif" font-size="31" font-weight="700" fill="#ff704b">+81.7% / 품질 평균 4.67 → 4.72</text>
+  <text x="78" y="764" font-family="Arial, sans-serif" font-size="18" fill="#777">n=1 파일럿 · Figma 호출 24회 vs 24회 · 완성도 100% vs 100%</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="beat07-title beat07-desc">
+  <title id="beat07-title">Synthetic battle beat cover BB-07</title>
+  <desc id="beat07-desc">Deep ink cover with repeated warm hardlines, red split blocks, and a single gold timing mark.</desc>
+  <rect width="1024" height="1024" fill="#1A1713"/>
+  <rect x="56" y="56" width="912" height="912" fill="none" stroke="#F2EDE5" stroke-width="4"/>
+  <path d="M96 154H928M96 226H752M96 298H870M96 370H686M96 442H928M96 514H802M96 586H900M96 658H720" stroke="#F2EDE5" stroke-width="22"/>
+  <rect x="636" y="134" width="112" height="544" fill="#B50D14" opacity=".92"/>
+  <rect x="784" y="206" width="102" height="472" fill="#B50D14" opacity=".72"/>
+  <rect x="96" y="726" width="832" height="14" fill="#C69B4E"/>
+  <rect x="96" y="786" width="364" height="140" fill="#F2EDE5"/>
+  <text x="126" y="884" fill="#1A1713" font-family="Arial Narrow, Arial, sans-serif" font-size="112" font-weight="900">07</text>
+  <text x="512" y="838" fill="#F2EDE5" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="7">HARDLINE ECHO</text>
+  <text x="512" y="890" fill="#A89F92" font-family="Courier New, monospace" font-size="19" letter-spacing="3">RAW / 096 BPM / BB-07</text>
+  <text x="512" y="928" fill="#F2EDE5" font-family="Courier New, monospace" font-size="16" letter-spacing="3">SYNTHETIC TRACK</text>
+</svg>

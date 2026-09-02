@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="COMMON SURFACE R3 디자인 시스템을 적용한 고객용 상업 웹사이트 샘플">
+  <title>COMMON SURFACE — 고객용 웹사이트 샘플</title>
+  <link rel="stylesheet" href="tokens.css?v=0.2.0-r3">
+  <link rel="stylesheet" href="commerce.css?v=0.2.0-r3">
+  <script src="catalog.js?v=0.2.0-r3" defer></script>
+  <script src="commerce.js?v=0.2.0-r3" defer></script>
+</head>
+<body id="page-top" data-surface="commerce" data-mode="hold">
+  <a class="skip-link" href="#commerce-main">본문으로 건너뛰기</a>
+  <div class="demo-bar">
+    <span>R3 CUSTOMER SAMPLE · 합성 실험 · 실제 상거래 아님</span>
+    <div class="demo-controls" aria-label="웹사이트 비교 모드">
+      <button type="button" data-commerce-mode="baseline" aria-pressed="false">정규화 기준선</button>
+      <button type="button" data-commerce-mode="hold" aria-pressed="true">HOLD / 01 적용</button>
+      <a href="preview.html" style="display:grid;place-items:center;padding:0 1rem;border-left:1px solid currentColor;text-decoration:none">R3 증거 보기</a>
+    </div>
+  </div>
+
+  <header class="commerce-header">
+    <a class="commerce-logo" href="#page-top" aria-label="COMMON SURFACE 처음으로 이동">
+      <img src="assets/identity/common-surface-lockup-path.svg" srcset="assets/identity/common-surface-lockup-path.svg 980w" width="980" height="146" loading="eager" alt="COMMON SURFACE">
+    </a>
+    <nav class="commerce-nav" aria-label="주요 메뉴">
+      <a href="#routine">제품</a>
+      <a href="#reserve-commerce">루틴</a>
+      <a href="#objects">오브젝트</a>
+      <a href="#space">공간</a>
+      <a href="#support">지원</a>
+    </nav>
+    <div class="commerce-utils">
+      <button id="language-button" type="button" aria-pressed="false">KR / EN</button>
+      <a href="#reserve-commerce">선택 기록</a>
+    </div>
+  </header>
+
+  <main id="commerce-main" class="commerce-main">
+    <section class="commerce-hero" aria-labelledby="commerce-title">
+      <div class="commerce-hero-copy">
+        <div>
+          <h1 id="commerce-title">Care for the surface you live in.</h1>
+          <p>피부를 고치는 대신, 매일의 순서를 이해합니다.</p>
+        </div>
+        <div class="commerce-actions">
+          <a class="commerce-action primary" href="#routine">제품 보기</a>
+          <a class="commerce-action" href="#reserve-commerce">한 제품 선택하기</a>
+        </div>
+      </div>
+      <figure class="commerce-hero-media">
+        <picture>
+          <source media="(max-width:700px)" srcset="assets/media/product-still-800.jpg 800w">
+          <img src="assets/media/product-still-1600.jpg" srcset="assets/media/product-still-800.jpg 800w, assets/media/product-still-1600.jpg 1600w" sizes="(max-width:700px) 100vw, 34vw" width="1600" height="1066" loading="eager" alt="알루미늄과 코발트 유리로 구성한 COMMON SURFACE 스킨케어 제품 정물">
+        </picture>
+      </figure>
+      <figure class="commerce-hero-media">
+        <picture>
+          <source srcset="assets/people/people-05-720.jpg 720w, assets/people/people-05-1440.jpg 1440w">
+          <img src="assets/people/people-05-720.jpg" srcset="assets/people/people-05-720.jpg 720w, assets/people/people-05-1440.jpg 1440w" sizes="(max-width:700px) 100vw, 34vw" width="1440" height="960" loading="eager" alt="주근깨와 잔주름을 보정하지 않은 실제 피부의 편집 사진">
+        </picture>
+      </figure>
+    </section>
+
+    <aside id="hold-commerce-notice" class="commerce-notice" aria-label="CS-03 합성 batch 상태" aria-live="polite">
+      <span class="notice-symbol" aria-hidden="true">Ⅱ</span>
+      <strong id="commerce-notice-copy">CS-03 전체가 아닌 exact 합성 batch CS03-SYN-2608-H01만 HOLD · 실제 안전 판단이 아닙니다.</strong>
+      <small id="commerce-binding-revision">binding revision 확인 중</small>
+      <a id="commerce-notice-link" href="#batch-commerce">batch 확인 →</a>
+    </aside>
+
+    <section id="routine" aria-labelledby="routine-title">
+      <header class="commerce-band-title">
+        <span class="coordinate">PRODUCT / 01–04<br>facts before persuasion</span>
+        <h2 id="routine-title">하루를 위한 네 단계</h2>
+      </header>
+      <div class="routine-grid">
+        <article class="routine-item" data-product="CS-01">
+          <span class="routine-number">01</span>
+          <div class="routine-info"><picture><source srcset="assets/products/cs-01-640.jpg 640w, assets/products/cs-01-1120.jpg 1120w"><img src="assets/products/cs-01-640.jpg" srcset="assets/products/cs-01-640.jpg 640w, assets/products/cs-01-1120.jpg 1120w" sizes="12rem" width="896" height="1120" loading="lazy" alt="CS-01 RINSE 젤 클렌저 합성 제품 이미지"></picture><span class="micro-label">CS-01 / 세정 단계</span><h3>RINSE</h3><p class="routine-status">제품명·역할은 합성 실험값 · 성분·효능 미확정</p><button type="button" data-choose-product="CS-01">이 제품 선택하기 →</button></div>
+        </article>
+        <article class="routine-item" data-product="CS-02">
+          <span class="routine-number">02</span>
+          <div class="routine-info"><picture><source srcset="assets/products/cs-02-640.jpg 640w, assets/products/cs-02-1120.jpg 1120w"><img src="assets/products/cs-02-640.jpg" srcset="assets/products/cs-02-640.jpg 640w, assets/products/cs-02-1120.jpg 1120w" sizes="12rem" width="896" height="1120" loading="lazy" alt="CS-02 BALANCE 에센스 합성 제품 이미지"></picture><span class="micro-label">CS-02 / 준비 단계</span><h3>BALANCE</h3><p class="routine-status">제품명·역할은 합성 실험값 · 성분·효능 미확정</p><button type="button" data-choose-product="CS-02">이 제품 선택하기 →</button></div>
+        </article>
+        <article class="routine-item" data-product="CS-03">
+          <span class="routine-number">03</span>
+          <div class="routine-info"><picture><source srcset="assets/products/cs-03-640.jpg 640w, assets/products/cs-03-1120.jpg 1120w"><img src="assets/products/cs-03-640.jpg" srcset="assets/products/cs-03-640.jpg 640w, assets/products/cs-03-1120.jpg 1120w" sizes="12rem" width="896" height="1120" loading="lazy" alt="CS-03 BARRIER 세럼 합성 제품 이미지"></picture><span class="micro-label">CS-03 / 보조 단계</span><h3>BARRIER</h3><p class="routine-status" data-cs03-status>BARRIER는 작업명 · 장벽 회복 효능 미확정</p><button type="button" data-choose-product="CS-03">이 제품 선택하기 →</button></div>
+        </article>
+        <article class="routine-item" data-product="CS-04">
+          <span class="routine-number">04</span>
+          <div class="routine-info"><picture><source srcset="assets/products/cs-04-640.jpg 640w, assets/products/cs-04-1120.jpg 1120w"><img src="assets/products/cs-04-640.jpg" srcset="assets/products/cs-04-640.jpg 640w, assets/products/cs-04-1120.jpg 1120w" sizes="12rem" width="896" height="1120" loading="lazy" alt="CS-04 SEAL 데일리 크림 합성 제품 이미지"></picture><span class="micro-label">CS-04 / 보습 단계</span><h3>SEAL</h3><p class="routine-status">제품명·역할은 합성 실험값 · 성분·효능 미확정</p><button type="button" data-choose-product="CS-04">이 제품 선택하기 →</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="objects" class="object-band" aria-labelledby="objects-title">
+      <div class="object-copy"><span class="coordinate">OBJECT / CULTURAL UTILITY</span><h2 id="objects-title">오브젝트는 루틴 밖에서도 남습니다.</h2><p>스킨케어와 오브젝트는 한 브랜드 문법을 공유하지만, 제품 사실과 안전·소재 필드는 서로 바꾸지 않는다.</p></div>
+      <figure class="object-media"><picture><source srcset="assets/products/obj-06-640.jpg 640w, assets/products/obj-06-1120.jpg 1120w"><img src="assets/products/obj-06-640.jpg" srcset="assets/products/obj-06-640.jpg 640w, assets/products/obj-06-1120.jpg 1120w" sizes="16rem" width="896" height="1120" loading="lazy" alt="OBJ-06 AIR 미스트 오브젝트 합성 제품 이미지"></picture><figcaption><span class="micro-label">OBJ-06</span><strong>AIR / 미스트 오브젝트</strong><p>조향·흡입·피부·화재 안전 미확정</p></figcaption></figure>
+      <figure class="object-media"><picture><source srcset="assets/media/merch-800.jpg 800w, assets/media/merch-1600.jpg 1600w"><img src="assets/media/merch-800.jpg" srcset="assets/media/merch-800.jpg 800w, assets/media/merch-1600.jpg 1600w" sizes="(max-width:700px) 100vw, 34vw" width="1280" height="1600" loading="lazy" alt="COMMON SURFACE 워드마크를 적용한 의류 합성 샘플"></picture><figcaption><span class="micro-label">MERCH SAMPLE</span><strong>Identity remains.</strong><p>신규 SKU·소재·원산지·판매 가능성을 발명하지 않는다.</p></figcaption></figure>
+    </section>
+
+    <section id="reserve-commerce" class="commerce-reserve" aria-labelledby="reserve-commerce-title">
+      <div class="reserve-philosophy"><span class="coordinate">decision.reserve@0.1.0</span><h2 id="reserve-commerce-title">설명하고, 선택하고, 다시 바꿀 수 있게.</h2><p>시스템 제안은 사용자 선택이 아니다. 이 샘플은 한 제품 ID를 로컬에 저장할 뿐 구매·예약·계정을 만들지 않는다.</p></div>
+      <div class="reserve-commerce-workspace">
+        <div class="reserve-stage" aria-label="Reserve 단계"><span>1<br>시스템 제안</span><span class="active">2<br>사용자 초안</span><span>3<br>로컬 commit</span><span>4<br>확정 결과</span></div>
+        <section id="commerce-selected" class="commerce-selected" aria-labelledby="commerce-selected-name">
+          <span class="micro-label" id="commerce-selected-label">제품을 직접 선택하세요.</span>
+          <h3 id="commerce-selected-name">NO DRAFT</h3>
+          <p id="commerce-selected-authority">재고·가격·개인 적합성은 판단하지 않습니다.</p>
+        </section>
+        <div class="commerce-reserve-actions">
+          <button id="commerce-commit" class="primary" type="button" disabled>로컬 선택 저장</button>
+          <button id="commerce-alternative" type="button">다른 제품 보기</button>
+          <button id="commerce-reset" type="button">초안·결과 초기화</button>
+          <button id="commerce-help" type="button">지원 경로</button>
+        </div>
+        <form id="batch-commerce" class="batch-inline" novalidate>
+          <label class="sr-only" for="commerce-batch">합성 batch 코드</label>
+          <input id="commerce-batch" type="text" autocomplete="off" placeholder="CS03-SYN-2608-H01" aria-describedby="commerce-batch-help">
+          <button type="submit">batch 확인</button>
+        </form>
+        <p id="commerce-batch-help" class="micro-label">개인정보를 입력하지 마세요. 로컬 합성 fixture만 확인합니다. 영향 H01: <code>CS03-SYN-2608-H01</code> · 비영향 U01: <code>CS03-SYN-2608-U01</code>.</p>
+      </div>
+      <aside class="reserve-commerce-result" aria-labelledby="commerce-result-title">
+        <span class="coordinate">LOCAL RESULT / NOT COMMERCE</span>
+        <div id="commerce-result" class="commerce-result-state" data-state="default" role="status" aria-live="polite">
+          <strong id="commerce-result-title">선택 결과 대기</strong>
+          <p>제안 → 초안 → commit → 결과를 구분합니다.</p>
+        </div>
+        <p><strong>경계</strong><br>실제 판매, 재고, 효능, 안전, 리콜, 배송, 고객지원 결과가 아닙니다.</p>
+      </aside>
+    </section>
+
+    <section id="space" class="space-band" aria-labelledby="space-title">
+      <div class="space-copy">
+        <div><span class="coordinate">SPACE / SYNTHETIC PROJECTION</span><h2 id="space-title">공간에서도 같은 정보가 이어집니다.</h2></div>
+        <div><p>멀리서는 브랜드, 가까이서는 제품, 손이 닿는 거리에서는 상태와 다음 행동을 읽습니다. 위치·영업시간·실제 설치는 아직 정해지지 않았습니다.</p><a class="commerce-action" href="preview.html#media-shop">운영 투영 보기 →</a></div>
+      </div>
+      <figure class="space-visual">
+        <picture><source srcset="assets/media/facade-800.jpg 800w, assets/media/facade-1600.jpg 1600w"><img src="assets/media/facade-800.jpg" srcset="assets/media/facade-800.jpg 800w, assets/media/facade-1600.jpg 1600w" sizes="(max-width:700px) 100vw, 34vw" width="1600" height="1066" loading="lazy" alt="COMMON SURFACE 합성 오프라인 샵 외관"></picture>
+        <figcaption>FACADE / 10M IDENTITY · 합성 공간</figcaption>
+      </figure>
+      <figure class="space-visual">
+        <picture><source srcset="assets/media/retail-800.jpg 800w, assets/media/retail-1600.jpg 1600w"><img src="assets/media/retail-800.jpg" srcset="assets/media/retail-800.jpg 800w, assets/media/retail-1600.jpg 1600w" sizes="(max-width:700px) 100vw, 34vw" width="1600" height="1066" loading="lazy" alt="알루미늄 진열대와 코발트 포인트가 있는 COMMON SURFACE 합성 매장 내부"></picture>
+        <figcaption>RETAIL / 3M CATEGORY · 실제 설치 미검증</figcaption>
+      </figure>
+    </section>
+
+    <section id="support" class="support-band" aria-labelledby="support-title">
+      <figure class="support-visual">
+        <picture><source srcset="assets/media/support-scene-800.jpg 800w, assets/media/support-scene-1600.jpg 1600w"><img src="assets/media/support-scene-800.jpg" srcset="assets/media/support-scene-800.jpg 800w, assets/media/support-scene-1600.jpg 1600w" sizes="(max-width:700px) 100vw, 58vw" width="1600" height="1066" loading="lazy" alt="매장에서 두 사람이 CS-03 제품의 코드 위치를 차분히 함께 확인하는 합성 장면"></picture>
+      </figure>
+      <div class="support-copy"><div><span class="coordinate">SUPPORT / VISIBLE UNCERTAINTY</span><h2 id="support-title">모르는 것은 모른다고 말합니다.</h2><p>batch가 일치하지 않아도 실제 안전이나 영향 없음으로 판정하지 않습니다. 현재 맥락을 유지하고 사람이 확인할 지원 경로를 안내합니다.</p></div><a class="commerce-action" href="#batch-commerce">batch 확인 시작 →</a></div>
+    </section>
+
+  </main>
+
+  <footer class="commerce-footer">
+    <strong>COMMON<br>SURFACE</strong>
+    <p>합성 실험 공개선<br>실제 판매·재고·안전·리콜·제품 승인을 의미하지 않습니다.</p>
+    <p>Industrial Swiss System<br>decision.reserve<br>Product Binding R3 @0.2.0<br><a href="preview.html">R3 증거 허브</a></p>
+  </footer>
+</body>
+</html>

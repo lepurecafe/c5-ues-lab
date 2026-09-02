@@ -1,0 +1,105 @@
+{
+  "run_id": "qa.take-2.battle-beat.2026-08-26.final-r3",
+  "checked_at": "2026-08-26T17:15:13+09:00",
+  "evidence_level": "E2-rendered-browser-capture",
+  "browser": "Codex in-app browser",
+  "prototype": "06-hi-fi-preview.html",
+  "low_fi_prototype": "05-low-fi.html",
+  "composition_id": "composition.random-music-app.take-2.r2",
+  "binding_id": "binding.battle-beat-randomizer@1.1.0",
+  "viewports": [
+    { "width": 402, "height": 874, "horizontal_overflow_px": 0, "visible_touch_targets_below_44px": 0 },
+    { "width": 375, "height": 812, "horizontal_overflow_px": 0, "visible_touch_targets_below_44px": 0 }
+  ],
+  "runtime": {
+    "page_title_matches": true,
+    "meaningful_content_present": true,
+    "framework_error_overlay": false,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "broken_local_asset_references": 0,
+    "svg_assets_checked": 10,
+    "svg_xml_failures": 0,
+    "required_interactions_passed": 8,
+    "required_interactions_total": 8,
+    "state_contract_cases_passed": 18,
+    "state_contract_cases_total": 18
+  },
+  "low_fi_runtime": {
+    "frame_states_checked": 5,
+    "transient_states_checked": 6,
+    "transient_states_total": 6,
+    "canonical_id_prefixes": ["ROUND-*", "DRAW-*", "EVENT-*", "SYN-BB-*", "ATTEMPT *"],
+    "stale_id_prefixes_found": 0,
+    "round_lock_restart_preserved": true,
+    "new_round_only_creates_draw": true,
+    "deferred_exclusion_preserved_current_lock": true,
+    "empty_reused_authorized_draw": true,
+    "draw_retry_reused_authorized_draw": true,
+    "fallback_gate_3_of_3": true,
+    "restart_scope_forbids_fallback": true,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "viewports": [
+      { "width": 402, "height": 874, "horizontal_overflow_px": 0, "visible_touch_targets_below_44px": 0 },
+      { "width": 375, "height": 812, "horizontal_overflow_px": 0, "visible_touch_targets_below_44px": 0 }
+    ]
+  },
+  "state_contract_cases": [
+    { "id": "ST-01", "result": "pass", "evidence": "READY creates DRAW-0001 and atomically confirms ROUND-01-DRAW-0001 with EV-DRAW-REQUESTED then EV-ROUND-LOCKED." },
+    { "id": "ST-02", "result": "pass", "evidence": "Double activation produced exactly two total draw/lock pairs across initial and one new round; Round 01 advanced once to Round 02." },
+    { "id": "ST-03", "result": "pass", "evidence": "SAVE changed the button to SAVED while roundId, trackId and drawId remained unchanged." },
+    { "id": "ST-04", "result": "pass", "evidence": "EXCLUDE retained Playing and stored SYN-BB-007@R02 in pending exclusions with EV-EXCLUDE-DEFERRED." },
+    { "id": "ST-05", "result": "pass", "evidence": "Forced zero-candidate pool rendered CONTENT EMPTY with relax and undo recovery controls." },
+    { "id": "ST-06", "result": "pass", "evidence": "Failed new-round retained last-safe round/track; retry reused DRAW-0003 with a new attempt and then emitted EV-RECOVERED." },
+    { "id": "ST-07", "result": "pass", "evidence": "Fallback stayed hidden at failure 1/3 and 2/3, appeared at 3/3, reused DRAW-0002, and locked target Round 02 only after confirmed fallback Playing." },
+    { "id": "ST-08", "result": "pass", "evidence": "Reload without a scenario restored the same ROUND-01-DRAW-0001 and SYN-BB-007 in PAUSED." },
+    { "id": "ST-09", "result": "pass", "evidence": "Restart changed only attempt/restart fields, preserved draw/round/track, reset elapsed, and emitted no additional EV-ROUND-LOCKED." },
+    { "id": "ST-10", "result": "pass", "evidence": "Pause then resume retained roundId, trackId, drawId and progress position." },
+    { "id": "ST-11", "result": "pass", "evidence": "Save, pause/resume, restart and exclude all completed without creating a new drawId." },
+    { "id": "ST-12", "result": "pass", "evidence": "Pending SYN-BB-007 exclusion was respected by the next-round pool while the old round remained locked until success." },
+    { "id": "ST-13", "result": "pass", "evidence": "Restart failure exposed only RESTART SAME LOCKED TRACK; fallback was hidden and recovery preserved round/draw/track." },
+    { "id": "ST-14", "result": "pass", "evidence": "New-round empty/failure retained the confirmed last-safe round and did not advance roundNumber before success." },
+    { "id": "ST-15", "result": "pass", "evidence": "INFO-EVENT-LOG showed stable EV-* types, monotonically increasing EVENT-* sequence IDs and round/track/draw/attempt references." },
+    { "id": "ST-16", "result": "pass", "evidence": "Condition edit cancelled an in-flight new-round request; its later completion did not alter READY or create a lock event." },
+    { "id": "ST-17", "result": "pass", "evidence": "Successful Round 02 promoted one due pending exclusion to applied and cleared the pending set." },
+    { "id": "ST-18", "result": "pass", "evidence": "EMPTY energy relaxation reused DRAW-0002 and target Round 02, then emitted EV-RECOVERED after confirmed Playing." }
+  ],
+  "accessibility_baseline": {
+    "checks_passed": 10,
+    "checks_total": 10,
+    "html_language": "ko",
+    "buttons_checked": 33,
+    "unnamed_buttons": 0,
+    "images_checked": 1,
+    "images_missing_alt": 0,
+    "live_regions": 3,
+    "progressbar_has_label": true,
+    "focus_visible_style": true,
+    "reduced_motion_rule": true,
+    "closed_lab_removed_from_accessibility_tree": true,
+    "assistive_technology_run": "not_run"
+  },
+  "contrast_ratios": {
+    "ground_on_canvas": 15.33,
+    "canvas_on_signal_red_dark": 5.94,
+    "work_gold_on_ground": 6.97,
+    "stone_light_on_ground": 6.84,
+    "canvas_dark_on_ground": 12.64
+  },
+  "captures": {
+    "low_fi": 5,
+    "hi_fi": 8,
+    "figjam": 4,
+    "before_change": 4,
+    "total_png": 21,
+    "invalid_png_extensions": 0
+  },
+  "limitations": [
+    "No real audio, streaming, route, latency, volume or silence verification",
+    "No physical iPhone or iOS Simulator runtime",
+    "No VoiceOver or external assistive-technology run",
+    "Synthetic playback state is not evidence of sound output",
+    "Representative battle participants, DJs and organizers did not participate in this run"
+  ]
+}

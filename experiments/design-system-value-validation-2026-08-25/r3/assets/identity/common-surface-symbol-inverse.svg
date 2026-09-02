@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">COMMON SURFACE C/S 반전 심벌 R3</title>
+  <desc id="desc">어두운 바탕에 쓰는 종이색 단색 C/S 심벌</desc>
+  <defs>
+    <mask id="knockout">
+      <rect width="120" height="120" fill="#fff"/>
+      <path fill="#000" d="M58 48h38v14H80L60 51zM58 72h38v8H72z"/>
+    </mask>
+  </defs>
+  <g fill="#F3EFE7" mask="url(#knockout)">
+    <path d="M0 0h94v24H24v28h56l18 10-18 10H24v24h70v24H0V72l18-10L0 52z"/>
+    <path d="M42 24h78v38H96V48H58L38 60l20 12h38v24H42L16 80l18-18-18-18z"/>
+  </g>
+</svg>

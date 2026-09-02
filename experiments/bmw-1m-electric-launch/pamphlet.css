@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap');
+:root { --ink:#0a0a0a; --paper:#f0ece0; --signal:#e8ff00; --line:#2a2a2a; --mono:"IBM Plex Mono",monospace; --sans:"DM Sans","Noto Sans KR",sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; background:#171717; color:var(--paper); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+.viewer-bar { position:sticky; z-index:5; top:0; display:flex; align-items:center; justify-content:space-between; min-height:64px; padding:12px 24px; border-bottom:1px solid #343434; background:rgba(10,10,10,.95); backdrop-filter:blur(10px); }
+.viewer-bar div { display:grid; gap:3px; } .viewer-bar strong { font:600 12px var(--mono); } .viewer-bar span { color:#77736c; font:9px var(--mono); }
+.viewer-bar nav { display:flex; gap:10px; } .viewer-bar a,.viewer-bar button { min-height:36px; padding:0 16px; border:1px solid #555; background:transparent; color:var(--paper); font:10px var(--mono); cursor:pointer; text-decoration:none; display:grid; place-items:center; }
+.viewer-bar button { border-color:var(--signal); background:var(--signal); color:var(--ink); }
+.sheets { display:grid; gap:40px; justify-content:center; padding:48px 20px; }
+.sheet { width:297mm; height:210mm; display:grid; grid-template-columns:repeat(3,1fr); overflow:hidden; background:var(--ink); box-shadow:0 20px 50px rgba(0,0,0,.35); }
+.panel { position:relative; min-width:0; overflow:hidden; border-right:.25mm solid #393939; } .panel:last-child { border-right:0; }
+.micro-head { display:flex; justify-content:space-between; padding:8mm 7mm 0; color:#a5a198; font:2.1mm var(--mono); letter-spacing:.04em; }
+.back-panel { background:var(--ink); } .back-copy { position:absolute; inset:auto 7mm 36mm; } .bracket { color:#77736c; font:2.2mm var(--mono); }
+.back-copy ul { margin:6mm 0 0; padding:0; list-style:none; border-top:.25mm solid #343434; } .back-copy li { padding:4mm 0; border-bottom:.25mm solid #343434; color:var(--signal); font-size:4.3mm; font-weight:600; }
+.legal { position:absolute; inset:auto 7mm 7mm; margin:0; color:#77736c; font:1.9mm/1.55 var(--mono); }
+.flap-panel img { width:100%; height:100%; object-fit:cover; object-position:61% center; } .flap-panel::after { content:""; position:absolute; inset:0; background:rgba(10,10,10,.2); }
+.flap-copy { position:absolute; z-index:2; top:13mm; left:7mm; display:grid; gap:2mm; } .flap-copy span { color:var(--signal); font:2.5mm var(--mono); } .flap-copy strong { font-size:10mm; } .flap-copy small { font:2.2mm var(--mono); }
+.flap-panel p { position:absolute; z-index:2; left:7mm; right:7mm; bottom:11mm; margin:0; font-size:4mm; font-weight:600; line-height:1.45; }
+.cover-panel { background:var(--ink); } .cover-panel h1 { margin:15mm 0 0 7mm; line-height:.82; letter-spacing:-.06em; } .cover-panel h1 span { display:block; font-size:39mm; font-weight:900; } .cover-panel h1 strong { display:block; color:var(--signal); font-size:13mm; line-height:.92; }
+.cover-panel>p { margin:10mm 7mm 0; font-size:5mm; font-weight:700; } .cover-index { position:absolute; inset:auto 7mm 7mm; display:flex; justify-content:space-between; align-items:end; padding-top:3mm; border-top:.25mm solid #3a3a3a; font:2.2mm var(--mono); } .cover-index span { color:#77736c; }
+.inside { background:var(--paper); color:var(--ink); } .inside .panel { border-color:#c9c3b6; }
+.section-head { display:grid; grid-template-columns:12mm 1fr; grid-template-rows:auto auto; gap:1mm; padding:8mm 7mm 0; } .section-head>span { grid-row:1/3; color:#727068; font:2.5mm var(--mono); } .section-head strong { font-size:6.3mm; line-height:1; } .section-head small { color:#77736c; font:2.1mm var(--mono); }
+.identity-panel h2 { margin:13mm 7mm 5mm; font-size:7.1mm; line-height:1.22; letter-spacing:-.04em; } .identity-panel>p { margin:0 7mm; color:#55524b; font-size:3mm; line-height:1.65; }
+.identity-panel img { position:absolute; inset:auto 0 0; width:100%; height:73mm; object-fit:cover; object-position:63% center; }
+.principles-panel ol { margin:16mm 7mm 0; padding:0; list-style:none; border-top:.25mm solid #aaa59a; } .principles-panel li { display:grid; grid-template-columns:14mm 1fr; align-items:center; min-height:23mm; border-bottom:.25mm solid #aaa59a; }
+.principles-panel li>span { font:600 5mm var(--mono); } .principles-panel li div { display:grid; gap:1.3mm; } .principles-panel li strong { font-size:4.3mm; } .principles-panel li small { color:#6d6962; font:2mm var(--mono); } .caption { margin:10mm 7mm 0; font-size:4.5mm; font-weight:700; }
+.architecture-panel { background:var(--ink); color:var(--paper); } .section-head.dark strong { color:var(--paper); } .section-head.dark>span { color:var(--signal); }
+.architecture-panel>img { width:100%; height:85mm; margin-top:4mm; object-fit:cover; object-position:center; } .architecture-panel dl { margin:0 7mm; border-top:.25mm solid #3a3a3a; }
+.architecture-panel dl div { display:grid; grid-template-columns:1fr 1fr; padding:2.4mm 0; border-bottom:.25mm solid #3a3a3a; } .architecture-panel dt { color:#77736c; font:1.9mm var(--mono); } .architecture-panel dd { margin:0; text-align:right; font:2.2mm var(--mono); }
+.signup-block { position:absolute; inset:auto 0 0; min-height:38mm; padding:5mm 7mm; background:var(--signal); color:var(--ink); display:grid; align-content:center; gap:2mm; } .signup-block span,.signup-block small { font:2mm var(--mono); } .signup-block strong { font:600 4.6mm var(--mono); }
+.viewer-note { margin:-20px 0 48px; text-align:center; color:#77736c; font:10px var(--mono); }
+@page { size:A4 landscape; margin:0; }
+@media print { body { background:white; } .viewer-bar,.viewer-note { display:none; } .sheets { display:block; padding:0; } .sheet { width:297mm; height:210mm; box-shadow:none; break-after:page; } }
+@media screen and (max-width:1150px) { .sheet { width:calc(100vw - 32px); height:calc((100vw - 32px)*.70707); } }
+@media screen and (max-width:650px) { .viewer-bar { align-items:flex-start; gap:12px; padding:12px; } .viewer-bar nav { flex-direction:column; } .viewer-bar a,.viewer-bar button { min-height:30px; padding:0 10px; } .sheets { gap:20px; padding:24px 8px; } .sheet { width:calc(100vw - 16px); height:calc((100vw - 16px)*.70707); } }

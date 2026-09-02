@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="beat08-title beat08-desc">
+  <title id="beat08-title">Synthetic battle beat cover BB-08</title>
+  <desc id="beat08-desc">Night index cover with deep raised panels, a warm canvas record field, red markers, and a gold axis.</desc>
+  <rect width="1024" height="1024" fill="#221E19"/>
+  <rect x="48" y="48" width="928" height="928" fill="#2A2520" stroke="#F2EDE5" stroke-width="4"/>
+  <rect x="96" y="96" width="610" height="832" fill="#F2EDE5"/>
+  <path d="M96 234H706M96 372H706M96 510H706M96 648H706M96 786H706M238 96V928M380 96V928M522 96V928M664 96V928" stroke="#A89F92" stroke-width="3" opacity=".7"/>
+  <path d="M96 510H706M380 96V928" stroke="#1A1713" stroke-width="18"/>
+  <circle cx="380" cy="510" r="194" fill="none" stroke="#B50D14" stroke-width="54"/>
+  <circle cx="380" cy="510" r="62" fill="#1A1713"/>
+  <rect x="754" y="96" width="174" height="312" fill="#B50D14"/>
+  <rect x="754" y="444" width="174" height="18" fill="#C69B4E"/>
+  <rect x="754" y="500" width="174" height="428" fill="#1A1713"/>
+  <text x="840" y="310" fill="#F2EDE5" font-family="Arial Narrow, Arial, sans-serif" font-size="156" font-weight="900" text-anchor="middle">08</text>
+  <text x="784" y="566" fill="#F2EDE5" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5" transform="rotate(90 784 566)">NIGHT INDEX</text>
+  <text x="118" y="888" fill="#1A1713" font-family="Courier New, monospace" font-size="20" font-weight="700" letter-spacing="3">BB-08 / BOUNCE / 102 BPM</text>
+  <text x="118" y="920" fill="#7A7060" font-family="Courier New, monospace" font-size="15" letter-spacing="3">SYNTHETIC TRACK</text>
+</svg>

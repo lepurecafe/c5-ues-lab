@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Rasterline System visual preview" />
+    <title>Rasterline System — Visual Preview</title>
+    <style>
+      :root {
+        --background: #0a0a0a;
+        --foreground: #f0ece0;
+        --accent: #e8ff00;
+        --card: #111;
+        --secondary: #1a1a1a;
+        --muted: #1f1f1f;
+        --muted-foreground: #6b6560;
+        --readable-muted: #9a9590;
+        --border: #2a2a2a;
+        --danger: #ff6259;
+        --success: #a7d941;
+        --mono: "Space Mono", "SFMono-Regular", Consolas, monospace;
+        --body: "DM Sans", Inter, "Apple SD Gothic Neo", system-ui, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { background: var(--background); color-scheme: dark; }
+      body { margin: 0; font-family: var(--body); background: var(--background); color: var(--foreground); }
+      button, input, select, textarea { font: inherit; }
+      button { cursor: pointer; }
+
+      .shell { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+      header { display: grid; grid-template-columns: 1fr auto; gap: 32px; padding: 48px 0 36px; border-bottom: 1px solid var(--border); }
+      .meta, .section-index, .label, .token-code, .step-number, .status { font-family: var(--mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; }
+      .meta { color: var(--accent); }
+      h1, h2, h3, p { margin: 0; }
+      h1 { margin-top: 12px; font-family: var(--mono); max-width: 720px; font-size: clamp(40px, 7vw, 84px); line-height: .92; letter-spacing: -.075em; }
+      .subtitle { max-width: 440px; margin-top: 20px; color: var(--readable-muted); line-height: 1.65; }
+      .active { align-self: start; border: 1px solid var(--accent); color: var(--accent); padding: 10px 12px; }
+      nav { display: flex; gap: 8px; overflow: auto; padding: 16px 0; border-bottom: 1px solid var(--border); }
+      nav button { flex: 0 0 auto; padding: 10px 12px; color: var(--muted-foreground); border: 1px solid transparent; background: transparent; font-family: var(--mono); font-size: 12px; text-align: left; }
+      nav button:hover, nav button:focus-visible { color: var(--foreground); border-color: var(--foreground); outline: none; }
+      nav button[aria-selected="true"] { color: var(--background); background: var(--accent); border-color: var(--accent); }
+      main { padding: 64px 0 88px; }
+      [role="tabpanel"] { display: none; }
+      [role="tabpanel"].is-active { display: block; }
+      .section-heading { display: flex; gap: 20px; align-items: baseline; margin-bottom: 28px; }
+      .section-index { color: var(--accent); }
+      h2 { font-family: var(--mono); font-size: clamp(28px, 4vw, 48px); letter-spacing: -.05em; }
+      h3 { font-family: var(--mono); font-size: 15px; }
+      .stack { display: grid; gap: 48px; }
+      .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .panel { position: relative; min-width: 0; background: var(--card); border: 1px solid var(--border); padding: 20px; overflow: hidden; }
+      .panel::after { content: ""; pointer-events: none; position: absolute; inset: 0; opacity: .25; background-image: radial-gradient(circle, var(--foreground) 1px, transparent 1.1px); background-size: 8px 8px; mask-image: linear-gradient(to bottom, black, transparent 65%); }
+      .panel > * { position: relative; z-index: 1; }
+      .swatch { height: 108px; margin: -20px -20px 18px; background: var(--swatch); border-bottom: 1px solid var(--border); }
+      .swatch-name { font-family: var(--mono); font-size: 13px; }
+      .token-code { margin-top: 8px; color: var(--muted-foreground); letter-spacing: .03em; text-transform: none; }
+      .type-sample { display: grid; gap: 14px; border-top: 1px solid var(--border); padding-top: 20px; }
+      .type-sample p { color: var(--muted-foreground); line-height: 1.6; }
+      .display { font-family: var(--mono); font-size: clamp(34px, 6vw, 72px); letter-spacing: -.08em; line-height: .95; }
+      .scale { display: flex; flex-wrap: wrap; gap: 8px; }
+      .scale span { min-width: 52px; padding: 10px; border: 1px solid var(--border); font-family: var(--mono); font-size: 11px; text-align: center; }
+      .button-row, .badge-row { display: flex; flex-wrap: wrap; gap: 10px; }
+      .button { padding: 13px 16px; border: 1px solid var(--foreground); background: transparent; color: var(--foreground); font-family: var(--mono); font-size: 12px; transition: background 160ms ease, color 160ms ease, border 160ms ease; }
+      .button:hover, .button:focus-visible { background: var(--foreground); color: var(--background); outline: none; }
+      .button.secondary { border-color: var(--border); }
+      .button.ghost { border-color: transparent; }
+      .button.accent { background: var(--accent); border-color: var(--accent); color: var(--background); }
+      .button.danger { border-color: var(--danger); color: var(--danger); }
+      .button:disabled { cursor: not-allowed; color: var(--muted-foreground); border-color: var(--border); background: var(--muted); }
+      .badge { padding: 7px 9px; border: 1px solid var(--border); font-family: var(--mono); font-size: 11px; }
+      .badge.accent { border-color: var(--accent); color: var(--accent); }
+      .badge.success { border-color: var(--success); color: var(--success); }
+      .badge.error { border-color: var(--danger); color: var(--danger); }
+      .component-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; }
+      .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .card.grid-card { border-color: var(--accent); background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 12px 12px; }
+      .card .label { color: var(--accent); }
+      .card p { margin-top: 28px; color: var(--muted-foreground); line-height: 1.6; }
+      .field { display: grid; gap: 8px; margin-top: 14px; }
+      .field label { font-family: var(--mono); font-size: 11px; }
+      input, select, textarea { width: 100%; border: 1px solid var(--border); background: var(--background); color: var(--foreground); padding: 12px; border-radius: 0; }
+      .error-text { color: var(--danger); font-size: 12px; }
+      .progress { height: 10px; background: var(--muted); border: 1px solid var(--border); }
+      .progress span { display: block; height: 100%; width: 42%; background: var(--accent); }
+      .divider { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; color: var(--muted-foreground); font-family: var(--mono); font-size: 11px; }
+      .divider::before, .divider::after { content: ""; height: 1px; background: var(--border); }
+      .step-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; }
+      .steps { display: grid; gap: 8px; }
+      .step { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--border); color: var(--muted-foreground); }
+      .step.current { border-color: var(--accent); color: var(--foreground); }
+      .step.complete .step-number { background: var(--accent); color: var(--background); border-color: var(--accent); }
+      .step-number { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid currentColor; font-size: 10px; }
+      .step small { display: block; margin-top: 4px; color: var(--muted-foreground); }
+      .wizard { min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; }
+      .wizard-copy { margin-top: 12px; color: var(--muted-foreground); line-height: 1.6; }
+      .wizard-actions { display: flex; justify-content: space-between; align-items: end; gap: 12px; margin-top: 24px; }
+      .texture-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .texture { height: 154px; display: flex; align-items: end; padding: 14px; border: 1px solid var(--border); font-family: var(--mono); font-size: 11px; background-color: var(--card); }
+      .dots { background-image: radial-gradient(circle, var(--foreground) 1px, transparent 1.2px); background-size: 8px 8px; }
+      .dots-large { background-image: radial-gradient(circle, var(--foreground) 2px, transparent 2.4px); background-size: 14px 14px; }
+      .grid-texture { background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 16px 16px; }
+      .scanlines { background-image: repeating-linear-gradient(0deg, transparent 0 4px, var(--border) 5px 6px); }
+      .diagonal { background-image: repeating-linear-gradient(135deg, transparent 0 7px, var(--border) 8px 9px); }
+      .crosshatch { background-image: repeating-linear-gradient(45deg, transparent 0 8px, var(--border) 9px 10px), repeating-linear-gradient(-45deg, transparent 0 8px, var(--border) 9px 10px); }
+      .noise { background-image: radial-gradient(circle at 20% 20%, var(--foreground) 0 1px, transparent 1.4px), radial-gradient(circle at 80% 70%, var(--foreground) 0 1px, transparent 1.4px); background-size: 13px 13px, 17px 17px; }
+      .bands { background-image: repeating-linear-gradient(90deg, transparent 0 9px, var(--border) 10px 12px); }
+      .status-list { display: grid; gap: 0; }
+      .status-row { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 12px; }
+      .running { color: var(--success); } .idle { color: var(--muted-foreground); } .warn { color: var(--accent); }
+      footer { padding: 24px 0 44px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: 12px; line-height: 1.6; }
+      @media (max-width: 760px) { header, .component-grid, .step-layout { grid-template-columns: 1fr; } .grid, .texture-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cards { grid-template-columns: 1fr; } .shell { width: calc(100% - 24px); } main { padding-top: 40px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div>
+          <div class="meta">RASTERLINE SYSTEM — v0.1.0</div>
+          <h1>래스터라인<br />시스템</h1>
+          <p class="subtitle">래스터 텍스처, 운영형 레이블, 선형 UX를 결합한 시각적 표현 계약.</p>
+        </div>
+        <div class="active status">ACTIVE</div>
+      </header>
+
+      <nav role="tablist" aria-label="Rasterline preview sections">
+        <button role="tab" aria-selected="true" aria-controls="foundation" id="foundation-tab">F-01 파운데이션</button>
+        <button role="tab" aria-selected="false" aria-controls="components" id="components-tab">C-02 컴포넌트</button>
+        <button role="tab" aria-selected="false" aria-controls="flow" id="flow-tab">U-03 선형 UX</button>
+        <button role="tab" aria-selected="false" aria-controls="texture" id="texture-tab">T-04 텍스처 &amp; 모션</button>
+      </nav>
+
+      <main>
+        <section role="tabpanel" id="foundation" aria-labelledby="foundation-tab" class="is-active">
+          <div class="section-heading"><span class="section-index">[01]</span><h2>색상 시스템</h2></div>
+          <div class="grid">
+            <article class="panel"><div class="swatch" style="--swatch:#0A0A0A"></div><div class="swatch-name">Background</div><div class="token-code">--background · #0A0A0A</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#F0ECE0"></div><div class="swatch-name">Foreground</div><div class="token-code">--foreground · #F0ECE0</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#E8FF00"></div><div class="swatch-name">Accent</div><div class="token-code">--accent · #E8FF00</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#111111"></div><div class="swatch-name">Card</div><div class="token-code">--card · #111111</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#1A1A1A"></div><div class="swatch-name">Secondary</div><div class="token-code">--secondary · #1A1A1A</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#1F1F1F"></div><div class="swatch-name">Muted</div><div class="token-code">--muted · #1F1F1F</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#9A9590"></div><div class="swatch-name">Readable Muted</div><div class="token-code">--readable-muted · #9A9590</div></article>
+            <article class="panel"><div class="swatch" style="--swatch:#2A2A2A"></div><div class="swatch-name">Border</div><div class="token-code">--border · #2A2A2A</div></article>
+          </div>
+          <div class="section-heading" style="margin-top:64px"><span class="section-index">[02]</span><h2>타이포그래피</h2></div>
+          <div class="type-sample"><span class="label">Display / Space Mono</span><div class="display">SCALE, SIGNAL,<br />STATE.</div><p>본문은 DM Sans 계열로 읽기 쉬운 리듬을 유지합니다. 운영형 정보에는 모노스페이스를 사용해 구조와 상태를 선명하게 드러냅니다.</p></div>
+          <div class="section-heading" style="margin-top:64px"><span class="section-index">[03]</span><h2>간격 시스템</h2></div>
+          <div class="scale" aria-label="Spacing scale"><span>4</span><span>8</span><span>12</span><span>16</span><span>24</span><span>32</span><span>40</span><span>48</span><span>64</span><span>80</span><span>96</span></div>
+        </section>
+
+        <section role="tabpanel" id="components" aria-labelledby="components-tab">
+          <div class="stack">
+            <div><div class="section-heading"><span class="section-index">[01]</span><h2>버튼 &amp; 레이블</h2></div><div class="button-row"><button class="button">PRIMARY</button><button class="button secondary">SECONDARY</button><button class="button ghost">GHOST</button><button class="button accent">ACCENT</button><button class="button danger">DANGER</button><button class="button" disabled>DISABLED</button></div><div class="badge-row" style="margin-top:16px"><span class="badge">DEFAULT</span><span class="badge accent">ACTIVE</span><span class="badge success">SUCCESS</span><span class="badge error">ERROR</span></div></div>
+            <div><div class="section-heading"><span class="section-index">[02]</span><h2>카드</h2></div><div class="cards"><article class="panel card"><span class="label">[A-01] 기본</span><p>텍스처 없는 기본 카드. 조밀한 운영 정보를 위한 표면입니다.</p></article><article class="panel card"><span class="label">[A-02] 망점</span><p>비핵심 강조 영역에 쓰는 망점 오버레이 카드입니다.</p></article><article class="panel card grid-card"><span class="label">[A-03] 격자 + 액센트</span><p>의도적으로 강조한 현재 선택 또는 활성 그룹입니다.</p></article></div></div>
+            <div class="component-grid"><article class="panel"><span class="label">[03] INPUT</span><div class="field"><label for="handle">시스템 핸들</label><input id="handle" value="rasterline" /><span class="error-text">영문 소문자와 숫자만 사용</span></div><div class="field"><label for="role">역할</label><select id="role"><option>Designer</option><option>Engineer</option><option>Researcher</option></select></div></article><article class="panel"><span class="label">[04] PROGRESS</span><div style="margin-top:28px"><div class="status-row"><span>시스템 로드</span><span>42%</span></div><div class="progress" aria-label="System load: 42 percent"><span></span></div></div><div class="divider" style="margin-top:38px">OR</div></article></div>
+          </div>
+        </section>
+
+        <section role="tabpanel" id="flow" aria-labelledby="flow-tab">
+          <div class="section-heading"><span class="section-index">[01]</span><h2>단계 표시기</h2></div>
+          <div class="step-layout"><div class="panel"><div class="steps"><div class="step current" id="step-0"><span class="step-number">01</span><span>신원</span></div><div class="step" id="step-1"><span class="step-number">02</span><span>구성</span></div><div class="step" id="step-2"><span class="step-number">03</span><span>검증</span></div><div class="step" id="step-3"><span class="step-number">04</span><span>확인</span></div></div></div><article class="panel wizard"><div><span class="label">[DEMO] GATED FLOW</span><h3 style="margin-top:20px" id="wizard-title">신원 등록</h3><p class="wizard-copy" id="wizard-copy">소문자·숫자·밑줄만 사용하는 시스템 핸들을 입력합니다.</p><div id="wizard-fields"></div></div><div class="wizard-actions"><button class="button ghost" id="previous" disabled>← 이전</button><span class="status" id="wizard-count">1 / 4</span><button class="button accent" id="next">다음 →</button></div></article></div>
+          <div class="section-heading" style="margin-top:64px"><span class="section-index">[02]</span><h2>선형 UX 원칙</h2></div>
+          <div class="grid"><article class="panel"><span class="label">01</span><h3 style="margin-top:16px">명확한 진입점</h3><p>현재 위치와 첫 안전 행동을 알린다.</p></article><article class="panel"><span class="label">02</span><h3 style="margin-top:16px">불가역 경고</h3><p>되돌릴 수 없는 행동은 결과를 먼저 명시한다.</p></article><article class="panel"><span class="label">03</span><h3 style="margin-top:16px">점진적 공개</h3><p>복잡한 정보는 단계적으로 드러낸다.</p></article><article class="panel"><span class="label">04</span><h3 style="margin-top:16px">탈출 경로</h3><p>모든 흐름에 중단·저장·복구 경로를 둔다.</p></article></div>
+        </section>
+
+        <section role="tabpanel" id="texture" aria-labelledby="texture-tab">
+          <div class="section-heading"><span class="section-index">[01]</span><h2>텍스처</h2></div>
+          <div class="texture-grid"><div class="texture dots">DOTS SM</div><div class="texture dots-large">DOTS LG</div><div class="texture grid-texture">GRID</div><div class="texture scanlines">SCANLINES</div><div class="texture diagonal">DIAGONAL</div><div class="texture crosshatch">CROSSHATCH</div><div class="texture noise">NOISE</div><div class="texture bands">BANDS</div></div>
+          <div class="section-heading" style="margin-top:64px"><span class="section-index">[02]</span><h2>시스템 상태</h2></div>
+          <article class="panel"><div class="status-list"><div class="status-row"><span>CORE ENGINE</span><span class="running">RUNNING</span></div><div class="status-row"><span>DATA PIPELINE</span><span class="running">RUNNING</span></div><div class="status-row"><span>AUTH MODULE</span><span class="idle">IDLE</span></div><div class="status-row"><span>CACHE LAYER</span><span class="warn">WARN</span></div></div></article>
+        </section>
+      </main>
+
+      <footer>Derived from the <a href="rasterline-system.md" style="color:var(--foreground)">Rasterline canonical contract</a>. This preview demonstrates visual expression only; record target runtime evidence through <a href="runtime-evidence.md" style="color:var(--foreground)">runtime-evidence.md</a> before claiming production accessibility or recovery coverage.</footer>
+    </div>
+    <script>
+      const tabs = [...document.querySelectorAll('[role="tab"]')];
+      const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+      tabs.forEach((tab) => tab.addEventListener('click', () => {
+        tabs.forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
+        panels.forEach((panel) => panel.classList.toggle('is-active', panel.id === tab.getAttribute('aria-controls')));
+      }));
+      const wizard = [
+        ['신원 등록', '소문자·숫자·밑줄만 사용하는 시스템 핸들을 입력합니다.'],
+        ['시스템 구성', '실제 이름을 확인해 작업 기록에 연결합니다.'],
+        ['프로토콜 검증', '앞 단계가 완료되어야 현재 구성을 확인할 수 있습니다.'],
+        ['확인 및 배포', '마지막 확인을 완료하면 결과와 다음 안전 행동을 제공합니다.'],
+      ];
+      const data = { handle: '', name: '', agreed: false }; let current = 0;
+      const fieldMarkup = () => {
+        if (current === 0) return `<div class="field"><label for="wiz-handle">시스템 핸들</label><input id="wiz-handle" value="${data.handle}" placeholder="rasterline_01"><span class="error-text" id="wiz-error" hidden>소문자, 숫자, 밑줄만 사용할 수 있습니다.</span></div>`;
+        if (current === 1) return `<div class="field"><label for="wiz-name">실제 이름</label><input id="wiz-name" value="${data.name}" placeholder="이름"><span class="error-text" id="wiz-error" hidden>이름은 필수입니다.</span></div>`;
+        if (current === 2) return `<div class="status-list" style="margin-top:18px"><div class="status-row"><span>HANDLE</span><span>${data.handle}</span></div><div class="status-row"><span>NAME</span><span>${data.name}</span></div></div>`;
+        return `<div class="field"><label><input id="wiz-agree" type="checkbox" ${data.agreed ? 'checked' : ''}> 설정을 확인하고 완료합니다.</label><span class="error-text" id="wiz-error" hidden>완료 전 확인이 필요합니다.</span></div>`;
+      };
+      const renderWizard = () => {
+        document.querySelector('#wizard-title').textContent = wizard[current][0]; document.querySelector('#wizard-copy').textContent = wizard[current][1]; document.querySelector('#wizard-fields').innerHTML = fieldMarkup();
+        document.querySelector('#wizard-count').textContent = `${current + 1} / ${wizard.length}`; document.querySelector('#previous').disabled = current === 0; document.querySelector('#next').textContent = current === wizard.length - 1 ? '완료' : '다음 →';
+        [...document.querySelectorAll('.step')].forEach((step, index) => step.classList.toggle('current', index === current));
+      };
+      const valid = () => { const err = document.querySelector('#wiz-error'); if (current === 0) { data.handle = document.querySelector('#wiz-handle').value; const ok = /^[a-z0-9_]+$/.test(data.handle); err.hidden = ok; return ok; } if (current === 1) { data.name = document.querySelector('#wiz-name').value.trim(); const ok = Boolean(data.name); err.hidden = ok; return ok; } if (current === 3) { data.agreed = document.querySelector('#wiz-agree').checked; err.hidden = data.agreed; return data.agreed; } return true; };
+      document.querySelector('#previous').addEventListener('click', () => { current = Math.max(0, current - 1); renderWizard(); });
+      document.querySelector('#next').addEventListener('click', () => { if (!valid()) return; current = current === wizard.length - 1 ? 0 : current + 1; renderWizard(); }); renderWizard();
+    </script>
+  </body>
+</html>

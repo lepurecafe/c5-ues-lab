@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">COMMON SURFACE 마크 r1</title>
+  <desc id="desc">정렬 기준점과 표면의 단면을 뜻하는 각진 CS 마크</desc>
+  <rect width="120" height="120" fill="#1A1713"/>
+  <rect x="12" y="12" width="12" height="96" fill="#C7382C"/>
+  <path d="M91 29H46c-12 0-21 10-21 31s9 31 21 31h45M49 49h42M49 71h42" fill="none" stroke="#F3EFE7" stroke-width="9" stroke-linecap="square"/>
+</svg>

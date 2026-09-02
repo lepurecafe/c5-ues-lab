@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>men I trust — Logo Lockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#142038; --paper:#f2efe8; --midnight:#0a0f1a; --ivory:#e2ddd0; --amber:#cf8d21; }
+    * { box-sizing:border-box; } body { margin:0; padding:48px; background:var(--paper); color:var(--ink); font-family:Barlow, Arial, sans-serif; }
+    .sheet { max-width:1000px; margin:auto; border:1px solid rgba(20,32,56,.2); }
+    .label { margin:0; font:600 12px/1 "Barlow Condensed", sans-serif; letter-spacing:.14em; }
+    .sample { min-height:250px; padding:34px; display:flex; flex-direction:column; justify-content:space-between; border-bottom:1px solid rgba(20,32,56,.2); }
+    .sample:last-child { border-bottom:0; }.dark { background:var(--midnight); color:var(--ivory); }.compact { min-height:160px; }
+    .wordmark { font-size:clamp(40px,7vw,88px); font-weight:600; letter-spacing:-.06em; white-space:nowrap; }.wordmark i { display:inline-block; margin-inline:-.05em; font:600 1.1em/1 "Barlow Condensed", sans-serif; transform:scaleX(.6); font-style:normal; }
+    .accent { width:48px; height:4px; background:var(--amber); }.usage { margin:18px 0 0; max-width:560px; line-height:1.6; font-size:14px; opacity:.72; }
+    @media print { body { padding:0; } .sheet { border:0; max-width:none; } }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="sample"><p class="label">PRIMARY / INK ON PAPER</p><div class="wordmark">men <i>I</i> trust</div><div class="accent"></div></section>
+    <section class="sample dark"><p class="label">REVERSE / IVORY ON MIDNIGHT</p><div class="wordmark">men <i>I</i> trust</div><div class="accent"></div></section>
+    <section class="sample compact"><p class="label">USAGE NOTE</p><p class="usage">워드마크는 한 줄로만 사용합니다. 추가 아이콘이나 장식은 강제하지 않으며, 작은 적용에서의 <strong>mi</strong> 축약 마크는 상표 조사와 가독성 검토 이후에만 사용합니다.</p></section>
+  </main>
+</body>
+</html>

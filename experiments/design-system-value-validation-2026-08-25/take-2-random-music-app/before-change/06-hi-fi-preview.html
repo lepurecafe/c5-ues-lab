@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Battle Beat Randomizer — Take 2</title>
+  <style>
+    :root {
+      --ground: #1a1713;
+      --ground-soft: #221e19;
+      --ground-raised: #2a2520;
+      --canvas: #f2ede5;
+      --canvas-dark: #e0d8cc;
+      --signal-red: #e8111a;
+      --signal-red-dark: #b50d14;
+      --work-gold: #c69b4e;
+      --work-gold-dark: #8b6914;
+      --stone: #62594c;
+      --stone-light: #a89f92;
+      --success: #1d5b43;
+      --warning: #6c4b04;
+      --danger: #b50d14;
+      --focus: #e8111a;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --display: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", sans-serif;
+      --body: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      --mono: "SFMono-Regular", "Roboto Mono", "Space Mono", ui-monospace, monospace;
+      --hairline: 1px solid currentColor;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: #b9b0a3; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100dvh;
+      color: var(--ground);
+      background:
+        linear-gradient(90deg, rgba(26, 23, 19, .08) 1px, transparent 1px) 0 0 / 24px 24px,
+        #b9b0a3;
+      font-family: var(--body);
+      line-height: 1.45;
+      display: grid;
+      place-items: start center;
+    }
+
+    button, input { font: inherit; }
+
+    button {
+      min-height: 44px;
+      border-radius: 2px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    button:disabled { cursor: not-allowed; opacity: .5; }
+
+    .app {
+      position: relative;
+      width: min(100%, 430px);
+      min-height: 100dvh;
+      overflow: hidden;
+      background: var(--canvas);
+      border-inline: 1px solid rgba(26, 23, 19, .35);
+    }
+
+    .app[data-theme="inverse"] {
+      color: var(--canvas);
+      background: var(--ground);
+    }
+
+    .app::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      mix-blend-mode: multiply;
+      background-image: url("assets/texture-noise.svg");
+      background-size: 240px;
+      z-index: 0;
+    }
+
+    .app > * { position: relative; z-index: 1; }
+
+    .utility {
+      min-height: calc(52px + var(--safe-top));
+      padding: calc(var(--space-2) + var(--safe-top)) var(--space-4) var(--space-2);
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: var(--space-2);
+      border-bottom: 1px solid currentColor;
+      font: 700 10px/1.2 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .mark { display: flex; align-items: center; gap: 8px; }
+    .mark::before { content: "B//B"; color: var(--canvas); background: var(--signal-red-dark); padding: 5px 6px; }
+
+    .synthetic-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .synthetic-tag::before { content: ""; width: 6px; height: 6px; background: var(--work-gold-dark); }
+
+    .lab-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid currentColor;
+      padding: 4px 8px;
+      color: inherit;
+      background: transparent;
+      font: 700 10px/1 var(--mono);
+      letter-spacing: .06em;
+    }
+
+    .status-rail {
+      min-height: 36px;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid currentColor;
+      font: 700 10px/1.2 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .status-name { display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; border: 1px solid currentColor; background: transparent; }
+    .status-dot[data-active="true"] { background: var(--signal-red); border-color: var(--signal-red); }
+
+    .view { min-height: calc(100dvh - 88px - var(--safe-top)); }
+    .is-hidden { display: none !important; }
+
+    .ready {
+      padding: var(--space-4) var(--space-4) calc(var(--space-6) + var(--safe-bottom));
+      display: grid;
+      align-content: start;
+      gap: var(--space-6);
+    }
+
+    .hero-kicker,
+    .field-label,
+    .eyebrow,
+    .meta-label {
+      margin: 0;
+      font: 700 10px/1.3 var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: 248px;
+      display: grid;
+      align-content: end;
+      padding: var(--space-6) 0 var(--space-4);
+      border-bottom: 1px solid var(--ground);
+      background:
+        linear-gradient(90deg, transparent 0 74%, rgba(181, 13, 20, .12) 74% 100%),
+        url("assets/texture-grid.svg") center / cover;
+    }
+
+    .hero h1 {
+      max-width: 350px;
+      margin: 8px 0 12px;
+      font: 950 clamp(64px, 18vw, 84px)/.78 var(--display);
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .hero p:last-child {
+      max-width: 330px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    .condition-field { display: grid; gap: var(--space-4); }
+
+    .control-group { display: grid; gap: var(--space-2); }
+    .segment { display: grid; grid-template-columns: repeat(var(--count), minmax(0, 1fr)); border: 1px solid var(--ground); }
+    .segment button {
+      border: 0;
+      border-right: 1px solid var(--ground);
+      color: var(--ground);
+      background: transparent;
+      font: 800 12px/1 var(--mono);
+      letter-spacing: .05em;
+    }
+    .segment button:last-child { border-right: 0; }
+    .segment button[aria-pressed="true"] { color: var(--canvas); background: var(--ground); }
+
+    .primary-action {
+      width: 100%;
+      min-height: 64px;
+      border: 1px solid var(--signal-red-dark);
+      color: white;
+      background: var(--signal-red-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font: 950 23px/1 var(--display);
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .primary-action::after { content: "↗"; font-family: var(--mono); font-size: 24px; }
+    .primary-action:active { background: #8f0910; }
+
+    .microcopy {
+      margin: -12px 0 0;
+      color: #51493f;
+      font: 600 11px/1.45 var(--mono);
+    }
+
+    .active-view { padding-bottom: calc(var(--space-6) + var(--safe-bottom)); }
+
+    .condition-strip {
+      min-height: 44px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid currentColor;
+      font: 700 10px/1.2 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .condition-strip button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      font: inherit;
+    }
+
+    .transient {
+      min-height: 142px;
+      padding: 20px 16px;
+      border-bottom: 1px solid currentColor;
+      display: grid;
+      align-content: center;
+      gap: 12px;
+    }
+
+    .transient h2,
+    .state-panel h2 {
+      margin: 0;
+      font: 950 44px/.88 var(--display);
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+    }
+
+    .step-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+    .step-track span { height: 5px; border: 1px solid currentColor; }
+    .step-track span[data-on="true"] { background: var(--signal-red); border-color: var(--signal-red); }
+    .transient p { margin: 0; color: var(--canvas-dark); font-size: 13px; }
+
+    .beat-card { border-bottom: 1px solid currentColor; }
+
+    .cover-stage {
+      position: relative;
+      aspect-ratio: 1.31 / 1;
+      overflow: hidden;
+      border-bottom: 1px solid currentColor;
+      background: var(--ground-raised);
+    }
+    .cover-stage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cover-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 55%, rgba(26, 23, 19, .72));
+    }
+
+    .state-stamp {
+      position: absolute;
+      z-index: 2;
+      top: 12px;
+      left: 12px;
+      padding: 7px 8px;
+      color: white;
+      background: var(--signal-red-dark);
+      border: 1px solid white;
+      font: 800 10px/1 var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .track-code {
+      position: absolute;
+      z-index: 2;
+      right: 12px;
+      bottom: 10px;
+      margin: 0;
+      color: white;
+      font: 800 11px/1.2 var(--mono);
+      letter-spacing: .08em;
+    }
+
+    .track-copy { padding: 14px 16px 16px; }
+    .track-copy h2 {
+      margin: 6px 0 8px;
+      font: 950 clamp(38px, 12vw, 52px)/.86 var(--display);
+      letter-spacing: -.035em;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .fit-reason {
+      margin: 0 0 12px;
+      color: var(--canvas-dark);
+      font-size: 13px;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr;
+      border: 1px solid var(--stone-light);
+    }
+    .meta-cell { min-width: 0; padding: 8px; border-right: 1px solid var(--stone-light); }
+    .meta-cell:last-child { border-right: 0; }
+    .meta-cell strong { display: block; margin-top: 4px; color: var(--canvas); font: 800 12px/1.2 var(--mono); overflow-wrap: anywhere; }
+
+    .transport {
+      min-height: 76px;
+      padding: 10px 16px;
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .transport-button {
+      width: 56px;
+      min-height: 56px;
+      border: 1px solid var(--canvas);
+      color: var(--ground);
+      background: var(--canvas);
+      font: 900 18px/1 var(--mono);
+    }
+
+    .time-block { display: grid; gap: 7px; }
+    .time-row { display: flex; justify-content: space-between; gap: 8px; font: 700 10px/1 var(--mono); }
+    .progress { height: 5px; border: 1px solid var(--stone-light); }
+    .progress > span { display: block; width: 0%; height: 100%; background: var(--canvas); transition: width 180ms linear; }
+    .transport-status { font: 800 10px/1.2 var(--mono); letter-spacing: .08em; text-align: right; }
+
+    .fast-actions {
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      gap: 8px;
+    }
+    .fast-actions button {
+      min-width: 0;
+      border: 1px solid var(--canvas);
+      color: var(--canvas);
+      background: transparent;
+      padding: 0 8px;
+      font: 800 10px/1.1 var(--mono);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .fast-actions .reroll { color: white; background: var(--signal-red-dark); border-color: var(--signal-red-dark); }
+    .fast-actions button[aria-pressed="true"] { color: var(--ground); background: var(--canvas); }
+
+    .recent {
+      margin: 0 16px;
+      padding: 12px 0 0;
+      border-top: 1px solid var(--stone);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 12px;
+    }
+    .recent p { margin: 0; color: var(--stone-light); font: 700 10px/1.35 var(--mono); }
+    .recent-list { grid-column: 1 / -1; display: flex; gap: 6px; overflow: hidden; }
+    .recent-list span { border: 1px solid var(--stone); padding: 5px 6px; color: var(--canvas-dark); font: 700 9px/1 var(--mono); white-space: nowrap; }
+
+    .state-panel {
+      min-height: calc(100dvh - 132px - var(--safe-top));
+      padding: 24px 16px calc(24px + var(--safe-bottom));
+      display: grid;
+      align-content: center;
+      gap: 16px;
+    }
+    .state-panel .code {
+      width: max-content;
+      padding: 6px 8px;
+      border: 1px solid currentColor;
+      font: 800 10px/1 var(--mono);
+      letter-spacing: .08em;
+    }
+    .state-panel h2 { font-size: clamp(54px, 17vw, 76px); }
+    .state-panel p { margin: 0; max-width: 340px; font-size: 14px; line-height: 1.55; word-break: keep-all; }
+    .state-detail { border-block: 1px solid currentColor; padding: 12px 0; font: 700 11px/1.55 var(--mono); }
+    .recovery-actions { display: grid; gap: 8px; }
+    .recovery-actions button {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid currentColor;
+      color: inherit;
+      background: transparent;
+      text-align: left;
+      padding: 0 12px;
+      font: 800 12px/1 var(--mono);
+      text-transform: uppercase;
+    }
+    .recovery-actions button:first-child { color: white; background: var(--signal-red-dark); border-color: var(--signal-red-dark); }
+
+    .lab-drawer {
+      position: fixed;
+      z-index: 20;
+      inset: auto max(0px, calc((100vw - 430px) / 2)) 0 auto;
+      width: min(100%, 430px);
+      max-height: 70dvh;
+      overflow: auto;
+      padding: 16px 16px calc(16px + var(--safe-bottom));
+      color: var(--canvas);
+      background: var(--ground-raised);
+      border: 1px solid var(--canvas);
+      transform: translateY(110%);
+      transition: transform 180ms ease-out;
+    }
+    .lab-drawer[data-open="true"] { transform: translateY(0); }
+    .lab-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--stone); padding-bottom: 12px; }
+    .lab-head h2 { margin: 0; font: 900 24px/1 var(--display); text-transform: uppercase; }
+    .lab-head button { min-width: 44px; min-height: 44px; border: 1px solid var(--canvas); color: inherit; background: transparent; }
+    .lab-drawer p { color: var(--canvas-dark); font-size: 12px; }
+    .lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .lab-grid button { min-height: 48px; border: 1px solid var(--stone-light); color: inherit; background: transparent; font: 700 10px/1.2 var(--mono); }
+
+    .toast {
+      position: fixed;
+      z-index: 30;
+      left: 50%;
+      bottom: calc(16px + var(--safe-bottom));
+      width: min(calc(100% - 32px), 398px);
+      transform: translate(-50%, 140%);
+      padding: 12px;
+      color: var(--canvas);
+      background: var(--ground);
+      border: 1px solid var(--canvas);
+      font: 700 11px/1.4 var(--mono);
+      transition: transform 180ms ease-out;
+    }
+    .toast[data-visible="true"] { transform: translate(-50%, 0); }
+
+    @media (max-width: 520px) {
+      html, body { background: var(--canvas); }
+      .app { width: 100%; border-inline: 0; }
+      .lab-drawer { right: 0; }
+    }
+
+    @media (max-width: 374px) {
+      .utility, .status-rail, .ready, .track-copy, .transport, .fast-actions, .state-panel { padding-inline: 12px; }
+      .hero h1 { font-size: 62px; }
+      .fast-actions { grid-template-columns: 1.15fr 1fr 1fr; gap: 4px; }
+      .fast-actions button { font-size: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app" id="app" data-theme="light">
+    <header class="utility">
+      <div class="mark">FIELD UNIT / 01</div>
+      <div class="synthetic-tag">SYNTHETIC</div>
+      <button class="lab-toggle" id="labToggle" type="button" aria-expanded="false" aria-controls="labDrawer">LAB</button>
+    </header>
+
+    <div class="status-rail" aria-live="polite" aria-atomic="true">
+      <div class="status-name"><span class="status-dot" id="statusDot"></span><span id="phaseLabel">READY</span></div>
+      <span id="attemptLabel">NO ATTEMPT</span>
+    </div>
+
+    <section class="view ready" id="readyView" aria-labelledby="readyTitle">
+      <div class="hero">
+        <p class="hero-kicker">RAP / DANCE BATTLE UTILITY</p>
+        <h1 id="readyTitle">BATTLE<br>BEAT</h1>
+        <p>선곡 고민 없이 조건을 정하고 한 번에 뽑는다. 추천된 가상 비트는 별도 Start 없이 즉시 재생 상태를 시도한다.</p>
+      </div>
+
+      <div class="condition-field" aria-label="배틀 조건">
+        <div class="control-group">
+          <p class="field-label" id="battleTypeLabel">01 / BATTLE TYPE</p>
+          <div class="segment" style="--count: 2" role="group" aria-labelledby="battleTypeLabel" id="battleTypeControls">
+            <button type="button" data-field="battleType" data-value="RAP" aria-pressed="true">RAP</button>
+            <button type="button" data-field="battleType" data-value="DANCE" aria-pressed="false">DANCE</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <p class="field-label" id="energyLabel">02 / ENERGY</p>
+          <div class="segment" style="--count: 4" role="group" aria-labelledby="energyLabel" id="energyControls">
+            <button type="button" data-field="energy" data-value="RAW" aria-pressed="true">RAW</button>
+            <button type="button" data-field="energy" data-value="BOUNCE" aria-pressed="false">BOUNCE</button>
+            <button type="button" data-field="energy" data-value="DRIVE" aria-pressed="false">DRIVE</button>
+            <button type="button" data-field="energy" data-value="ANY" aria-pressed="false">ALL</button>
+          </div>
+        </div>
+
+        <button class="primary-action" id="drawButton" type="button">RANDOM BEAT</button>
+        <p class="microcopy">가상 트랙 · CLEAN INSTRUMENTAL · 실제 오디오 없음</p>
+      </div>
+    </section>
+
+    <section class="view active-view is-hidden" id="activeView" aria-labelledby="trackTitle">
+      <div class="condition-strip">
+        <span id="conditionSummary">NEXT DRAW / RAP · RAW</span>
+        <button type="button" id="editConditions">EDIT</button>
+      </div>
+
+      <div class="transient is-hidden" id="transientView">
+        <p class="eyebrow" id="transientCode">ATTEMPT / 0001</p>
+        <h2 id="transientTitle">REQUESTING</h2>
+        <div class="step-track" aria-hidden="true"><span id="step1"></span><span id="step2"></span><span id="step3"></span></div>
+        <p id="transientBody">현재 조건과 제외 목록을 유지한 채 후보를 계산 중이다.</p>
+      </div>
+
+      <article class="beat-card is-hidden" id="beatCard">
+        <div class="cover-stage">
+          <img id="coverImage" src="assets/beat-01.svg" alt="가상 배틀 비트 커버 아트">
+          <span class="state-stamp" id="stateStamp">PLAYING / SIM</span>
+          <p class="track-code" id="trackCode">SYN-BB-001</p>
+        </div>
+        <div class="track-copy">
+          <p class="eyebrow" id="authorityLabel">SYSTEM PICK / FIT 92</p>
+          <h2 id="trackTitle">CONCRETE PULSE</h2>
+          <p class="fit-reason" id="fitReason">RAW 랩 배틀의 첫 60초를 위한 단순한 전개와 넓은 보컬 공간.</p>
+          <div class="meta-grid" aria-label="트랙 메타데이터">
+            <div class="meta-cell"><span class="meta-label">BPM</span><strong id="bpmValue">92</strong></div>
+            <div class="meta-cell"><span class="meta-label">ENERGY</span><strong id="energyValue">RAW</strong></div>
+            <div class="meta-cell"><span class="meta-label">POLICY</span><strong>CLEAN / INST.</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="transport is-hidden" id="transport">
+        <button class="transport-button" id="transportButton" type="button" aria-label="일시정지">Ⅱ</button>
+        <div class="time-block">
+          <div class="time-row"><span id="elapsed">00:00</span><span>01:00</span></div>
+          <div class="progress" role="progressbar" aria-label="가상 재생 위치" aria-valuemin="0" aria-valuemax="60" aria-valuenow="0"><span id="progressFill"></span></div>
+        </div>
+        <div class="transport-status" id="transportStatus">SIMULATED<br>PLAYBACK</div>
+      </div>
+
+      <div class="fast-actions is-hidden" id="fastActions">
+        <button class="reroll" id="rerollButton" type="button">↻ REROLL</button>
+        <button id="saveButton" type="button" aria-pressed="false">＋ SAVE</button>
+        <button id="excludeButton" type="button">× EXCLUDE</button>
+      </div>
+
+      <div class="recent is-hidden" id="recentPanel">
+        <p id="historyCount">RECENT / 0 OF 4</p>
+        <p id="savedCount">SAVED 0 · EXCLUDED 0</p>
+        <div class="recent-list" id="recentList" aria-label="최근 뽑힌 가상 트랙"></div>
+      </div>
+
+      <section class="state-panel is-hidden" id="emptyPanel" aria-labelledby="emptyTitle">
+        <span class="code">POOL / 000</span>
+        <h2 id="emptyTitle">NO BEAT<br>LEFT</h2>
+        <p>현재 배틀 조건과 제외 목록을 함께 적용하면 사용할 가상 트랙이 없다. 저장 목록과 조건은 그대로 유지됐다.</p>
+        <div class="state-detail" id="emptyDetail">AFFECTED / RAP · RAW<br>EXCLUDED / 0</div>
+        <div class="recovery-actions">
+          <button type="button" id="relaxButton">RELAX ENERGY → ALL</button>
+          <button type="button" id="undoExcludeButton">UNDO LAST EXCLUSION</button>
+        </div>
+      </section>
+
+      <section class="state-panel is-hidden" id="errorPanel" aria-labelledby="errorTitle">
+        <span class="code">NETWORK / RECOVERABLE</span>
+        <h2 id="errorTitle">DRAW<br>FAILED</h2>
+        <p id="errorMessage">가상 추천 응답을 확인하지 못했다. 현재 조건과 직전 안전 상태는 그대로 유지됐다.</p>
+        <div class="state-detail" id="errorDetail">ATTEMPT / 0000<br>LAST SAFE / SILENCE UI</div>
+        <div class="recovery-actions">
+          <button type="button" id="retryButton">RETRY SAME CONDITIONS</button>
+          <button type="button" id="fallbackButton">USE LOCAL FALLBACK</button>
+        </div>
+      </section>
+    </section>
+
+    <aside class="lab-drawer" id="labDrawer" data-open="false" aria-label="실험 상태 제어">
+      <div class="lab-head"><h2>Evidence controls</h2><button type="button" id="labClose">CLOSE</button></div>
+      <p>실제 제품 기능이 아니라 오류·빈 상태·전이를 반복 검증하기 위한 실험 제어다.</p>
+      <div class="lab-grid">
+        <button type="button" data-scenario="ready">READY</button>
+        <button type="button" data-scenario="requesting">REQUESTING</button>
+        <button type="button" data-scenario="recommended">SYSTEM PICK</button>
+        <button type="button" data-scenario="starting">STARTING</button>
+        <button type="button" data-scenario="playing">PLAYING</button>
+        <button type="button" data-scenario="paused">PAUSED</button>
+        <button type="button" data-scenario="empty">EMPTY</button>
+        <button type="button" data-scenario="error">ERROR</button>
+        <button type="button" id="failNextButton">NEXT DRAW FAILS</button>
+        <button type="button" id="exhaustButton">EXHAUST POOL</button>
+        <button type="button" id="resetButton">RESET SESSION</button>
+      </div>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" data-visible="false"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const tracks = [
+        { id: "SYN-BB-001", title: "CONCRETE PULSE", bpm: 92, energy: "RAW", types: ["RAP", "DANCE"], cover: "assets/beat-01.svg", fit: 92, reason: "단순한 전개와 넓은 보컬 공간으로 첫 60초의 즉흥성을 남긴다." },
+        { id: "SYN-BB-002", title: "FLOOR SIGNAL", bpm: 118, energy: "BOUNCE", types: ["DANCE", "RAP"], cover: "assets/beat-02.svg", fit: 89, reason: "분명한 다운비트와 반복 구조가 풋워크와 라임 진입점을 빠르게 만든다." },
+        { id: "SYN-BB-003", title: "RUST CIRCUIT", bpm: 86, energy: "RAW", types: ["RAP"], cover: "assets/beat-03.svg", fit: 95, reason: "낮은 밀도의 드럼 공간이 프리스타일 보컬을 가리지 않도록 설계된 가상 비트다." },
+        { id: "SYN-BB-004", title: "NIGHT SHIFT", bpm: 124, energy: "DRIVE", types: ["DANCE"], cover: "assets/beat-04.svg", fit: 91, reason: "일정한 추진력과 짧은 변화 구간이 댄스 배틀의 에너지 전환을 돕는다." },
+        { id: "SYN-BB-005", title: "TAPE PRESSURE", bpm: 98, energy: "BOUNCE", types: ["RAP", "DANCE"], cover: "assets/beat-05.svg", fit: 88, reason: "중간 템포의 탄성이 랩과 댄스 모두에서 즉흥적인 응답을 허용한다." },
+        { id: "SYN-BB-006", title: "GRID BREAKER", bpm: 132, energy: "DRIVE", types: ["DANCE", "RAP"], cover: "assets/beat-06.svg", fit: 90, reason: "강한 박자 기준과 제한된 전개로 고에너지 라운드의 흐름을 유지한다." },
+        { id: "SYN-BB-007", title: "LOADING BAY", bpm: 78, energy: "RAW", types: ["RAP"], cover: "assets/beat-07.svg", fit: 87, reason: "느린 템포와 비어 있는 중역대가 래퍼의 박자 변주를 위한 여백을 만든다." },
+        { id: "SYN-BB-008", title: "RED LINE STEP", bpm: 110, energy: "BOUNCE", types: ["DANCE"], cover: "assets/beat-08.svg", fit: 93, reason: "분명한 루프와 바운스가 짧은 댄스 교대에서도 타이밍을 읽기 쉽게 한다." }
+      ];
+
+      const defaultState = () => ({
+        phase: "ready",
+        battleType: "RAP",
+        energy: "RAW",
+        activeTrackId: null,
+        lastSafeTrackId: null,
+        recommendationId: null,
+        attemptId: 0,
+        elapsedSeconds: 0,
+        savedIds: [],
+        excludedIds: [],
+        recentIds: [],
+        failureCount: 0,
+        recoverySource: null,
+        failNext: false,
+        forceEmpty: false
+      });
+
+      let state = loadState();
+      let activeSequence = 0;
+      let toastTimer = 0;
+
+      const $ = (id) => document.getElementById(id);
+      const app = $("app");
+      const readyView = $("readyView");
+      const activeView = $("activeView");
+      const transientView = $("transientView");
+      const beatCard = $("beatCard");
+      const transport = $("transport");
+      const fastActions = $("fastActions");
+      const recentPanel = $("recentPanel");
+      const emptyPanel = $("emptyPanel");
+      const errorPanel = $("errorPanel");
+
+      function loadState() {
+        try {
+          const saved = JSON.parse(sessionStorage.getItem("battleBeatTake2") || "null");
+          if (!saved) return defaultState();
+          return { ...defaultState(), ...saved, phase: saved.activeTrackId ? "paused" : "ready" };
+        } catch (_) {
+          return defaultState();
+        }
+      }
+
+      function persist() {
+        const persistable = { ...state, failNext: false, forceEmpty: false };
+        sessionStorage.setItem("battleBeatTake2", JSON.stringify(persistable));
+      }
+
+      function trackById(id) { return tracks.find((track) => track.id === id) || null; }
+
+      function setHidden(element, hidden) { element.classList.toggle("is-hidden", hidden); }
+
+      function phaseCopy(phase) {
+        return {
+          ready: ["READY", "NO ATTEMPT"],
+          requesting: ["REQUESTING", `ATTEMPT ${pad(state.attemptId)}`],
+          recommended: ["SYSTEM PICK", `REC ${pad(state.attemptId)}`],
+          starting: ["STARTING", `ATTEMPT ${pad(state.attemptId)}`],
+          playing: ["PLAYING / SIM", `ATTEMPT ${pad(state.attemptId)}`],
+          paused: ["PAUSED", `ATTEMPT ${pad(state.attemptId)}`],
+          empty: ["CONTENT EMPTY", `ATTEMPT ${pad(state.attemptId)}`],
+          error: ["RECOVERABLE ERROR", `ATTEMPT ${pad(state.attemptId)}`],
+          fallback: ["LOCAL FALLBACK", `ATTEMPT ${pad(state.attemptId)}`]
+        }[phase] || [phase.toUpperCase(), `ATTEMPT ${pad(state.attemptId)}`];
+      }
+
+      function pad(value) { return String(value).padStart(4, "0"); }
+
+      function render() {
+        const phase = state.phase;
+        const activeTrack = trackById(state.activeTrackId);
+        const isReady = phase === "ready";
+        const isTransient = ["requesting", "recommended", "starting"].includes(phase);
+        const isTrack = ["playing", "paused", "fallback"].includes(phase) && activeTrack;
+        const [phaseName, attemptName] = phaseCopy(phase);
+
+        app.dataset.theme = isReady ? "light" : "inverse";
+        $("phaseLabel").textContent = phaseName;
+        $("attemptLabel").textContent = attemptName;
+        $("statusDot").dataset.active = String(["playing", "fallback"].includes(phase));
+        setHidden(readyView, !isReady);
+        setHidden(activeView, isReady);
+        setHidden(transientView, !isTransient);
+        setHidden(beatCard, !isTrack);
+        setHidden(transport, !isTrack);
+        setHidden(fastActions, !isTrack);
+        setHidden(recentPanel, !isTrack);
+        setHidden(emptyPanel, phase !== "empty");
+        setHidden(errorPanel, phase !== "error");
+
+        $("conditionSummary").textContent = `NEXT DRAW / ${state.battleType} · ${state.energy === "ANY" ? "ALL ENERGY" : state.energy}`;
+        document.querySelectorAll("[data-field]").forEach((button) => {
+          button.setAttribute("aria-pressed", String(state[button.dataset.field] === button.dataset.value));
+        });
+
+        if (isTransient) renderTransient(phase);
+        if (isTrack) renderTrack(activeTrack, phase);
+        if (phase === "empty") renderEmpty();
+        if (phase === "error") renderError();
+        persist();
+      }
+
+      function renderTransient(phase) {
+        const activeTrack = trackById(state.activeTrackId);
+        const values = {
+          requesting: ["REQUESTING", "현재 조건, 최근 4곡과 제외 목록을 유지한 채 후보를 계산 중이다.", 1],
+          recommended: ["SYSTEM PICK", `${activeTrack ? activeTrack.title : "한 후보"}를 시스템 추천으로 선택했다. 사용자 선택 성공으로 표시하지 않는다.`, 2],
+          starting: ["STARTING", "추천된 가상 트랙의 synthetic playback 상태 전이를 확인 중이다.", 3]
+        }[phase];
+        $("transientCode").textContent = `ATTEMPT / ${pad(state.attemptId)}`;
+        $("transientTitle").textContent = values[0];
+        $("transientBody").textContent = values[1];
+        [$("step1"), $("step2"), $("step3")].forEach((step, index) => { step.dataset.on = String(index < values[2]); });
+      }
+
+      function renderTrack(track, phase) {
+        $("coverImage").src = track.cover;
+        $("coverImage").alt = `${track.title}, ${track.id} 가상 배틀 비트 커버 아트`;
+        $("trackCode").textContent = track.id;
+        $("trackTitle").textContent = track.title;
+        $("authorityLabel").textContent = `${phase === "fallback" ? "LOCAL FALLBACK" : "SYSTEM PICK"} / FIT ${track.fit}`;
+        $("fitReason").textContent = track.reason;
+        $("bpmValue").textContent = track.bpm;
+        $("energyValue").textContent = track.energy;
+        $("stateStamp").textContent = phase === "fallback" ? "FALLBACK / SIM" : phase === "paused" ? "PAUSED" : "PLAYING / SIM";
+        $("transportButton").textContent = phase === "paused" ? "▶" : "Ⅱ";
+        $("transportButton").setAttribute("aria-label", phase === "paused" ? "재개" : "일시정지");
+        $("transportStatus").innerHTML = phase === "paused" ? "POSITION<br>RETAINED" : "SIMULATED<br>PLAYBACK";
+        $("elapsed").textContent = formatTime(state.elapsedSeconds);
+        $("progressFill").style.width = `${Math.min(100, state.elapsedSeconds / 60 * 100)}%`;
+        document.querySelector(".progress").setAttribute("aria-valuenow", String(state.elapsedSeconds));
+        $("saveButton").setAttribute("aria-pressed", String(state.savedIds.includes(track.id)));
+        $("saveButton").textContent = state.savedIds.includes(track.id) ? "✓ SAVED" : "+ SAVE";
+        $("historyCount").textContent = `RECENT / ${Math.min(state.recentIds.length, 4)} OF 4`;
+        $("savedCount").textContent = `SAVED ${state.savedIds.length} · EXCLUDED ${state.excludedIds.length}`;
+        $("recentList").replaceChildren(...state.recentIds.slice(-4).reverse().map((id) => {
+          const item = document.createElement("span");
+          item.textContent = trackById(id)?.title || id;
+          return item;
+        }));
+      }
+
+      function renderEmpty() {
+        $("emptyDetail").innerHTML = `AFFECTED / ${state.battleType} · ${state.energy === "ANY" ? "ALL" : state.energy}<br>EXCLUDED / ${state.excludedIds.length}`;
+        $("undoExcludeButton").disabled = state.excludedIds.length === 0;
+      }
+
+      function renderError() {
+        const safe = trackById(state.lastSafeTrackId);
+        $("errorDetail").innerHTML = `ATTEMPT / ${pad(state.attemptId)}<br>LAST SAFE / ${safe ? safe.title : "SILENCE UI"}`;
+        $("errorMessage").textContent = safe
+          ? `새 추천 응답을 확인하지 못했다. 직전 가상 트랙 ${safe.title}의 안전 상태와 현재 조건은 유지됐다.`
+          : "가상 추천 응답을 확인하지 못했다. 현재 조건과 저장·제외 목록은 그대로 유지됐다.";
+      }
+
+      function chooseTrack() {
+        const eligible = tracks.filter((track) =>
+          track.types.includes(state.battleType) &&
+          (state.energy === "ANY" || track.energy === state.energy) &&
+          !state.excludedIds.includes(track.id)
+        );
+        if (state.forceEmpty || eligible.length === 0) return null;
+        const fresh = eligible.filter((track) => !state.recentIds.slice(-4).includes(track.id));
+        const pool = fresh.length ? fresh : eligible;
+        const index = (state.attemptId * 5 + state.recentIds.length * 3) % pool.length;
+        return pool[index];
+      }
+
+      async function drawBeat(source = "draw") {
+        if (["requesting", "recommended", "starting"].includes(state.phase)) return;
+        const sequence = ++activeSequence;
+        const safeTrack = ["playing", "paused", "fallback"].includes(state.phase) ? state.activeTrackId : state.lastSafeTrackId;
+        state.lastSafeTrackId = safeTrack || null;
+        state.activeTrackId = null;
+        state.phase = "requesting";
+        state.attemptId += 1;
+        state.recoverySource = source;
+        state.elapsedSeconds = 0;
+        render();
+        announce("현재 조건으로 가상 배틀 비트를 요청했다.");
+        await delay(120);
+        if (sequence !== activeSequence) return;
+
+        const candidate = chooseTrack();
+        state.forceEmpty = false;
+        if (!candidate) {
+          state.phase = "empty";
+          render();
+          announce("현재 조건에 사용할 가상 트랙이 없다. 조건 완화 또는 제외 되돌리기를 선택할 수 있다.");
+          return;
+        }
+
+        state.activeTrackId = candidate.id;
+        state.recommendationId = `REC-${Date.now()}-${pad(state.attemptId)}`;
+        state.phase = "recommended";
+        render();
+        await delay(130);
+        if (sequence !== activeSequence) return;
+
+        state.phase = "starting";
+        render();
+        await delay(160);
+        if (sequence !== activeSequence) return;
+
+        if (state.failNext) {
+          state.failNext = false;
+          state.activeTrackId = null;
+          state.phase = "error";
+          state.failureCount += 1;
+          render();
+          announce("가상 추천 또는 재생 상태 전이가 실패했다. 직전 안전 상태를 유지했다.");
+          return;
+        }
+
+        state.phase = source === "fallback" ? "fallback" : "playing";
+        state.failureCount = 0;
+        state.lastSafeTrackId = candidate.id;
+        state.recentIds = [...state.recentIds.filter((id) => id !== candidate.id), candidate.id].slice(-8);
+        render();
+        announce(`${candidate.title}, 가상 재생 상태를 확인했다. 실제 오디오는 출력하지 않는다.`);
+      }
+
+      function togglePlayback() {
+        if (state.phase === "playing" || state.phase === "fallback") {
+          state.phase = "paused";
+          showToast("PAUSED / POSITION RETAINED");
+        } else if (state.phase === "paused") {
+          state.phase = "playing";
+          showToast("PLAYING / SYNTHETIC STATE");
+        }
+        render();
+      }
+
+      function toggleSave() {
+        if (!state.activeTrackId) return;
+        const saved = new Set(state.savedIds);
+        if (saved.has(state.activeTrackId)) saved.delete(state.activeTrackId); else saved.add(state.activeTrackId);
+        state.savedIds = [...saved];
+        render();
+        showToast(saved.has(state.activeTrackId) ? "SAVED IN THIS SESSION" : "REMOVED FROM SAVED");
+      }
+
+      function excludeActive() {
+        if (!state.activeTrackId) return;
+        const excludedId = state.activeTrackId;
+        state.excludedIds = [...new Set([...state.excludedIds, excludedId])];
+        showToast(`${excludedId} EXCLUDED / NEXT DRAW`);
+        drawBeat("exclude");
+      }
+
+      function retry() {
+        state.failNext = false;
+        drawBeat("retry");
+      }
+
+      async function useFallback() {
+        const sequence = ++activeSequence;
+        state.attemptId += 1;
+        state.phase = "starting";
+        state.recoverySource = "fallback";
+        state.activeTrackId = tracks.find((track) => !state.excludedIds.includes(track.id))?.id || tracks[0].id;
+        render();
+        await delay(160);
+        if (sequence !== activeSequence) return;
+        const track = trackById(state.activeTrackId);
+        state.phase = "fallback";
+        state.lastSafeTrackId = track.id;
+        state.recentIds = [...state.recentIds.filter((id) => id !== track.id), track.id].slice(-8);
+        render();
+        announce(`${track.title} local fallback 가상 재생 상태를 확인했다.`);
+      }
+
+      function relaxEnergy() {
+        state.energy = "ANY";
+        drawBeat("relax");
+      }
+
+      function undoLastExclusion() {
+        const restored = state.excludedIds.at(-1);
+        if (!restored) return;
+        state.excludedIds = state.excludedIds.slice(0, -1);
+        showToast(`${restored} RESTORED`);
+        drawBeat("undo-exclusion");
+      }
+
+      function editConditions() {
+        activeSequence += 1;
+        state.phase = "ready";
+        state.activeTrackId = null;
+        state.elapsedSeconds = 0;
+        render();
+        announce("현재 선택값을 유지한 채 조건 편집으로 돌아왔다.");
+      }
+
+      function setScenario(name) {
+        activeSequence += 1;
+        if (name === "ready") {
+          state.phase = "ready";
+          state.activeTrackId = null;
+        } else {
+          state.attemptId = Math.max(1, state.attemptId);
+          state.activeTrackId = tracks[0].id;
+          state.lastSafeTrackId = tracks[0].id;
+          state.phase = name;
+          if (["empty", "error", "requesting"].includes(name)) state.activeTrackId = null;
+        }
+        closeLab();
+        render();
+      }
+
+      function resetSession() {
+        activeSequence += 1;
+        state = defaultState();
+        sessionStorage.removeItem("battleBeatTake2");
+        closeLab();
+        render();
+        showToast("SESSION RESET");
+      }
+
+      function announce(message) { showToast(message); }
+
+      function showToast(message) {
+        clearTimeout(toastTimer);
+        $("toast").textContent = message;
+        $("toast").dataset.visible = "true";
+        toastTimer = window.setTimeout(() => { $("toast").dataset.visible = "false"; }, 2600);
+      }
+
+      function openLab() {
+        $("labDrawer").dataset.open = "true";
+        $("labToggle").setAttribute("aria-expanded", "true");
+        $("labClose").focus();
+      }
+
+      function closeLab() {
+        $("labDrawer").dataset.open = "false";
+        $("labToggle").setAttribute("aria-expanded", "false");
+      }
+
+      function delay(ms) { return new Promise((resolve) => window.setTimeout(resolve, ms)); }
+      function formatTime(seconds) { return `00:${String(seconds).padStart(2, "0")}`; }
+
+      document.addEventListener("click", (event) => {
+        const condition = event.target.closest("[data-field]");
+        if (condition) {
+          state[condition.dataset.field] = condition.dataset.value;
+          render();
+        }
+        const scenario = event.target.closest("[data-scenario]");
+        if (scenario) setScenario(scenario.dataset.scenario);
+      });
+
+      $("drawButton").addEventListener("click", () => drawBeat("draw"));
+      $("rerollButton").addEventListener("click", () => drawBeat("reroll"));
+      $("transportButton").addEventListener("click", togglePlayback);
+      $("saveButton").addEventListener("click", toggleSave);
+      $("excludeButton").addEventListener("click", excludeActive);
+      $("retryButton").addEventListener("click", retry);
+      $("fallbackButton").addEventListener("click", useFallback);
+      $("relaxButton").addEventListener("click", relaxEnergy);
+      $("undoExcludeButton").addEventListener("click", undoLastExclusion);
+      $("editConditions").addEventListener("click", editConditions);
+      $("labToggle").addEventListener("click", openLab);
+      $("labClose").addEventListener("click", closeLab);
+      $("failNextButton").addEventListener("click", () => { state.failNext = true; closeLab(); showToast("NEXT DRAW WILL FAIL"); });
+      $("exhaustButton").addEventListener("click", () => { state.forceEmpty = true; closeLab(); drawBeat("lab-empty"); });
+      $("resetButton").addEventListener("click", resetSession);
+
+      window.setInterval(() => {
+        if ((state.phase === "playing" || state.phase === "fallback") && state.elapsedSeconds < 60) {
+          state.elapsedSeconds += 1;
+          $("elapsed").textContent = formatTime(state.elapsedSeconds);
+          $("progressFill").style.width = `${state.elapsedSeconds / 60 * 100}%`;
+          document.querySelector(".progress").setAttribute("aria-valuenow", String(state.elapsedSeconds));
+          persist();
+        }
+      }, 1000);
+
+      const initialScenario = new URLSearchParams(location.search).get("state");
+      if (initialScenario && ["ready", "requesting", "recommended", "starting", "playing", "paused", "empty", "error", "fallback"].includes(initialScenario)) {
+        setScenario(initialScenario);
+      } else {
+        render();
+      }
+
+      window.__BATTLE_BEAT__ = {
+        getState: () => structuredClone(state),
+        setScenario,
+        drawBeat,
+        tracks: structuredClone(tracks),
+        reset: resetSession
+      };
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PULSE DECK — Design Pack Adapter Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-pack="usps">
+    <main class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="#" aria-label="PULSE DECK 홈">PULSE<span>DECK</span></a>
+        <div class="header-status" aria-live="polite"><i></i><span id="statusText">READY TO PLAY</span></div>
+        <button class="icon-button" id="helpButton" aria-label="도움말 열기">?</button>
+      </header>
+
+      <section class="experiment-bar" aria-label="디자인 팩 선택">
+        <div>
+          <p>UX SYSTEM · FIXED FLOW</p>
+          <strong>진입 → 준비 → 재생 → 전환 → 종료/복구</strong>
+        </div>
+        <div class="pack-switcher" role="group" aria-label="디자인 팩">
+          <button class="pack-button active" data-pack="usps">01 USPS</button>
+          <button class="pack-button" data-pack="apple">02 Apple</button>
+          <button class="pack-button" data-pack="royal">03 Royal Mail</button>
+        </div>
+      </section>
+
+      <section class="stage" aria-labelledby="screenTitle">
+        <aside class="flow-rail" aria-label="현재 UX 흐름">
+          <p class="rail-label">EXPERIENCE</p>
+          <ol>
+            <li data-flow="entry"><span>01</span>진입</li>
+            <li data-flow="ready"><span>02</span>준비</li>
+            <li data-flow="playing"><span>03</span>재생</li>
+            <li data-flow="transition"><span>04</span>전환</li>
+            <li data-flow="ended"><span>05</span>종료/복구</li>
+          </ol>
+          <button class="rail-reset" id="resetButton">처음으로</button>
+        </aside>
+
+        <section class="deck" id="deck" data-state="entry">
+          <div class="deck-topline">
+            <p id="stepLabel">STEP 01 · INFORM</p>
+            <p class="round-label">ROUND <span id="roundNumber">01</span></p>
+          </div>
+
+          <section class="screen screen-entry" data-screen="entry">
+            <div class="entry-copy">
+              <p class="eyebrow">NO DJ. NO DEAD AIR.</p>
+              <h1 id="screenTitle">랜덤 비트를<br />바로 시작하세요.</h1>
+              <p>배틀 형식만 고르면, 현장에 맞는 첫 비트를 즉시 준비합니다.</p>
+            </div>
+            <div class="entry-actions">
+              <button class="primary-action" id="startButton">랜덤 비트 시작 <span>→</span></button>
+              <p>기본값: 90–100 BPM · Hip-hop · 60초</p>
+            </div>
+          </section>
+
+          <section class="screen screen-ready" data-screen="ready" hidden>
+            <div class="ready-heading">
+              <p class="eyebrow">STEP 02 · SELECT</p>
+              <h2>오늘의 배틀을<br />어떻게 시작할까요?</h2>
+            </div>
+            <div class="setting-grid">
+              <label>형식<select id="formatSelect"><option>댄스 배틀</option><option>랩 배틀</option><option>프리스타일 연습</option></select></label>
+              <label>라운드<select id="roundSelect"><option>60초</option><option>90초</option><option>120초</option></select></label>
+              <label>에너지<select id="energySelect"><option>중간 · 안정적</option><option>낮음 · 그루비</option><option>높음 · 공격적</option></select></label>
+            </div>
+            <aside class="defaults-note"><strong>왜 이 기본값인가요?</strong><span>처음 시작할 때는 전환 부담을 줄이는 94 BPM, 60초 라운드를 제안합니다.</span></aside>
+            <button class="primary-action" id="armButton">첫 비트 준비 <span>→</span></button>
+          </section>
+
+          <section class="screen screen-playing" data-screen="playing" hidden>
+            <div class="now-playing">
+              <p class="eyebrow">NOW PLAYING</p>
+              <h2 id="beatName">Basement Breaks</h2>
+              <p id="beatMeta">94 BPM · Boom bap · Mid energy</p>
+              <div class="waveform" aria-label="재생 중인 파형" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <p class="reason"><span>선택 이유</span><span id="beatReason">댄스 배틀 · 60초 라운드에 맞는 안정적 시작점</span></p>
+            </div>
+            <div class="transport-panel">
+              <p class="timer" id="timer">01:00</p>
+              <div class="transport-controls">
+                <button class="secondary-action" id="pauseButton">일시정지</button>
+                <button class="play-button" id="playButton" aria-label="재생 또는 일시정지">Ⅱ</button>
+                <button class="secondary-action" id="endButton">라운드 종료</button>
+              </div>
+              <p class="audio-status"><i></i>오디오 출력 정상</p>
+            </div>
+            <div class="next-cue">
+              <div><p>NEXT CUE</p><strong id="nextBeat">Chrome Bounce</strong><span id="nextMeta">98 BPM · Hip-hop</span></div>
+              <div class="cue-actions"><button id="lockButton" aria-pressed="false">다음 비트 잠금</button><button id="rerollButton">다시 뽑기</button></div>
+              <button class="transition-action" id="transitionButton">다음 비트로 전환 <span>→</span></button>
+            </div>
+          </section>
+
+          <section class="screen screen-transition" data-screen="transition" hidden>
+            <p class="eyebrow">STEP 04 · CONFIRM</p>
+            <h2>다음 라운드를<br />준비했습니다.</h2>
+            <div class="transition-card"><div><p>NOW</p><strong id="transitionNow">Basement Breaks</strong><span>94 BPM</span></div><span class="arrow">→</span><div><p>NEXT</p><strong id="transitionNext">Chrome Bounce</strong><span>98 BPM</span></div></div>
+            <div class="transition-choice"><button class="primary-action" id="confirmTransition">지금 전환 <span>→</span></button><button class="secondary-action" id="cancelTransition">현재 비트 유지</button></div>
+            <p class="helper">전환 후 5초 동안 되돌리기를 제공합니다.</p>
+          </section>
+
+          <section class="screen screen-ended" data-screen="ended" hidden>
+            <p class="eyebrow">STEP 05 · RESULT</p>
+            <h2 id="endedHeading">라운드가<br />안전하게 끝났습니다.</h2>
+            <p class="ended-copy" id="endedCopy">다음 비트를 준비하거나 이 세션을 마칠 수 있습니다.</p>
+            <div class="result-actions"><button class="primary-action" id="nextRoundButton">다음 라운드 <span>→</span></button><button class="secondary-action" id="finishButton">세션 종료</button></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="helpDialog"><button class="dialog-close" id="closeHelp" aria-label="닫기">×</button><p class="eyebrow">UX SYSTEM IN USE</p><h2>같은 의미,<br />다른 구현.</h2><p>이 샘플은 UX System의 Step과 Semantic Primitive를 고정합니다. 디자인 팩은 typography, color, spacing, shape, component treatment만 바꿉니다.</p><ul><li>Primary action: 랜덤 비트 시작</li><li>Status: 재생/정지/전환 상태</li><li>Feedback: 선택 이유, 출력 상태, 복구</li></ul></dialog>
+    <script src="./app.js"></script>
+  </body>
+</html>

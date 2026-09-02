@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="beat01-title beat01-desc">
+  <title id="beat01-title">Synthetic battle beat cover BB-01</title>
+  <desc id="beat01-desc">Warm canvas cover with a deep ink block, red registration bar, hard grid, and screenprint dots.</desc>
+  <defs>
+    <pattern id="beat01-dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="7" cy="7" r="4" fill="#1A1713"/>
+    </pattern>
+  </defs>
+  <rect width="1024" height="1024" fill="#F2EDE5"/>
+  <rect x="56" y="56" width="912" height="912" fill="none" stroke="#1A1713" stroke-width="4"/>
+  <rect x="56" y="56" width="460" height="912" fill="#1A1713"/>
+  <rect x="516" y="56" width="92" height="912" fill="#B50D14"/>
+  <rect x="646" y="120" width="258" height="258" fill="url(#beat01-dots)"/>
+  <path d="M646 448H904M646 520H904M646 592H904M646 664H904" stroke="#1A1713" stroke-width="12"/>
+  <path d="M646 448V736M732 448V736M818 448V736M904 448V736" stroke="#1A1713" stroke-width="4" opacity=".45"/>
+  <rect x="646" y="806" width="258" height="98" fill="#C69B4E"/>
+  <text x="92" y="132" fill="#F2EDE5" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="6">BATTLE BEAT</text>
+  <text x="92" y="584" fill="#F2EDE5" font-family="Arial Narrow, Arial, sans-serif" font-size="260" font-weight="900" letter-spacing="-18">01</text>
+  <text x="92" y="894" fill="#A89F92" font-family="Courier New, monospace" font-size="22" letter-spacing="4">RAW / 092 / SYNTHETIC</text>
+  <text x="672" y="870" fill="#1A1713" font-family="Courier New, monospace" font-size="26" font-weight="700" letter-spacing="4">BB-01</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="beat04-title beat04-desc">
+  <title id="beat04-title">Synthetic battle beat cover BB-04</title>
+  <desc id="beat04-desc">Red-dark field sliced by deep ink and warm canvas chevrons in a hard screenprint composition.</desc>
+  <rect width="1024" height="1024" fill="#B50D14"/>
+  <rect x="48" y="48" width="928" height="928" fill="none" stroke="#1A1713" stroke-width="8"/>
+  <path d="M0 0H392L1024 632V1024H842L0 182Z" fill="#1A1713"/>
+  <path d="M0 238L746 984H612L0 372Z" fill="#F2EDE5"/>
+  <path d="M0 456L528 984H430L0 554Z" fill="#C69B4E"/>
+  <rect x="650" y="94" width="270" height="270" fill="#F2EDE5"/>
+  <path d="M690 134H880M690 184H880M690 234H880M690 284H880M690 334H880" stroke="#1A1713" stroke-width="12"/>
+  <text x="688" y="544" fill="#F2EDE5" font-family="Arial Narrow, Arial, sans-serif" font-size="226" font-weight="900" letter-spacing="-14">04</text>
+  <text x="690" y="622" fill="#F2EDE5" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="7">RED SHIFT</text>
+  <text x="690" y="680" fill="#A89F92" font-family="Courier New, monospace" font-size="20" letter-spacing="3">RAW / 087 BPM</text>
+  <text x="690" y="924" fill="#F2EDE5" font-family="Courier New, monospace" font-size="18" letter-spacing="3">BB-04 · SYNTHETIC</text>
+</svg>

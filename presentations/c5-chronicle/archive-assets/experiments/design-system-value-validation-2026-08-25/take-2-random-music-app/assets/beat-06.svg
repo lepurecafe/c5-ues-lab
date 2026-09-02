@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="beat06-title beat06-desc">
+  <title id="beat06-title">Synthetic battle beat cover BB-06</title>
+  <desc id="beat06-desc">Photocopy-style canvas cover with offset ink and red rings, halftone blocks, and hard registration marks.</desc>
+  <defs>
+    <pattern id="beat06-dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="6" r="3.5" fill="#1A1713"/>
+    </pattern>
+  </defs>
+  <rect width="1024" height="1024" fill="#E0D8CC"/>
+  <rect x="44" y="44" width="936" height="936" fill="none" stroke="#1A1713" stroke-width="7"/>
+  <rect x="86" y="86" width="852" height="852" fill="url(#beat06-dots)" opacity=".2"/>
+  <circle cx="482" cy="470" r="316" fill="none" stroke="#1A1713" stroke-width="74"/>
+  <circle cx="540" cy="524" r="316" fill="none" stroke="#B50D14" stroke-width="46" opacity=".9"/>
+  <circle cx="512" cy="498" r="174" fill="#F2EDE5" stroke="#1A1713" stroke-width="18"/>
+  <path d="M126 126h88M170 82v88M810 126h88M854 82v88M126 898h88M170 854v88M810 898h88M854 854v88" stroke="#C69B4E" stroke-width="10"/>
+  <rect x="120" y="770" width="784" height="126" fill="#1A1713"/>
+  <text x="512" y="550" fill="#1A1713" font-family="Arial Narrow, Arial, sans-serif" font-size="204" font-weight="900" text-anchor="middle">06</text>
+  <text x="154" y="824" fill="#F2EDE5" font-family="Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="7">COPY RING</text>
+  <text x="154" y="870" fill="#A89F92" font-family="Courier New, monospace" font-size="19" letter-spacing="3">DRIVE / 124 BPM / BB-06</text>
+  <text x="710" y="870" fill="#F2EDE5" font-family="Courier New, monospace" font-size="15" letter-spacing="3">SYNTHETIC</text>
+</svg>

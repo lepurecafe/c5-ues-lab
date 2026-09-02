@@ -1,0 +1,3158 @@
+{
+  "id": "asset-registry.common-surface.r3",
+  "revision": "0.1.0-experiment",
+  "generatedAt": "2026-08-26T16:45:00+09:00",
+  "authorityCeiling": "experiment-approved-synthetic / rights unresolved / no commercial release",
+  "assets": [
+    {
+      "id": "asset.common-surface.r3.identity.common.surface.lockup.path",
+      "revision": "0.1.0-experiment",
+      "path": "assets/identity/common-surface-lockup-path.svg",
+      "sha256": "e36e61d74ccd94e9745e5725f2640453dcc884848432511b5115ba8ded5916bb",
+      "width": 980,
+      "height": 146,
+      "format": "svg",
+      "source": {
+        "type": "code-native-svg",
+        "date": "2026-08-26",
+        "reference": "migration.common-surface.identity-r2-to-r3@0.1.0-experiment"
+      },
+      "assetClass": "master",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "identity / preview / commerce",
+          "component": "BrandSignature",
+          "crop": "contain / no distortion",
+          "alt": "COMMON SURFACE path-based identity master"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "created",
+          "note": "R2 concept geometry normalized without live SVG text."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.identity.common.surface.symbol.inverse",
+      "revision": "0.1.0-experiment",
+      "path": "assets/identity/common-surface-symbol-inverse.svg",
+      "sha256": "226e9618c5fd0e228289647f03d6d3dbced69a02479aa9a00f9df2e62bb61e3e",
+      "width": 120,
+      "height": 120,
+      "format": "svg",
+      "source": {
+        "type": "code-native-svg",
+        "date": "2026-08-26",
+        "reference": "migration.common-surface.identity-r2-to-r3@0.1.0-experiment"
+      },
+      "assetClass": "master",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "identity / preview / commerce",
+          "component": "BrandSignature",
+          "crop": "contain / no distortion",
+          "alt": "COMMON SURFACE path-based identity master"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "created",
+          "note": "R2 concept geometry normalized without live SVG text."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.identity.common.surface.symbol.mono",
+      "revision": "0.1.0-experiment",
+      "path": "assets/identity/common-surface-symbol-mono.svg",
+      "sha256": "67af541233eb3335f7b6171fef22a8c31ae4cdf6035c7258af979a0bd97ee6c8",
+      "width": 120,
+      "height": 120,
+      "format": "svg",
+      "source": {
+        "type": "code-native-svg",
+        "date": "2026-08-26",
+        "reference": "migration.common-surface.identity-r2-to-r3@0.1.0-experiment"
+      },
+      "assetClass": "master",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "identity / preview / commerce",
+          "component": "BrandSignature",
+          "crop": "contain / no distortion",
+          "alt": "COMMON SURFACE path-based identity master"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "created",
+          "note": "R2 concept geometry normalized without live SVG text."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.identity.common.surface.symbol.primary",
+      "revision": "0.1.0-experiment",
+      "path": "assets/identity/common-surface-symbol-primary.svg",
+      "sha256": "cd7deb5df8bb9171d87d4574fec6b73aec1c1546fcd1179f5d14dd9053d7fe3e",
+      "width": 120,
+      "height": 120,
+      "format": "svg",
+      "source": {
+        "type": "code-native-svg",
+        "date": "2026-08-26",
+        "reference": "migration.common-surface.identity-r2-to-r3@0.1.0-experiment"
+      },
+      "assetClass": "master",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "identity / preview / commerce",
+          "component": "BrandSignature",
+          "crop": "contain / no distortion",
+          "alt": "COMMON SURFACE path-based identity master"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "created",
+          "note": "R2 concept geometry normalized without live SVG text."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.identity.common.surface.symbol.small",
+      "revision": "0.1.0-experiment",
+      "path": "assets/identity/common-surface-symbol-small.svg",
+      "sha256": "e999e0b2b53876b030e298775889a11e2eb63d751afca57cf0e172bd5e469492",
+      "width": 24,
+      "height": 24,
+      "format": "svg",
+      "source": {
+        "type": "code-native-svg",
+        "date": "2026-08-26",
+        "reference": "migration.common-surface.identity-r2-to-r3@0.1.0-experiment"
+      },
+      "assetClass": "master",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "identity / preview / commerce",
+          "component": "BrandSignature",
+          "crop": "contain / no distortion",
+          "alt": "COMMON SURFACE path-based identity master"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "created",
+          "note": "R2 concept geometry normalized without live SVG text."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.identity.common.surface.wordmark.path",
+      "revision": "0.1.0-experiment",
+      "path": "assets/identity/common-surface-wordmark-path.svg",
+      "sha256": "068b4e0af5c5125d60a99cb0f1469a013b1ae859dcd7f84ece73c8e945fd4939",
+      "width": 500,
+      "height": 152,
+      "format": "svg",
+      "source": {
+        "type": "code-native-svg",
+        "date": "2026-08-26",
+        "reference": "migration.common-surface.identity-r2-to-r3@0.1.0-experiment"
+      },
+      "assetClass": "master",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "identity / preview / commerce",
+          "component": "BrandSignature",
+          "crop": "contain / no distortion",
+          "alt": "COMMON SURFACE path-based identity master"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "created",
+          "note": "R2 concept geometry normalized without live SVG text."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.campaign.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/campaign-1600.jpg",
+      "sha256": "a4e0298632ff789e9c5935ef1fe238e3ca87d94420e15c1d946076dce9d8b453",
+      "width": 1280,
+      "height": 1600,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.campaign-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.campaign.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/campaign-800.jpg",
+      "sha256": "1eebd29ab5e685606bcd9b50449c2a8cb659f6a4ebb6a06dbb9bbb045f7110eb",
+      "width": 640,
+      "height": 800,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.campaign-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.facade.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/facade-1600.jpg",
+      "sha256": "3f16d080fbee62ac112e299669e5dc251abd15631823398641ef1f12b03b5a4a",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.facade-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.facade.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/facade-800.jpg",
+      "sha256": "b00e85e08d9da4ae0bb99f3d39302ca114b753de2ec2200cae33c993f7cf36fd",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.facade-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.hold.kit.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/hold-kit-1600.jpg",
+      "sha256": "46d83692da392112f0f114193098c00e1b83f08a81600984790ce3390e3fde23",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.hold-kit-1600"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Responsive derivative of accepted R3 ImageGen master."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.hold.kit.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/hold-kit-800.jpg",
+      "sha256": "83e8ca46383579a98d0b94bef0db9daa99e3ba0f825b631d37b875e0952684ac",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.hold-kit-800"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Responsive derivative of accepted R3 ImageGen master."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.hold.kit.master",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/hold-kit-master.png",
+      "sha256": "13604c981c758b026e5bc2e1d374b2a91f59f6251ee01d4c4427fce2c20a2029",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "source": {
+        "type": "imagegen-master",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.hold-kit-master"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "generated-and-reviewed",
+          "note": "ImageGen output accepted after text removal edit."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.collateral.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-collateral-1600.jpg",
+      "sha256": "9501018bc677d3daa262369f2281561ad7bd0321dfbf40591dc3e61025994c7b",
+      "width": 1600,
+      "height": 1600,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-collateral-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.collateral.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-collateral-800.jpg",
+      "sha256": "68c30469865d6131d7bf9ac43f79c9dcb7a5892849d9446d63fb0d4bebaa63a9",
+      "width": 800,
+      "height": 800,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-collateral-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.merch.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-merch-1600.jpg",
+      "sha256": "f80eba81082b1d3e295accafdacce2436cb477c01d1cbba6f9459915fb8d9c52",
+      "width": 1600,
+      "height": 900,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-merch-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.merch.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-merch-800.jpg",
+      "sha256": "4a5ff4bcac4f75f8e090f10d714ea843275f1dc716fe2a80eda9c015c01f82e6",
+      "width": 800,
+      "height": 450,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-merch-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.packaging.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-packaging-1600.jpg",
+      "sha256": "168cf6f153b55f488a54e2fc54596a129023d3defea1d1b223dfcd0574584183",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-packaging-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.packaging.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-packaging-800.jpg",
+      "sha256": "984a0c3ede11780ff71d496577d7e9eae27d26c5620b5491f2aaa684229ff17f",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-packaging-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.store.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-store-1600.jpg",
+      "sha256": "13669e0ecf36624fb113725ee639bc0759c89afcf3e0b178a1757d3d48157b64",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-store-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.logo.store.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/logo-store-800.jpg",
+      "sha256": "0d7d75dcb6dce74d97bcf6bb371138d9826520978c606a4eae1ab38a66abbf32",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.logo-store-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.merch.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/merch-1600.jpg",
+      "sha256": "63f6c49d99e81bdd4c2d4595f9ccd900884af352e8321ef721c957669b738ccf",
+      "width": 1280,
+      "height": 1600,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.merch-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.merch.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/merch-800.jpg",
+      "sha256": "d42dee2947185a2adb84ad6cbac52b48ef75a87ac639bce805a42ea3425f95d9",
+      "width": 640,
+      "height": 800,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.merch-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.objects.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/objects-1600.jpg",
+      "sha256": "0126f8832868e1865288c1505efce02067ee0ea0d8806461d30910f12ae57fdc",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.objects-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.objects.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/objects-800.jpg",
+      "sha256": "acbf4c34c2b8127372ebac2af9f39af1b4ca8e0362be7705ae5fc8ee38fd3916",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.objects-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.product.still.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/product-still-1600.jpg",
+      "sha256": "29258541cb1230db56494e7670a3c45919631a213c1796e9f60d4637259ecb0b",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.product-still-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.product.still.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/product-still-800.jpg",
+      "sha256": "835df3757d91736afbd43fa4a40751aa7a68f7688b88f07d9d9d3bdde61d37e4",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.product-still-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.retail.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/retail-1600.jpg",
+      "sha256": "a900e164484a6041628a3cb13990059822b8901ef345a74a207039d0bd76e7b0",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.retail-1600@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.retail.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/retail-800.jpg",
+      "sha256": "7ff35fcf2d70d16a39631566dc951ef39eb903d0a96e7e6eb3e27832c4ac6133",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.media.retail-800@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "7-medium projection / commerce",
+          "component": "MediumProof",
+          "crop": "medium-specific cover",
+          "alt": "Synthetic COMMON SURFACE medium reference"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Version-pure R3 responsive derivative; source rights unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.shop.hold.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/shop-hold-1600.jpg",
+      "sha256": "938b76ca38020a6ea1994c7e511e28ef36406e1fa14051ac1914e91ddff01e20",
+      "width": 1600,
+      "height": 1067,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.shop-hold-1600"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Responsive derivative of accepted R3 ImageGen master."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.shop.hold.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/shop-hold-800.jpg",
+      "sha256": "fa29905e893f43cfde0a9580344373e0209a6a082d10a8e63c5a8b0c5b341d56",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.shop-hold-800"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Responsive derivative of accepted R3 ImageGen master."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.shop.hold.master",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/shop-hold-master.png",
+      "sha256": "782c7adb71a8d7f3508294810ffe79c1d3c9eadf8dee5aaad7af6c8bb626547c",
+      "width": 1535,
+      "height": 1024,
+      "format": "png",
+      "source": {
+        "type": "imagegen-master",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.shop-hold-master"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "generated-and-reviewed",
+          "note": "ImageGen output accepted after text removal edit."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.support.scene.1600",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/support-scene-1600.jpg",
+      "sha256": "35b803f45d664d4d903ef2a21f70f3cb29244b76a509b7bc5678d1bffac35f1a",
+      "width": 1600,
+      "height": 1066,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.support-scene-1600"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Responsive derivative of accepted R3 ImageGen master."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.support.scene.800",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/support-scene-800.jpg",
+      "sha256": "4ac1058cda58eaa229b65eceee74dc564314cd9dfc6832c8f0d6292414455fb6",
+      "width": 800,
+      "height": 533,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.support-scene-800"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Responsive derivative of accepted R3 ImageGen master."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.media.support.scene.master",
+      "revision": "0.1.0-experiment",
+      "path": "assets/media/support-scene-master.png",
+      "sha256": "0fc0be788deb4830d2c238f092831ed751d0e4b7851e737f3c76d6d26cb7621c",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "source": {
+        "type": "imagegen-master",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.r3.support-scene-master"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "HOLD / 01 medium projection / commerce support",
+          "component": "MediumProof",
+          "crop": "3:2 cover with overlay-safe region",
+          "alt": "Synthetic HOLD change art-direction mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "generated-and-reviewed",
+          "note": "ImageGen output accepted after text removal edit."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.01.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-01-1440.jpg",
+      "sha256": "86c63e403d25f279ae395255b23d9ed9000f9fca88399a5a38774b370f200927",
+      "width": 1152,
+      "height": 1440,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.01.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-01-720.jpg",
+      "sha256": "159f8f7b6cc92e9a75d6ccc0c450d2e79e439a4845005d2bf6fb2960795a4e92",
+      "width": 576,
+      "height": 720,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.02.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-02-1440.jpg",
+      "sha256": "de8b7297a27ea852fc67ceee328c997b50ebc96664618076bc6967d551ab1763",
+      "width": 1440,
+      "height": 960,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.02.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-02-720.jpg",
+      "sha256": "5ca933976bc7cb8ebcf22c7d5a08a5a483ca815c6625c15655c8d94f37087ad2",
+      "width": 720,
+      "height": 480,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.03.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-03-1440.jpg",
+      "sha256": "880572a415312dd09983040647905d746601968ca39b826b09dfc1be473761c1",
+      "width": 1152,
+      "height": 1440,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.03.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-03-720.jpg",
+      "sha256": "94a3fae4a852705519b89bf4949f02ff4e9227cdb08ac3ea456c96fa539d69ea",
+      "width": 576,
+      "height": 720,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.04.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-04-1440.jpg",
+      "sha256": "295273db11a4a21c4b34304395c9d8c99858c28a4da621eed8d2b03c5faf8543",
+      "width": 1440,
+      "height": 960,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.04.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-04-720.jpg",
+      "sha256": "02b0eb3d78ca94fbc05cf681b64b8e0e31a96d7f432e85f4665ad2395f6abf7b",
+      "width": 720,
+      "height": 480,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.05.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-05-1440.jpg",
+      "sha256": "37de9e7f7c59b0a685eaeef2210cbcdb1974c19f677465933fd92dc2e789f14d",
+      "width": 1440,
+      "height": 960,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.05.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-05-720.jpg",
+      "sha256": "13f8f85a701abfe318ccac984346669a1cedcbc0d23ff256bb71481d15711bbf",
+      "width": 720,
+      "height": 480,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.06.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-06-1440.jpg",
+      "sha256": "592102f6ff95e9b7a1baabc6a6c9d1579aab9f877599c5601df0d4ca911d57cb",
+      "width": 1152,
+      "height": 1440,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.06.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-06-720.jpg",
+      "sha256": "38e3cb0e3609c979ad3cbbf2603b2b21b7412e0fda8533bbab08a41da1d935f4",
+      "width": 576,
+      "height": 720,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.07.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-07-1440.jpg",
+      "sha256": "6e6075fdacd7ae8f4fcce5613508150af678c1e8d9d0d42a0a21b479448e6bb0",
+      "width": 1440,
+      "height": 960,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.07.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-07-720.jpg",
+      "sha256": "0f8ad50146fa1a2c7d103d4885d761fb9339b86d59ce0a0d5626c13c89a6f99c",
+      "width": 720,
+      "height": 480,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.08.1440",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-08-1440.jpg",
+      "sha256": "4886647c61bdf616412327dad0979adaa940e5e8c75b53a89c73afe1889fe95d",
+      "width": 1440,
+      "height": 810,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.people.people.08.720",
+      "revision": "0.1.0-experiment",
+      "path": "assets/people/people-08-720.jpg",
+      "sha256": "2c2e16b80313ea65a216d77aa5b3513916c925912434845d390a234511c49734",
+      "width": 720,
+      "height": 405,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.people@legacy-observed"
+      },
+      "assetClass": "reference",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "brand experience / moodboard / commerce",
+          "component": "EditorialImage",
+          "crop": "cover with face and action preserved",
+          "alt": "Unretouched synthetic editorial scene"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "R3 responsive derivative; model and image rights remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.01.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-01-1120.jpg",
+      "sha256": "407920c6b03d02531a2704e753806339bc980635853ac96232259fa0bdb047ee",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-01@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-01 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.01.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-01-640.jpg",
+      "sha256": "cce7dcd0919ccaf1b051a8ca7d7a258b9cc75e687d85edcb2dcfb1e0b1526ed2",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-01@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-01 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.02.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-02-1120.jpg",
+      "sha256": "610ab452559c8624958c426e442545d3b79fe06d107d7225e16864f6ccf5e170",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-02@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-02 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.02.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-02-640.jpg",
+      "sha256": "5cf255fc79288f0afa29b4e0ab96c5026ef09d122beb2022f7578129f61246bd",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-02@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-02 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.03.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-03-1120.jpg",
+      "sha256": "0ff1f024f012d929a30a85921b5f5d451e9fbb779af147e97237d765beee9a70",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-03@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-03 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.03.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-03-640.jpg",
+      "sha256": "c3d12e59328acc478184f39ac58471811dd446cb26cd9ddfc0b8ba6b7be96cfa",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-03@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-03 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.04.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-04-1120.jpg",
+      "sha256": "1510d721781926e6610718dac42c5bc6bd28302a3a8e201679d3ed57eac43ef6",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-04@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-04 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.04.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-04-640.jpg",
+      "sha256": "5cd71f6e35f6b4e495e5b9131cbb3ee5a0270c04f4adee6e7cad60273706bf99",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-04@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-04 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.05.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-05-1120.jpg",
+      "sha256": "2a274443410dd2bbb976c0492baf8bd10e47c4987b88a69f47ac9961d7bd3652",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-05@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-05 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.05.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-05-640.jpg",
+      "sha256": "abab51e0931184854ed1790679e6d18d3f690d8bfbcc832ced6fde8822685a4e",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-05@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-05 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.06.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-06-1120.jpg",
+      "sha256": "0bf9625739435364266f75c4e1f2d2fe747c0792a2da5ab025910d6708fef9fe",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-06@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-06 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.06.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-06-640.jpg",
+      "sha256": "f220a55774515bc35fed7b75f791b781a2716c1dbc047185d8a880583abf2846",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-06@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-06 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.07.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-07-1120.jpg",
+      "sha256": "d4136e1f83cb6d8c078e3c593d5dbd0d3099118bb10718e2dfd89d35c6a7568a",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-07@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-07 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.07.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-07-640.jpg",
+      "sha256": "cf156815d910d63b57fd6b7db4e49f2d87da1a0f64a511cbc8e84567c3e47195",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-07@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-07 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.08.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-08-1120.jpg",
+      "sha256": "c859dc5a1428a106d788c7f2653845cd05566bc82ce3ef3a7ee5c9eca990b366",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-08@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-08 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.08.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-08-640.jpg",
+      "sha256": "f0e2a6442df07f12a5165e6ceb4f4bb68ac00555a3460252dfd49ee55152d7f6",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-08@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-08 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.09.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-09-1120.jpg",
+      "sha256": "93400cbef3cf6f94639a16f23aa94eeded198ed5749182cc600b2b0d22dd7b63",
+      "width": 1120,
+      "height": 746,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-09@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-09 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.09.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-09-640.jpg",
+      "sha256": "dd96431f5e26278b3291202690441b876177c858eb4d11c040a5957de0669be6",
+      "width": 640,
+      "height": 426,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-09@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-09 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.10.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-10-1120.jpg",
+      "sha256": "bfa0c4398f4266a056cbcad9e70139818f6b4cebeded0e30545aa1025c9cb75a",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-10@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-10 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.10.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-10-640.jpg",
+      "sha256": "625ad9fafa8bcdecd9cacd42f55b71730c2e817b105f1d9ad6d23e67ba8dda1f",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-10@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-10 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.11.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-11-1120.jpg",
+      "sha256": "754cc4710afe93b99cca526b15e362fcc4d0e886d08aeab3e9499e705ba56b5c",
+      "width": 1120,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-11@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-11 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.cs.11.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/cs-11-640.jpg",
+      "sha256": "0d4b3a5dec3b6189bbd991cfd3de071253f421d0d86effe8ace06ca418a65624",
+      "width": 640,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.cs-11@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "CS-11 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.obj.06.1120",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/obj-06-1120.jpg",
+      "sha256": "70bc5163aa7fecfc9f5c3514ad36c4553d3ae93b92b95915a142dc27fb565993",
+      "width": 896,
+      "height": 1120,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.obj-06@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "OBJ-06 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    },
+    {
+      "id": "asset.common-surface.r3.products.obj.06.640",
+      "revision": "0.1.0-experiment",
+      "path": "assets/products/obj-06-640.jpg",
+      "sha256": "0e37c743e327380554a86caf028839c167e495b15f5ca8affc3af40e60e21a0c",
+      "width": 512,
+      "height": 640,
+      "format": "jpg",
+      "source": {
+        "type": "derived-web-export",
+        "date": "2026-08-26",
+        "reference": "source.common-surface.product.obj-06@legacy-observed"
+      },
+      "assetClass": "mockup",
+      "authority": "experiment-approved-synthetic",
+      "rights": {
+        "status": "unresolved",
+        "media": [
+          "internal-experiment-preview"
+        ],
+        "markets": [
+          "none-experiment-only"
+        ],
+        "validFrom": "2026-08-26",
+        "validUntil": null
+      },
+      "usage": [
+        {
+          "surface": "catalog / reserve / commerce",
+          "component": "ProductCard",
+          "crop": "4:5 cover or contain by medium",
+          "alt": "OBJ-06 synthetic product mockup"
+        }
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "action": "re-encoded",
+          "note": "Legacy art-direction image copied into version-pure R3 web export."
+        }
+      ]
+    }
+  ]
+}

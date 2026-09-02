@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="beat05-title beat05-desc">
+  <title id="beat05-title">Synthetic battle beat cover BB-05</title>
+  <desc id="beat05-desc">Warm canvas poster with stacked deep ink slabs, restrained gold bars, and a red index stamp.</desc>
+  <rect width="1024" height="1024" fill="#F2EDE5"/>
+  <rect x="54" y="54" width="916" height="916" fill="none" stroke="#1A1713" stroke-width="5"/>
+  <rect x="108" y="112" width="808" height="128" fill="#1A1713"/>
+  <rect x="108" y="272" width="616" height="116" fill="#1A1713"/>
+  <rect x="108" y="420" width="724" height="116" fill="#1A1713"/>
+  <rect x="108" y="568" width="508" height="116" fill="#1A1713"/>
+  <rect x="108" y="716" width="808" height="30" fill="#C69B4E"/>
+  <rect x="108" y="770" width="588" height="30" fill="#C69B4E"/>
+  <rect x="108" y="824" width="368" height="30" fill="#C69B4E"/>
+  <rect x="752" y="270" width="164" height="414" fill="#B50D14"/>
+  <text x="788" y="552" fill="#F2EDE5" font-family="Arial Narrow, Arial, sans-serif" font-size="164" font-weight="900" text-anchor="middle">05</text>
+  <text x="136" y="195" fill="#F2EDE5" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="8">GOLD STACK</text>
+  <text x="108" y="912" fill="#1A1713" font-family="Courier New, monospace" font-size="20" font-weight="700" letter-spacing="4">BB-05 / BOUNCE / 110 / SYNTHETIC</text>
+</svg>

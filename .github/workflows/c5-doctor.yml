@@ -1,0 +1,37 @@
+name: UES Doctor — C5 UES Lab
+
+on:
+  push:
+    paths:
+      - 'README.md'
+      - 'c5-manifest.json'
+      - 'docs/**'
+      - 'design-packs/**'
+      - 'ux-presets/**'
+      - 'scripts/**'
+      - '.github/workflows/c5-doctor.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'c5-manifest.json'
+      - 'docs/**'
+      - 'design-packs/**'
+      - 'ux-presets/**'
+      - 'scripts/**'
+      - '.github/workflows/c5-doctor.yml'
+  workflow_dispatch:
+
+jobs:
+  doctor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check generated Manifest
+        run: node scripts/generate-c5-manifest.mjs --check
+      - name: Run Doctor
+        run: node scripts/c5-doctor.mjs --json
+      - name: Run Doctor tests
+        run: node scripts/test-c5-doctor.mjs

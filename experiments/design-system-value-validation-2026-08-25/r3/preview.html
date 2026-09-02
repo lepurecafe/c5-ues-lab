@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="COMMON SURFACE R3 디자인 시스템 정상화와 HOLD / 01 통제 변경 검증 프리뷰">
+  <title>COMMON SURFACE — R3 비교 허브</title>
+  <link rel="stylesheet" href="tokens.css?v=0.2.0-r3">
+  <link rel="stylesheet" href="preview.css?v=0.2.0-r3">
+  <style>:focus-visible{outline:2px solid #c7382c;outline-offset:3px}</style>
+  <script src="catalog.js?v=0.2.0-r3" defer></script>
+  <script src="preview.js?v=0.2.0-r3" defer></script>
+</head>
+<body data-surface="validation" data-mode="hold" data-page="hub">
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header class="validation-header">
+    <a class="brand-lockup" href="#overview" aria-label="COMMON SURFACE R3 처음으로 이동">
+      <img src="assets/identity/common-surface-lockup-path.svg" srcset="assets/identity/common-surface-lockup-path.svg 980w" width="980" height="146" loading="eager" alt="COMMON SURFACE">
+    </a>
+    <nav class="validation-nav" aria-label="R3 섹션">
+      <a href="#identity">시스템</a>
+      <a href="#products">카탈로그</a>
+      <a href="#media">7매체</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#evidence">증거</a>
+      <a href="sample-commerce.html">웹사이트 샘플</a>
+    </nav>
+    <div class="mode-controls" aria-label="비교 모드">
+      <button class="mode-control" type="button" data-set-mode="baseline" aria-pressed="false">R3-A<br>정규화 기준선</button>
+      <button class="mode-control" type="button" data-set-mode="hold" aria-pressed="false">R3-B<br>HOLD / 01</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="overview" class="section-shell" aria-labelledby="overview-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div>
+            <span class="micro-label">composition.common-surface.r3-hold-01 · 12 COL</span>
+            <h1 id="overview-title" class="hero-title">같은 원칙,<br>다른 매체,<br><span class="signal">하나의 상태</span></h1>
+            <p class="hero-deck" data-mode-copy="hero">정규화된 카탈로그와 동일한 컴포넌트로 일곱 매체의 기준선을 연결합니다.</p>
+          </div>
+          <div class="revision-block" aria-label="R3 비교 단계">
+            <div class="revision-item" data-revision="baseline">R3-A / NORMALIZED BASELINE<br><span>change_state: not-activated</span></div>
+            <div class="revision-item" data-revision="hold">R3-B / HOLD / 01<br><span>EVENT-HOLD-01-CS03</span></div>
+          </div>
+        </div>
+        <figure class="hero-visual">
+          <picture>
+            <source media="(max-width: 700px)" srcset="assets/media/product-still-800.jpg 800w" data-baseline-srcset="assets/media/product-still-800.jpg 800w" data-hold-srcset="assets/media/hold-kit-800.jpg 800w">
+            <img src="assets/media/product-still-1600.jpg" srcset="assets/media/product-still-800.jpg 800w, assets/media/product-still-1600.jpg 1600w" data-baseline-src="assets/media/product-still-1600.jpg" data-baseline-srcset="assets/media/product-still-800.jpg 800w, assets/media/product-still-1600.jpg 1600w" data-baseline-alt="알루미늄과 코발트 유리로 구성한 COMMON SURFACE 제품 정물" data-hold-src="assets/media/hold-kit-1600.jpg" data-hold-srcset="assets/media/hold-kit-800.jpg 800w, assets/media/hold-kit-1600.jpg 1600w" data-hold-alt="CS-03 합성 판매 보류용 제품 격리 트레이와 분리형 정보 insert 샘플" sizes="(max-width: 700px) 100vw, 58vw" width="1600" height="1066" loading="eager" alt="알루미늄과 코발트 유리로 구성한 COMMON SURFACE 제품 정물">
+          </picture>
+          <figcaption class="hero-status" aria-live="polite">
+            <span class="status-symbol" aria-hidden="true">Ⅱ</span>
+            <strong data-mode-copy="hero-status">정규화 기준선 · 변경 전</strong>
+            <code data-mode-copy="hero-code">R3-A / E2 TARGET</code>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="status-rail" aria-label="변경 상태 요약">
+        <div class="status-cell"><span>영향 제품</span><strong data-mode-copy="affected">없음</strong></div>
+        <div class="status-cell"><span>commit</span><strong data-mode-copy="commit">로컬 선택 가능</strong></div>
+        <div class="status-cell"><span>대안</span><strong>사용자 통제 유지</strong></div>
+        <div class="status-cell"><span>rollback</span><strong data-mode-copy="rollback">변경 전 기준 보존</strong></div>
+      </div>
+    </section>
+
+    <section id="identity" class="section-shell" aria-labelledby="identity-title">
+      <header class="section-heading">
+        <div class="section-index">01 / IDENTITY<br>master ≠ mockup</div>
+        <div class="section-title-block">
+          <h2 id="identity-title">A Sign That Stays.</h2>
+          <p>두 표면이 맞물린 C/S 심벌은 이름이 읽히기 전에도 브랜드를 남긴다. R3는 라이브 SVG 텍스트와 충돌한 보호 여백을 제거하고 하나의 경로형 master family를 사용한다.</p>
+        </div>
+      </header>
+      <div class="identity-grid">
+        <figure class="identity-master">
+          <img src="assets/identity/common-surface-wordmark-path.svg" srcset="assets/identity/common-surface-wordmark-path.svg 500w" width="500" height="152" loading="lazy" alt="경로로 제작한 COMMON SURFACE 두 줄 워드마크와 C/S 심벌">
+        </figure>
+        <div class="identity-spec">
+          <figure class="logo-variant">
+            <figcaption class="coordinate">ID-MASTER-01 / primary</figcaption>
+            <img src="assets/identity/common-surface-symbol-primary.svg" srcset="assets/identity/common-surface-symbol-primary.svg 120w" width="120" height="120" loading="lazy" alt="검정과 적색이 맞물린 COMMON SURFACE C/S 기본 심벌">
+          </figure>
+          <figure class="logo-variant">
+            <figcaption class="coordinate">ID-MASTER-02 / mono</figcaption>
+            <img src="assets/identity/common-surface-symbol-mono.svg" srcset="assets/identity/common-surface-symbol-mono.svg 120w" width="120" height="120" loading="lazy" alt="한 가지 잉크로 표현한 COMMON SURFACE C/S 심벌">
+          </figure>
+          <figure class="logo-variant dark">
+            <figcaption class="coordinate">ID-MASTER-03 / inverse</figcaption>
+            <img src="assets/identity/common-surface-symbol-inverse.svg" srcset="assets/identity/common-surface-symbol-inverse.svg 120w" width="120" height="120" loading="lazy" alt="어두운 바탕을 위한 COMMON SURFACE C/S 반전 심벌">
+          </figure>
+          <figure class="logo-variant">
+            <figcaption class="coordinate">ID-MASTER-04 / small ≥24px</figcaption>
+            <img src="assets/identity/common-surface-symbol-small.svg" srcset="assets/identity/common-surface-symbol-small.svg 24w" width="24" height="24" loading="lazy" alt="24픽셀 이상 소형 사용을 위한 COMMON SURFACE C/S 심벌">
+          </figure>
+          <div class="token-spec">
+            <span class="coordinate">RAW TOKENS / PRESERVED</span>
+            <div class="swatches" aria-label="COMMON SURFACE 색상 토큰">
+              <span class="swatch" style="background:#f3efe7" title="paper"></span>
+              <span class="swatch" style="background:#1a1713" title="ink"></span>
+              <span class="swatch" style="background:#c7382c" title="signal red"></span>
+              <span class="swatch" style="background:#315b78" title="field blue"></span>
+              <span class="swatch" style="background:#b9b0a3" title="line"></span>
+            </div>
+          </div>
+          <div class="token-spec">
+            <span class="coordinate">TOKEN MIGRATION</span>
+            <p><code>--cs-signal → --cs-red</code><br><code>--cs-field-blue → --cs-blue</code></p>
+            <p>기존 이름은 호환 alias로만 한 revision 유지한다.</p>
+          </div>
+        </div>
+        <div class="identity-ledger">
+          <div><span class="coordinate">clear space</span><strong>심벌 폭 × 1/4</strong><p>모든 디지털 master의 단일 계약.</p></div>
+          <div><span class="coordinate">minimum</span><strong>symbol 24px</strong><p>그 아래에서는 사용하지 않는다.</p></div>
+          <div><span class="coordinate">font dependency</span><strong>0 live text</strong><p>워드마크 글자는 path geometry.</p></div>
+          <div><span class="coordinate">mockup boundary</span><strong>변형 재유입 금지</strong><p>생성 이미지의 C형 표식은 master가 아니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section-shell" aria-labelledby="products-title" data-catalog-ids="CS-01 CS-02 CS-03 CS-04 CS-05 CS-06 CS-07 CS-08 CS-09 CS-10 CS-11 OBJ-06">
+      <header class="section-heading">
+        <div class="section-index">02 / CATALOG<br>binding source</div>
+        <div class="section-title-block">
+          <h2 id="products-title">Eleven Useful Forms.</h2>
+          <p>CS-01–11과 OBJ-06을 하나의 Product Binding에 다시 등록했다. 작업명은 제품 정체성이며 성분·효능·판매 사실을 대신하지 않는다.</p>
+        </div>
+      </header>
+      <div class="filters" role="group" aria-label="제품 카테고리 필터">
+        <button class="filter-button" type="button" data-filter="all" aria-pressed="true">ALL <span data-filter-count="all">12</span></button>
+        <button class="filter-button" type="button" data-filter="face" aria-pressed="false">FACE <span data-filter-count="face">4</span></button>
+        <button class="filter-button" type="button" data-filter="body" aria-pressed="false">BODY <span data-filter-count="body">4</span></button>
+        <button class="filter-button" type="button" data-filter="carry" aria-pressed="false">CARRY <span data-filter-count="carry">4</span></button>
+      </div>
+      <p id="filter-status" class="sr-only" role="status" aria-live="polite">전체 12개 제품을 표시합니다.</p>
+      <div id="product-grid" class="product-grid" aria-label="COMMON SURFACE 합성 카탈로그"></div>
+    </section>
+
+    <section id="reserve" class="section-shell" aria-labelledby="reserve-title">
+      <header class="section-heading">
+        <div class="section-index">03 / RESERVE<br>LOCAL / NOT COMMERCE</div>
+        <div class="section-title-block">
+          <h2 id="reserve-title">Choose. Check. Keep Control.</h2>
+          <p>시스템 제안, 사용자 초안, 명시적 commit, 로컬 확정 결과를 구분한다. 오류·보류·오래된 정보에서도 입력과 다음 행동을 보존한다.</p>
+        </div>
+      </header>
+      <div class="reserve-layout" data-state="default hold affected unknown unaffected released invalid loading partial stale success unavailable alternative retry rollback">
+        <aside class="reserve-catalog" aria-labelledby="reserve-catalog-title">
+          <h3 id="reserve-catalog-title">선택 제품 / 카탈로그</h3>
+          <div id="reserve-compact-list"></div>
+          <p class="micro-label">추천이 아닙니다. 사용자가 직접 후보를 바꿉니다.</p>
+        </aside>
+        <div class="reserve-workspace">
+          <h3>선택·검증·로컬 확정</h3>
+          <section id="selection-summary" class="selection-summary" data-state="default" aria-labelledby="selection-name">
+            <span class="micro-label" id="selection-kicker">시작할 제품을 고르세요.</span>
+            <h4 class="selection-name" id="selection-name">NO DRAFT</h4>
+            <p class="selection-authority" id="selection-authority">제품 사실·재고·가격·개인 적합성은 판단하지 않습니다.</p>
+          </section>
+          <div class="reserve-actions">
+            <button id="commit-button" class="square-button primary" type="button" disabled>스타터로 저장</button>
+            <button id="cancel-button" class="square-button" type="button">초안 취소</button>
+            <button id="reset-button" class="square-button" type="button">로컬 결과 초기화</button>
+            <button id="help-button" class="square-button" type="button">지원 경로 확인</button>
+          </div>
+          <p id="commit-reason" class="button-reason">제품을 먼저 선택해야 합니다.</p>
+
+          <form id="batch-form" class="batch-form" novalidate>
+            <label for="batch-code">합성 batch 코드</label>
+            <p id="batch-help" class="field-help">제품 또는 포장의 합성 코드를 입력하세요. 개인정보는 입력하지 않습니다. 영향 H01: <code>CS03-SYN-2608-H01</code> · 비영향 U01: <code>CS03-SYN-2608-U01</code>.</p>
+            <div class="field-row">
+              <input id="batch-code" name="batch" type="text" inputmode="text" autocomplete="off" aria-describedby="batch-help batch-error" placeholder="CS03-SYN-2608-H01">
+              <button class="square-button primary" type="submit">batch 확인</button>
+            </div>
+            <p id="batch-error" class="field-error" aria-live="polite"></p>
+          </form>
+          <div id="reserve-live-status" class="live-status" role="status" aria-live="polite">기본 상태입니다. 사용자 초안은 아직 없습니다.</div>
+          <div class="recovery-actions">
+            <button id="alternative-button" class="text-button" type="button">다른 제품 보기</button>
+            <button id="retry-button" class="text-button" type="button">입력 유지하고 재시도</button>
+          </div>
+        </div>
+        <aside class="state-rail" aria-labelledby="state-title">
+          <h3 id="state-title">상태 증거 레일</h3>
+          <div id="state-list" class="state-list">
+            <button class="state-button" type="button" data-qa-state="default" aria-pressed="true"><span>기본</span><code>TST-BASE-000</code></button>
+            <button class="state-button" type="button" data-qa-state="invalid" aria-pressed="false"><span>입력 오류</span><code>TST-ERR-600</code></button>
+            <button class="state-button" type="button" data-qa-state="loading" aria-pressed="false"><span>검증 중</span><code>TST-VAL-300</code></button>
+            <button class="state-button" type="button" data-qa-state="partial" aria-pressed="false"><span>부분 정보</span><code>TST-PART-400</code></button>
+            <button class="state-button" type="button" data-qa-state="stale" aria-pressed="false"><span>오래된 정보</span><code>TST-OLD-500</code></button>
+            <button class="state-button" type="button" data-qa-state="hold-unavailable" aria-pressed="false"><span>사용 불가</span><code>TST-UNAV-700</code></button>
+            <button class="state-button" type="button" data-qa-state="unknown" aria-pressed="false"><span>batch 미확인</span><code>TST-UNK-710</code></button>
+            <button class="state-button" type="button" data-qa-state="unaffected" aria-pressed="false"><span>비영향 fixture</span><code>TST-UNA-720</code></button>
+            <button class="state-button" type="button" data-qa-state="alternative" aria-pressed="false"><span>대안 선택</span><code>TST-ALT-800</code></button>
+            <button class="state-button" type="button" data-qa-state="success" aria-pressed="false"><span>로컬 확정</span><code>TST-LOCK-900</code></button>
+            <button class="state-button" type="button" data-qa-state="retry" aria-pressed="false"><span>재시도</span><code>TST-RETRY-A00</code></button>
+          </div>
+          <div class="release-control">
+            <span class="micro-label">ROLLBACK QA · 합성 fixture</span>
+            <button id="release-check-button" class="text-button" type="button">해제 권한 없이 롤백 시도</button>
+            <button id="release-issue-button" class="text-button" type="button">합성 해제 이벤트 발행</button>
+            <button id="rollback-button" class="text-button" type="button">해제 범위 재검증·롤백</button>
+            <button id="release-negative-audit-button" class="text-button" type="button">불완전 record 10종 거부 검사</button>
+            <output id="release-negative-audit-output" class="micro-label" aria-live="polite">negative audit 대기</output>
+            <p class="micro-label">통과 조건: event · product · exact batch · scope · effectiveAt · approver · local-only permission · 고객 고지 · authority disclaimer · 7매체 map. 하나라도 다르면 HOLD 유지.</p>
+            <div class="propagation-ledger" aria-labelledby="propagation-title">
+              <strong id="propagation-title">Product Binding → 7매체</strong>
+              <code id="binding-revision">binding revision 확인 중</code>
+              <ol id="propagation-list">
+                <li data-propagation-target="moodboard"><span>Moodboard</span><code>대기</code></li>
+                <li data-propagation-target="packaging"><span>Packaging</span><code>대기</code></li>
+                <li data-propagation-target="shop"><span>Offline Shop</span><code>대기</code></li>
+                <li data-propagation-target="merch"><span>Merchandise</span><code>대기</code></li>
+                <li data-propagation-target="ooh"><span>OOH</span><code>대기</code></li>
+                <li data-propagation-target="ads"><span>Digital Ads</span><code>대기</code></li>
+                <li data-propagation-target="web"><span>Commerce Web</span><code>대기</code></li>
+              </ol>
+              <p>철회 claim은 release와 별도로 유지합니다.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="people" class="section-shell" aria-labelledby="people-title">
+      <header class="section-heading">
+        <div class="section-index">04 / BRAND EXPERIENCE<br>real skin / real days</div>
+        <div class="section-title-block">
+          <h2 id="people-title">Real Skin. Different Days.</h2>
+          <p>COMMON SURFACE는 피부의 결점을 교정한다는 이야기를 만들지 않는다. 연령·장소·행동·제품 역할이 다른 장면으로 일상의 관리와 설명을 보여준다.</p>
+        </div>
+      </header>
+      <div class="people-grid">
+        <figure class="people-card"><picture><source srcset="assets/people/people-01-720.jpg 720w, assets/people/people-01-1440.jpg 1440w"><img src="assets/people/people-01-720.jpg" srcset="assets/people/people-01-720.jpg 720w, assets/people/people-01-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 25vw" width="1152" height="1440" loading="lazy" alt="아침 욕실에서 일상적인 크림 사용 순서를 준비하는 사람"></picture><figcaption class="people-caption">P-01 / AGE WITHOUT ERASURE</figcaption></figure>
+        <figure class="people-card wide"><picture><source srcset="assets/people/people-02-720.jpg 720w, assets/people/people-02-1440.jpg 1440w"><img src="assets/people/people-02-720.jpg" srcset="assets/people/people-02-720.jpg 720w, assets/people/people-02-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 50vw" width="1440" height="960" loading="lazy" alt="도시 이동 중 휴대 제품을 확인하는 사람의 자연스러운 장면"></picture><figcaption class="people-caption">P-02 / CARE IN TRANSIT</figcaption></figure>
+        <figure class="people-card"><picture><source srcset="assets/people/people-03-720.jpg 720w, assets/people/people-03-1440.jpg 1440w"><img src="assets/people/people-03-720.jpg" srcset="assets/people/people-03-720.jpg 720w, assets/people/people-03-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 25vw" width="1152" height="1440" loading="lazy" alt="코발트 드로퍼 제품을 들고 순서를 확인하는 사람의 보정하지 않은 피부"></picture><figcaption class="people-caption">P-03 / NO GENDERED ROUTINE</figcaption></figure>
+        <figure class="people-card wide"><picture><source srcset="assets/people/people-04-720.jpg 720w, assets/people/people-04-1440.jpg 1440w"><img src="assets/people/people-04-720.jpg" srcset="assets/people/people-04-720.jpg 720w, assets/people/people-04-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 50vw" width="1440" height="960" loading="lazy" alt="작업실 세면대에서 반복적인 세안 루틴을 수행하는 사람"></picture><figcaption class="people-caption">P-04 / REPEATED ACTION</figcaption></figure>
+        <figure class="people-card"><picture><source srcset="assets/people/people-05-720.jpg 720w, assets/people/people-05-1440.jpg 1440w"><img src="assets/people/people-05-720.jpg" srcset="assets/people/people-05-720.jpg 720w, assets/people/people-05-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 25vw" width="1440" height="960" loading="lazy" alt="주근깨와 잔주름을 그대로 보여주는 실제 피부의 편집 사진"></picture><figcaption class="people-caption">P-05 / TEXTURE IS NOT A CLAIM</figcaption></figure>
+        <figure class="people-card"><picture><source srcset="assets/people/people-06-720.jpg 720w, assets/people/people-06-1440.jpg 1440w"><img src="assets/people/people-06-720.jpg" srcset="assets/people/people-06-720.jpg 720w, assets/people/people-06-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 25vw" width="1152" height="1440" loading="lazy" alt="야간 버스 정류장에서 휴대 제품을 꺼내는 사람"></picture><figcaption class="people-caption">P-06 / NIGHT ROUTINE</figcaption></figure>
+        <figure class="people-card"><picture><source srcset="assets/people/people-07-720.jpg 720w, assets/people/people-07-1440.jpg 1440w"><img src="assets/people/people-07-720.jpg" srcset="assets/people/people-07-720.jpg 720w, assets/people/people-07-1440.jpg 1440w" sizes="(max-width:768px) 50vw, 25vw" width="1440" height="960" loading="lazy" alt="함께 운동한 뒤 각자의 바디 루틴을 준비하는 두 사람"></picture><figcaption class="people-caption">P-07 / SHARED OBJECTS</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="media" class="section-shell" aria-labelledby="media-title">
+      <header class="section-heading">
+        <div class="section-index">05 / 7 MEDIA<br>35 frozen checks</div>
+        <div class="section-title-block">
+          <h2 id="media-title">One Change, Seven Decisions.</h2>
+          <p>같은 이미지를 자르는 대신, 각 매체가 요구하는 거리·물성·행동·교체 가능성을 따로 설계한다. 직접 바뀌지 않는 매체도 preserve 판단과 증거를 남긴다.</p>
+        </div>
+      </header>
+      <div class="media-stack">
+        <article id="media-moodboard" class="medium-proof" data-medium-propagation="moodboard">
+          <div class="medium-meta"><span class="coordinate">01 / MB-01–05</span><h3>Moodboard / Guidance</h3><span class="decision-chip" data-mode-copy="decision-moodboard">PRESERVE + REGISTER</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>실제 피부·종이·금속·면의 레퍼런스를 규칙으로 번역하고, 공포 이미지와 의료 연출을 금지한다.</p></div>
+          <div class="medium-visual"><div class="mock-board"><div style="background:#1a1713;color:#f3efe7">MASTER<br><br>C/S geometry</div><div style="background:#315b78;color:#f3efe7">MATERIAL<br><br>cobalt / metal</div><div>REAL SKIN<br><br>texture without proof</div><div class="anti-lane">ANTI<br><br>red flood<br>medical theater<br>before/after</div></div></div>
+          <div class="medium-checks"><span class="coordinate">sample frame · E2 target</span><ul class="check-list"><li>source와 synthetic status 연결</li><li>reference → 표현 규칙 매핑</li><li>비진단·비수치심·실제 피부</li><li>anti-moodboard 명시</li><li>reference rights와 campaign use 분리</li></ul></div>
+        </article>
+
+        <article id="media-packaging" class="medium-proof" data-medium-propagation="packaging">
+          <div class="medium-meta"><span class="coordinate">02 / PKG-01–05</span><h3>Packaging</h3><span class="decision-chip" data-mode-copy="decision-packaging">PRESERVE / RESERVED ZONE</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>기존 포장을 바꾼 척하지 않는다. HOLD에서는 별도 insert와 생산 격리 지침을 만든다.</p></div>
+          <div class="medium-visual">
+            <picture><source srcset="assets/media/logo-packaging-800.jpg 800w, assets/media/logo-packaging-1600.jpg 1600w" data-baseline-srcset="assets/media/logo-packaging-800.jpg 800w, assets/media/logo-packaging-1600.jpg 1600w" data-hold-srcset="assets/media/hold-kit-800.jpg 800w, assets/media/hold-kit-1600.jpg 1600w"><img src="assets/media/logo-packaging-800.jpg" srcset="assets/media/logo-packaging-800.jpg 800w, assets/media/logo-packaging-1600.jpg 1600w" data-baseline-src="assets/media/logo-packaging-800.jpg" data-baseline-srcset="assets/media/logo-packaging-800.jpg 800w, assets/media/logo-packaging-1600.jpg 1600w" data-baseline-alt="COMMON SURFACE 패키지와 인쇄 도구의 합성 샘플" data-hold-src="assets/media/hold-kit-800.jpg" data-hold-srcset="assets/media/hold-kit-800.jpg 800w, assets/media/hold-kit-1600.jpg 1600w" data-hold-alt="CS-03 합성 판매 보류용 제품 격리 트레이와 분리형 정보 insert 샘플" sizes="(max-width:1080px) 100vw, 50vw" width="1600" height="1066" loading="lazy" alt="COMMON SURFACE 패키지와 인쇄 도구의 합성 샘플"></picture>
+            <div class="medium-overlay"><span class="micro-label">CS-03 · sample canvas / not dieline</span><strong data-mode-copy="packaging-overlay">정보 예약 영역 · 실제 표시 미확정</strong><p data-mode-copy="packaging-copy">용량·성분·제조·규제 사실을 발명하지 않는다.</p></div>
+          </div>
+          <div class="medium-checks"><span class="coordinate">60×120mm sample</span><ul class="check-list"><li>제품·batch ID parity</li><li>identity / status / next action 분리</li><li>KR/EN 긴 ID 가독성</li><li>dieline·bleed·vendor gap 표시</li><li>package·shelf·web 사실 일치</li></ul></div>
+        </article>
+
+        <article id="media-shop" class="medium-proof" data-medium-propagation="shop">
+          <div class="medium-meta"><span class="coordinate">03 / SHOP-01–05</span><h3>Offline Shop</h3><span class="decision-chip" data-mode-copy="decision-shop">PRESERVE NORMAL ROUTE</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>10m 식별, 3m 제품 경로, 팔 길이의 batch·상태·다음 행동을 나눈다.</p></div>
+          <div class="medium-visual">
+            <picture><source srcset="assets/media/retail-800.jpg 800w, assets/media/retail-1600.jpg 1600w" data-baseline-srcset="assets/media/retail-800.jpg 800w, assets/media/retail-1600.jpg 1600w" data-hold-srcset="assets/media/shop-hold-800.jpg 800w, assets/media/shop-hold-1600.jpg 1600w"><img src="assets/media/retail-800.jpg" srcset="assets/media/retail-800.jpg 800w, assets/media/retail-1600.jpg 1600w" data-baseline-src="assets/media/retail-800.jpg" data-baseline-srcset="assets/media/retail-800.jpg 800w, assets/media/retail-1600.jpg 1600w" data-baseline-alt="콘크리트와 금속 선반으로 구성한 COMMON SURFACE 매장 샘플" data-hold-src="assets/media/shop-hold-800.jpg" data-hold-srcset="assets/media/shop-hold-800.jpg 800w, assets/media/shop-hold-1600.jpg 1600w" data-hold-alt="CS-03 특정 합성 batch의 선반 격리와 직원 확인 경로를 표시한 매장 샘플" sizes="(max-width:1080px) 100vw, 50vw" width="1600" height="1066" loading="lazy" alt="콘크리트와 금속 선반으로 구성한 COMMON SURFACE 매장 샘플"></picture>
+            <div class="medium-overlay"><span class="micro-label">SHOP / ARM LENGTH</span><strong data-mode-copy="shop-overlay">제품 설명과 선택 동선</strong><p data-mode-copy="shop-copy">설치·직원 실행·실재 재고는 미검증이다.</p></div>
+          </div>
+          <div class="medium-checks"><span class="coordinate">3:1 / 9:16 / A6</span><ul class="check-list"><li>거리별 정보 위계</li><li>shelf·tester·checkout 경로</li><li>unavailable·unknown·help</li><li>설치·접근·운영 gap</li><li>매장·웹·직원 도구 ID 일치</li></ul></div>
+        </article>
+
+        <article id="media-merch" class="medium-proof" data-medium-propagation="merch">
+          <div class="medium-meta"><span class="coordinate">04 / MERCH-01–05</span><h3>Merchandise</h3><span class="decision-chip" data-mode-copy="decision-merch">PRESERVE</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>HOLD를 장식 그래픽으로 소비하지 않는다. 제품 claim이 없는 머천다이즈의 정체성과 케어 구조를 보존한다.</p></div>
+          <div class="medium-visual"><picture><source srcset="assets/media/merch-800.jpg 800w, assets/media/merch-1600.jpg 1600w"><img src="assets/media/merch-800.jpg" srcset="assets/media/merch-800.jpg 800w, assets/media/merch-1600.jpg 1600w" sizes="(max-width:1080px) 100vw, 50vw" width="1280" height="1600" loading="lazy" alt="COMMON SURFACE 워드마크를 적용한 합성 의류 샘플"></picture><div class="medium-overlay"><span class="micro-label">MERCH SAMPLE · NOT CATALOG OBJECT</span><strong>Identity remains. Claim does not enter.</strong></div></div>
+          <div class="medium-checks"><span class="coordinate">300×400mm sample</span><ul class="check-list"><li>브랜드 그래픽과 HOLD 분리</li><li>size·material·care 예약 영역</li><li>로고 contrast·scale</li><li>원단·인쇄·권리 미확정</li><li>공유 checkout 상태 분리</li></ul></div>
+        </article>
+
+        <article id="media-ooh" class="medium-proof" data-medium-propagation="ooh">
+          <div class="medium-meta"><span class="coordinate">05 / OOH-01–05</span><h3>OOH</h3><span class="decision-chip" data-mode-copy="decision-ooh">GENERIC BRAND / ACTIVE</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>한 메시지, 한 대상, 한 다음 단계. vendor 요청과 실제 철거·교체 증거를 분리한다.</p></div>
+          <div class="medium-visual"><div class="ooh-frame"><div class="ooh-copy"><span class="micro-label" data-mode-copy="ooh-label">COMMON SURFACE / DAILY ORDER</span><strong data-mode-copy="ooh-title">CARE IS A COMMON SURFACE.</strong><p data-mode-copy="ooh-body">제품 사실은 목적지에서 확인합니다.</p></div><picture><source srcset="assets/media/campaign-800.jpg 800w, assets/media/campaign-1600.jpg 1600w"><img src="assets/media/campaign-800.jpg" srcset="assets/media/campaign-800.jpg 800w, assets/media/campaign-1600.jpg 1600w" sizes="(max-width:1080px) 100vw, 30vw" width="1280" height="1600" loading="lazy" alt="일상적인 피부 관리 장면을 담은 COMMON SURFACE 합성 캠페인 이미지"></picture></div></div>
+          <div class="medium-checks"><span class="coordinate">2:1 + 1:2</span><ul class="check-list"><li>한 메시지·한 next step</li><li>거리·비율 위계</li><li>미확정 claim 0</li><li>사람 읽기 가능한 fallback</li><li>vendor request / removal 분리</li></ul></div>
+        </article>
+
+        <article id="media-ads" class="medium-proof" data-medium-propagation="ads">
+          <div class="medium-meta"><span class="coordinate">06 / ADS-01–05</span><h3>Digital Ads</h3><span class="decision-chip" data-mode-copy="decision-ads">ACTIVE / DESTINATION PARITY</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>1200×628, 1080×1080, 1080×1920을 각각 재구성하고 stale destination을 검사한다.</p></div>
+          <div class="medium-visual"><div class="ad-family"><div class="ad-frame"><span class="micro-label">1200×628</span><h4 data-mode-copy="ad-title">EVERYDAY ORDER.</h4><p data-mode-copy="ad-body">제품 보기 →</p></div><div class="ad-frame square"><span class="micro-label">1080×1080</span><h4 data-mode-copy="ad-title">EVERYDAY ORDER.</h4></div><div class="ad-frame portrait"><span class="micro-label">1080×1920</span><h4 data-mode-copy="ad-title">EVERYDAY ORDER.</h4></div></div></div>
+          <div class="medium-checks"><span class="coordinate">3 ratio family</span><ul class="check-list"><li>비율별 독립 crop·hierarchy</li><li>메시지·CTA·목적지 parity</li><li>KR/EN·긴 ID 가독성</li><li>asset·platform rights gap</li><li>cache version·last update</li></ul></div>
+        </article>
+
+        <article id="media-web" class="medium-proof" data-medium-propagation="web">
+          <div class="medium-meta"><span class="coordinate">07 / WEB-01–05</span><h3>Commerce / Reserve Web</h3><span class="decision-chip" data-mode-copy="decision-web">LOCAL SELECTION / ACTIVE</span><span class="propagation-chip" data-propagation-status>BASELINE</span><p>추천·초안·commit·확정 결과를 구분하고 affected·unknown·unaffected 경로를 반복 검증한다.</p><p><a href="sample-commerce.html">고객용 웹사이트 샘플 열기 →</a></p></div>
+          <div class="medium-visual"><div class="web-proof"><div class="web-screen"><span class="micro-label">01 / EXPLORE</span><img src="assets/products/cs-03-640.jpg" srcset="assets/products/cs-03-640.jpg 640w, assets/products/cs-03-1120.jpg 1120w" sizes="10rem" width="896" height="1120" loading="lazy" alt="CS-03 BARRIER 세럼 합성 제품 이미지"><strong>CS-03 / BARRIER</strong></div><div class="web-screen"><span class="micro-label">02 / DRAFT</span><p>사용자 초안은 로컬 commit이 아니다.</p><button class="square-button" type="button">초안 수정</button></div><div class="web-screen"><span class="micro-label">03 / RESULT</span><p data-mode-copy="web-result">로컬 선택 결과와 수정·초기화·도움 경로.</p><button class="square-button" type="button">다음 행동 확인</button></div></div></div>
+          <div class="medium-checks"><span class="coordinate">1440×1000 + 390×844</span><ul class="check-list"><li>candidate·authority state</li><li class="blocked">focus·keyboard·390px·non-color 확인 · 200%·screen reader 미측정</li><li>invalid·loading·stale·alternative</li><li>local commit·idempotency</li><li>Product Binding parity</li></ul></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="evidence" class="section-shell" aria-labelledby="evidence-title">
+      <header class="section-heading">
+        <div class="section-index">06 / EVIDENCE<br>claim ceiling visible</div>
+        <div class="section-title-block">
+          <h2 id="evidence-title">The Score Must Point Back.</h2>
+          <p>점수는 파일 수가 아니라 계약·상태·매체·증거로 돌아가야 한다. 사용자 정성 평가는 builder 점수와 섞지 않고 별도로 남긴다.</p>
+        </div>
+      </header>
+      <div class="evidence-summary">
+        <article class="evidence-metric"><span class="micro-label">35 매체 검사</span><strong data-evidence="medium">34 / 35</strong><p>WEB-02의 200%·screen reader 증거는 미측정. 나머지는 sample-frame/브라우저 증거.</p></article>
+        <article class="evidence-metric"><span class="micro-label">P0 / P1</span><strong data-evidence="severity">재검증 중</strong><p>0.1.1은 독립 판정 STOP. 0.2.0 hard gate를 다시 검증한다.</p></article>
+        <article class="evidence-metric"><span class="micro-label">사실 일치</span><strong data-evidence="parity">측정 중</strong><p>내부 7매체와 고객 Web의 동일 Binding revision을 비교한다.</p></article>
+        <article class="evidence-metric"><span class="micro-label">사용자 평가</span><strong>대기</strong><p>사용자가 직접 보고 1–10과 근거를 기록한다.</p></article>
+      </div>
+      <div class="system-map" aria-label="사용한 디자인 시스템 계층">
+        <article><span class="micro-label">Design Pack</span><strong>Industrial Swiss</strong><code>pack:industrial-swiss@1.0.0</code><p>grid, type, material, state 표현.</p></article>
+        <article><span class="micro-label">UX Preset</span><strong>decision.reserve</strong><code>decision.reserve@0.1.0</code><p>선택·commit·결과·복구 의미.</p></article>
+        <article><span class="micro-label">Product Binding</span><strong>COMMON SURFACE catalog</strong><code>binding.common-surface.catalog.r3@0.2.0-experiment</code><p>제품·batch·claim·availability 사실.</p></article>
+        <article><span class="micro-label">Brand Experience</span><strong>Recovery is care</strong><code>brand-experience.common-surface@0.1.0-experiment</code><p>설명 우선, 불확실성 노출, quiet control.</p></article>
+        <article><span class="micro-label">Composition</span><strong>R3 HOLD / 01</strong><code>composition.common-surface.r3-hold-01@0.2.0-experiment</code><p>7개 매체와 고객 Web 카피의 결합.</p></article>
+      </div>
+      <div class="impact-table-wrap">
+        <table class="impact-table">
+          <caption class="sr-only">HOLD / 01 영향 지도 15개 항목</caption>
+          <thead><tr><th>ID</th><th>대상</th><th>행동</th><th>보존</th><th>증거 상태</th></tr></thead>
+          <tbody>
+            <tr><td>IMP-01</td><td>Catalog / CS-03</td><td>batch partial hold</td><td>stable ID·작업명</td><td>E1 + DOM</td></tr>
+            <tr><td>IMP-02</td><td>Claim ledger</td><td>표현 철회</td><td>identity label</td><td>text audit</td></tr>
+            <tr><td>IMP-03</td><td>Identity</td><td>HOLD semantic 추가</td><td>logo/raw token</td><td>token diff</td></tr>
+            <tr><td>IMP-04</td><td>Reserve</td><td>commit 차단</td><td>입력·후보</td><td>runtime trace</td></tr>
+            <tr><td>IMP-05</td><td>Batch unknown</td><td>거짓 해제 금지</td><td>입력</td><td>state capture</td></tr>
+            <tr><td>IMP-06</td><td>Brand voice</td><td>차분한 상태 카피</td><td>비진단</td><td>copy review</td></tr>
+            <tr><td>IMP-07</td><td>Packaging</td><td>insert·격리</td><td>기존 물리 사실</td><td>sample + gap</td></tr>
+            <tr><td>IMP-08</td><td>Shop</td><td>shelf·tester route</td><td>다른 제품</td><td>sample + gap</td></tr>
+            <tr><td>IMP-09</td><td>Merch</td><td>claim 미사용 preserve</td><td>garment identity</td><td>art inventory</td></tr>
+            <tr><td>IMP-10</td><td>OOH</td><td>affected creative 교체</td><td>generic identity</td><td>request sample</td></tr>
+            <tr><td>IMP-11</td><td>Digital ads</td><td>pause·replace</td><td>generic creative</td><td>cache fixture</td></tr>
+            <tr><td>IMP-12</td><td>Commerce web</td><td>alert·batch·recovery</td><td>선택 context</td><td>runtime target</td></tr>
+            <tr><td>IMP-13</td><td>Moodboard</td><td>incident guidance</td><td>source ledger</td><td>board diff</td></tr>
+            <tr><td>IMP-14</td><td>Release</td><td>scoped rollback</td><td>audit history</td><td>QA fixture</td></tr>
+            <tr><td>IMP-15</td><td>Governance</td><td>manifest·scorecard</td><td>R2 archive</td><td>audit report</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sr-only" data-hold-only  aria-label="HOLD 상태 계약 요약">
+      <h2>HOLD / 01 상태 계약</h2>
+      <p>default, hold, affected, unknown, unaffected, invalid, loading, partial, stale, success, unavailable, alternative, retry, rollback.</p>
+      <p>영향 제품 CS-03의 정확한 합성 batch CS03-SYN-2608-H01은 판매 보류 상태이며 선택과 commit이 차단됩니다.</p>
+      <p>batch 미확인 또는 unknown 상태에서는 영향 없음이나 안전을 판정하지 않고 지원과 문의, 다른 제품 대안 경로를 제공합니다.</p>
+      <p>CLAIM-CS03-RECOVERY-01 표현 철회 상태는 모든 매체에 적용되며 영향받지 않은 제품은 정상 경로를 유지합니다.</p>
+      <p>release authority 없이 보류 해제 또는 rollback하지 않습니다. 합성 실험 시나리오이며 실제 리콜, 제품 위험 또는 안전 사건이 아닙니다.</p>
+    </section>
+  </main>
+
+  <footer class="validation-footer">
+    <strong>COMMON SURFACE<br>R3 / HOLD 01</strong>
+    <p>Industrial Swiss System · 제품 사실과 권리는 출시 전 별도 검증.<br>가상 실험 데이터 · 실제 판매, 재고, 안전, 리콜 또는 제품 승인을 의미하지 않습니다.</p>
+    <code>AUTHORITY<br>experiment-approved-synthetic<br><br>EVIDENCE<br>E2/E3 prototype target</code>
+  </footer>
+</body>
+</html>

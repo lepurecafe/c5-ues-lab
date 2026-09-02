@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" href="data:,">
+  <meta name="color-scheme" content="light">
+  <title>Battle Beat Randomizer — Low-fi</title>
+  <style>
+    :root {
+      --ink: #111111;
+      --ink-soft: #555555;
+      --line: #8a8a8a;
+      --line-soft: #cdcdcd;
+      --paper: #ffffff;
+      --surface: #f2f2f2;
+      --surface-strong: #dedede;
+      --disabled: #eeeeee;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --target: 44px;
+      --phone-width: 402px;
+      --phone-height: 874px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--surface-strong);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      background: var(--surface-strong);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: start center;
+      padding: 24px;
+      background: var(--surface-strong);
+    }
+
+    button {
+      min-width: 0;
+      min-height: var(--target);
+      margin: 0;
+      border: 1.5px solid var(--ink);
+      border-radius: 2px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: var(--paper);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    button:hover {
+      background: var(--surface);
+    }
+
+    button:active {
+      background: var(--surface-strong);
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    button[aria-pressed="true"],
+    button[aria-selected="true"],
+    .button-primary {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    button[aria-pressed="true"]:hover,
+    button[aria-selected="true"]:hover,
+    .button-primary:hover {
+      background: #333333;
+    }
+
+    button:disabled {
+      border-color: var(--line-soft);
+      color: var(--line);
+      background: var(--disabled);
+      cursor: not-allowed;
+    }
+
+    .phone {
+      width: min(100%, var(--phone-width));
+      min-height: var(--phone-height);
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      background: var(--paper);
+    }
+
+    .prototype-toolbar {
+      padding: max(12px, env(safe-area-inset-top)) 16px 12px;
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .prototype-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .state-switcher {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .state-switcher button {
+      min-height: var(--target);
+      padding: 8px 4px;
+      border-color: var(--line);
+      font-size: 11px;
+      letter-spacing: 0.02em;
+    }
+
+    .app-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .app-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .app-meta {
+      margin: 3px 0 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .synthetic-tag {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .screen {
+      min-height: 690px;
+      padding: 16px 16px calc(20px + env(safe-area-inset-bottom));
+    }
+
+    .status-rail {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      min-height: 52px;
+      margin-bottom: 18px;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .status-code {
+      min-width: 86px;
+      padding-right: 10px;
+      border-right: 1px solid var(--line);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .status-detail {
+      min-width: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .screen-heading {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 8vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+    }
+
+    .screen-lead {
+      margin: 0 0 20px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .section {
+      margin-top: 20px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 8px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .choice-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .choice-grid button {
+      min-height: 52px;
+    }
+
+    .primary-action {
+      width: 100%;
+      min-height: 56px;
+      margin-top: 22px;
+      font-size: 16px;
+    }
+
+    .helper {
+      margin: 8px 0 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .wire-art {
+      min-height: 84px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      border: 1.5px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .recommendation-line {
+      margin-bottom: 12px;
+      padding: 9px 10px;
+      border-left: 4px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .track-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .track-title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      overflow-wrap: anywhere;
+    }
+
+    .track-alias {
+      margin: 5px 0 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+    }
+
+    .bpm {
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .progress {
+      height: 10px;
+      margin: 16px 0 6px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .progress > span {
+      display: block;
+      width: 38%;
+      height: 100%;
+      background: var(--ink);
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .fast-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .fast-actions button {
+      min-height: 52px;
+    }
+
+    .utility-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .round-lock {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      margin: -8px 0 12px;
+      padding: 9px 10px;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .round-lock strong,
+    .round-lock span {
+      display: block;
+    }
+
+    .round-lock strong {
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .round-lock span {
+      color: var(--ink-soft);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.3;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .playback-action {
+      width: 100%;
+      min-height: 48px;
+      margin-top: 12px;
+    }
+
+    .round-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .round-actions button,
+    .utility-actions button {
+      min-height: 54px;
+      padding-inline: 8px;
+      font-size: 12px;
+    }
+
+    .scope-switcher {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 12px;
+    }
+
+    .scope-switcher button {
+      min-height: 48px;
+      font-size: 11px;
+    }
+
+    .review-control {
+      margin-bottom: 14px;
+      padding: 10px;
+      border: 1px dashed var(--line);
+      background: var(--surface);
+    }
+
+    .review-control-label {
+      margin: 0 0 8px;
+      color: var(--ink-soft);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .phase-review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .phase-review-grid button {
+      min-height: 48px;
+      padding: 7px 6px;
+      border-color: var(--line);
+      font-size: 10px;
+      line-height: 1.25;
+    }
+
+    .phase-panel {
+      padding: 14px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .phase-panel .screen-heading {
+      font-size: clamp(23px, 7vw, 30px);
+    }
+
+    .phase-contract {
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .phase-contract .fact-row {
+      grid-template-columns: 106px minmax(0, 1fr);
+      padding-block: 9px;
+    }
+
+    .pending-note {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border: 1px dashed var(--line);
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .contract-trace {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .contract-trace h2 {
+      margin: 0 0 8px;
+      color: var(--ink-soft);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .trace-contract {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 8px;
+      margin: 0;
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .trace-contract div {
+      min-width: 0;
+      padding: 5px 6px;
+      border: 1px solid var(--line-soft);
+      overflow-wrap: anywhere;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 3px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .event-list li {
+      padding: 5px 6px;
+      background: var(--surface);
+      overflow-wrap: anywhere;
+    }
+
+    .context-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+    }
+
+    .context-item {
+      min-width: 0;
+      padding: 10px 8px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .context-item:last-child {
+      border-right: 0;
+    }
+
+    .context-item strong,
+    .context-item span {
+      display: block;
+    }
+
+    .context-item strong {
+      margin-bottom: 4px;
+      font-size: 11px;
+      line-height: 1.1;
+    }
+
+    .context-item span {
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .message-panel {
+      padding: 18px;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .message-code {
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+
+    .message-panel h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .message-panel p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .fact-list {
+      margin: 16px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact-row {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .fact-row dt {
+      color: var(--ink-soft);
+      font-weight: 700;
+    }
+
+    .fact-row dd {
+      margin: 0;
+      font-weight: 700;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .recovery-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .recovery-actions button {
+      width: 100%;
+      min-height: 52px;
+    }
+
+    .feedback {
+      min-height: 38px;
+      margin-top: 12px;
+      padding: 8px 10px;
+      border: 1px dashed var(--line);
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .feedback:empty {
+      visibility: hidden;
+    }
+
+    @media (max-width: 430px) {
+      body {
+        min-height: 100svh;
+        display: block;
+        padding: 0;
+        background: var(--paper);
+      }
+
+      .phone {
+        width: 100%;
+        min-height: 100svh;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .prototype-toolbar,
+      .app-header,
+      .screen {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .state-switcher button {
+        font-size: 9px;
+        letter-spacing: 0;
+      }
+
+      .choice-grid.three {
+        gap: 6px;
+      }
+
+      .choice-grid.three button {
+        padding-inline: 6px;
+        font-size: 12px;
+      }
+
+      .fact-row {
+        grid-template-columns: 96px minmax(0, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone" aria-label="Battle Beat Randomizer 로우파이 프로토타입">
+    <section class="prototype-toolbar" aria-label="프로토타입 상태 전환">
+      <div class="prototype-label">
+        <span>Low-fi state review</span>
+        <span id="frame-id">FR-READY</span>
+      </div>
+      <div class="state-switcher" role="tablist" aria-label="검토할 화면 상태">
+        <button type="button" role="tab" data-state="ready" aria-selected="true">READY</button>
+        <button type="button" role="tab" data-state="transient" aria-selected="false">TRANSIENT</button>
+        <button type="button" role="tab" data-state="playing" aria-selected="false">PLAYING</button>
+        <button type="button" role="tab" data-state="empty" aria-selected="false">EMPTY</button>
+        <button type="button" role="tab" data-state="error" aria-selected="false">ERROR</button>
+      </div>
+    </section>
+
+    <header class="app-header">
+      <div>
+        <p class="app-title">BATTLE BEAT RANDOMIZER</p>
+        <p class="app-meta" id="condition-summary">RAP · BOUNCE</p>
+      </div>
+      <span class="synthetic-tag">SYNTHETIC</span>
+    </header>
+
+    <section class="screen" id="screen" role="tabpanel" tabindex="-1" aria-live="polite"></section>
+  </main>
+
+  <script>
+    const tracks = [
+      { id: "SYN-BB-001", title: "CONCRETE PULSE", alias: "VIRTUAL UNIT 01", bpm: 92 },
+      { id: "SYN-BB-002", title: "FLOOR SIGNAL", alias: "VIRTUAL UNIT 02", bpm: 118 },
+      { id: "SYN-BB-003", title: "RUST CIRCUIT", alias: "VIRTUAL UNIT 03", bpm: 86 }
+    ];
+
+    function initialState() {
+      return {
+        view: "ready",
+        battleType: "rap",
+        energy: "bounce",
+        trackIndex: 0,
+        paused: false,
+        positionSeconds: 23,
+        round: null,
+        pendingDraw: null,
+        drawSequence: 0,
+        attemptSequence: 0,
+        eventSequence: 0,
+        events: [],
+        savedIds: new Set(),
+        appliedExcludedIds: new Set(),
+        pendingExclusions: [],
+        transientPhase: "requesting",
+        transientCandidateId: null,
+        errorScope: "draw",
+        drawFailureCount: 3,
+        feedback: ""
+      };
+    }
+
+    let appState = initialState();
+
+    const frameIds = {
+      ready: "FR-READY",
+      transient: "FR-TRANSIENT",
+      playing: "FR-PLAYING",
+      empty: "FR-EMPTY",
+      error: "FR-ERROR"
+    };
+
+    const screen = document.querySelector("#screen");
+    const stateButtons = [...document.querySelectorAll("[data-state]")];
+
+    function label(value) {
+      return String(value).toUpperCase();
+    }
+
+    function stableId(prefix, value) {
+      return `${prefix}-${String(value).padStart(4, "0")}`;
+    }
+
+    function attemptLabel(value) {
+      return `ATTEMPT ${String(value).padStart(4, "0")}`;
+    }
+
+    function roundId(number, drawId) {
+      return `ROUND-${String(number).padStart(2, "0")}-${drawId}`;
+    }
+
+    function roundLabel(number) {
+      return `ROUND ${String(number).padStart(2, "0")}`;
+    }
+
+    function currentTrack() {
+      return tracks[appState.trackIndex];
+    }
+
+    function appendEvent(type, detail) {
+      appState.eventSequence += 1;
+      appState.events.push({
+        id: stableId("EVENT", appState.eventSequence),
+        type,
+        detail
+      });
+    }
+
+    function beginDraw(targetRound, source) {
+      appState.drawSequence += 1;
+      appState.attemptSequence += 1;
+      appState.pendingDraw = {
+        id: stableId("DRAW", appState.drawSequence),
+        targetRound,
+        attemptId: attemptLabel(appState.attemptSequence),
+        source
+      };
+      appendEvent(
+        "EV-DRAW-REQUESTED",
+        `${appState.pendingDraw.id} · TARGET ${roundLabel(targetRound)} · ${source}`
+      );
+    }
+
+    function eligibleTrackIndex(targetRound) {
+      if (!appState.round) return 0;
+
+      const excludedAtTarget = new Set(appState.appliedExcludedIds);
+      appState.pendingExclusions
+        .filter(item => item.effectiveRound <= targetRound)
+        .forEach(item => excludedAtTarget.add(item.trackId));
+
+      for (let offset = 1; offset <= tracks.length; offset += 1) {
+        const candidateIndex = (appState.trackIndex + offset) % tracks.length;
+        if (!excludedAtTarget.has(tracks[candidateIndex].id)) return candidateIndex;
+      }
+
+      return (appState.trackIndex + 1) % tracks.length;
+    }
+
+    function completePendingDraw(recoverySource = "", useFallback = false) {
+      if (!appState.pendingDraw) return;
+
+      const draw = appState.pendingDraw;
+      const nextTrackIndex = eligibleTrackIndex(draw.targetRound);
+      const nextTrack = tracks[nextTrackIndex];
+
+      if (useFallback) {
+        appendEvent("EV-FALLBACK", `${draw.id} · SUCCESS · LOCAL SYNTHETIC`);
+      }
+
+      appState.pendingExclusions
+        .filter(item => item.effectiveRound <= draw.targetRound)
+        .forEach(item => appState.appliedExcludedIds.add(item.trackId));
+      appState.pendingExclusions = appState.pendingExclusions
+        .filter(item => item.effectiveRound > draw.targetRound);
+
+      appState.trackIndex = nextTrackIndex;
+      appState.round = {
+        id: roundId(draw.targetRound, draw.id),
+        number: draw.targetRound,
+        trackId: nextTrack.id,
+        drawId: draw.id
+      };
+      appState.pendingDraw = null;
+      appState.paused = false;
+      appState.positionSeconds = 23;
+      appState.view = "playing";
+      appState.drawFailureCount = 0;
+
+      appendEvent(
+        "EV-ROUND-LOCKED",
+        `${appState.round.id} · ${nextTrack.id} · ${appState.round.drawId}`
+      );
+
+      if (recoverySource) {
+        appendEvent(
+          "EV-RECOVERED",
+          `${recoverySource} · ${appState.round.id} · ${nextTrack.id}`
+        );
+      }
+    }
+
+    function ensureFirstRound() {
+      if (appState.round) return;
+      beginDraw(1, "ACT-RANDOMIZE");
+      completePendingDraw();
+    }
+
+    function ensureNextRoundDraw() {
+      ensureFirstRound();
+      if (!appState.pendingDraw) {
+        beginDraw(appState.round.number + 1, "ACT-NEW-ROUND-REROLL");
+      }
+    }
+
+    function seedTransientPhase(phase) {
+      const battleType = appState.battleType;
+      const energy = appState.energy;
+      appState = initialState();
+      appState.battleType = battleType;
+      appState.energy = energy;
+      appState.transientPhase = phase;
+
+      if (phase === "requesting") {
+        beginDraw(1, "ACT-RANDOMIZE");
+      } else {
+        ensureFirstRound();
+
+        if (["new-round-requesting", "recommended", "starting", "recovering"].includes(phase)) {
+          ensureNextRoundDraw();
+          if (["recommended", "starting", "recovering"].includes(phase)) {
+            appState.transientCandidateId = tracks[eligibleTrackIndex(appState.pendingDraw.targetRound)].id;
+          }
+        }
+
+        if (phase === "restarting") {
+          appState.attemptSequence += 1;
+          appState.transientCandidateId = currentTrack().id;
+        }
+
+        if (phase === "recovering") {
+          appendEvent(
+            "EV-FAILURE",
+            `DRAW · ${appState.pendingDraw.id} · LAST SAFE ${appState.round.id}`
+          );
+        }
+      }
+
+      appState.view = "transient";
+      appState.feedback = "Wireframe review fixture · 제품 행동이나 성공 결과가 아닙니다.";
+      render();
+    }
+
+    function resetReviewState(view) {
+      const battleType = appState.battleType;
+      const energy = appState.energy;
+      appState = initialState();
+      appState.battleType = battleType;
+      appState.energy = energy;
+
+      if (view === "ready") {
+        render();
+        return;
+      }
+
+      if (view === "transient") {
+        seedTransientPhase("requesting");
+        return;
+      }
+
+      ensureFirstRound();
+
+      if (view === "playing") {
+        appState.view = "playing";
+        appState.feedback = "첫 synthetic Playing과 Round Lock을 함께 확인하는 검토 fixture입니다.";
+      }
+
+      if (view === "empty") {
+        ensureNextRoundDraw();
+        appState.pendingExclusions.push({
+          trackId: currentTrack().id,
+          effectiveRound: appState.pendingDraw.targetRound
+        });
+        appendEvent(
+          "EV-EXCLUDE-DEFERRED",
+          `${currentTrack().id} · EFFECTIVE ${roundLabel(appState.pendingDraw.targetRound)}`
+        );
+        appState.view = "empty";
+        appState.feedback = "Last-safe lock과 authorized draw를 유지한 EMPTY fixture입니다.";
+      }
+
+      if (view === "error") {
+        ensureNextRoundDraw();
+        appState.errorScope = "draw";
+        appState.drawFailureCount = 3;
+        appendEvent(
+          "EV-FAILURE",
+          `DRAW · ${appState.pendingDraw.id} · 3/3 · LAST SAFE ${appState.round.id}`
+        );
+        appState.view = "error";
+        appState.feedback = "DRAW failure 3/3 fixture · fallback gate가 열린 상태입니다.";
+      }
+
+      render();
+    }
+
+    function setFeedback(message) {
+      appState.feedback = message;
+      render();
+    }
+
+    function setErrorScope(scope) {
+      appState.errorScope = scope;
+
+      if (scope === "restart") {
+        appState.pendingDraw = null;
+        appState.drawFailureCount = 0;
+        appendEvent(
+          "EV-FAILURE",
+          `RESTART · ${appState.round.id} · ${currentTrack().id} · ${appState.round.drawId}`
+        );
+        appState.feedback = "Restart failure scope · fallback과 새 draw는 허용되지 않습니다.";
+      } else {
+        ensureNextRoundDraw();
+        appState.drawFailureCount = 3;
+        appendEvent(
+          "EV-FAILURE",
+          `DRAW · ${appState.pendingDraw.id} · 3/3 · LAST SAFE ${appState.round.id}`
+        );
+        appState.feedback = "Draw failure scope · same-draw retry, 3/3 fallback만 허용됩니다.";
+      }
+
+      render();
+    }
+
+    function restartSameTrack(recoverySource = "") {
+      ensureFirstRound();
+      appState.attemptSequence += 1;
+      appState.positionSeconds = 0;
+      appState.paused = false;
+      appState.view = "playing";
+      appendEvent(
+        "EV-TRACK-RESTARTED",
+        `${appState.round.id} · ${currentTrack().id} · ${attemptLabel(appState.attemptSequence)} · 00:00`
+      );
+      if (recoverySource) {
+        appendEvent(
+          "EV-RECOVERED",
+          `${recoverySource} · SAME ${appState.round.id} · ${currentTrack().id}`
+        );
+      }
+      appState.feedback = "같은 round/track/draw를 유지하고 00:00부터 synthetic Playing을 재시작했습니다.";
+      render();
+    }
+
+    function requestNewRound() {
+      ensureFirstRound();
+      beginDraw(appState.round.number + 1, "ACT-NEW-ROUND-REROLL");
+      completePendingDraw();
+      appState.feedback = "NEW ROUND / REROLL만 새 draw를 만들었습니다. confirmed Playing 뒤 새 round를 잠갔습니다.";
+      render();
+    }
+
+    function renderStatus(code, detail) {
+      return `
+        <div class="status-rail" aria-label="현재 상태">
+          <strong class="status-code">${code}</strong>
+          <span class="status-detail">${detail}</span>
+        </div>
+      `;
+    }
+
+    function renderRoundLock() {
+      if (!appState.round) return "";
+      return `
+        <div class="round-lock" aria-label="현재 라운드 잠금">
+          <strong>${roundLabel(appState.round.number)} / LOCKED</strong>
+          <span>${appState.round.id}<br>${appState.round.trackId} · ${appState.round.drawId}</span>
+        </div>
+      `;
+    }
+
+    function renderContractTrace() {
+      const round = appState.round;
+      const activeDraw = appState.pendingDraw?.id || round?.drawId || "—";
+      const pending = appState.pendingExclusions.length
+        ? appState.pendingExclusions
+          .map(item => `${item.trackId}@R${String(item.effectiveRound).padStart(2, "0")}`)
+          .join(", ")
+        : "NONE";
+      const eventRows = appState.events.slice(-4).map(item => `
+        <li><strong>${item.id} · ${item.type}</strong><br>${item.detail}</li>
+      `).join("");
+
+      return `
+        <section class="contract-trace" aria-label="실시간 계약 및 이벤트 추적">
+          <h2>Live contract trace · binding v1.1</h2>
+          <div class="trace-contract">
+            <div><strong>ROUND</strong><br>${round ? `${roundLabel(round.number)} · ${round.id}` : "NOT LOCKED"}</div>
+            <div><strong>ACTIVE DRAW</strong><br>${activeDraw}</div>
+            <div><strong>TRACK</strong><br>${round?.trackId || "NONE"}</div>
+            <div><strong>PENDING EXCLUDE</strong><br>${pending}</div>
+          </div>
+          <ol class="event-list" aria-label="최근 synthetic 이벤트">
+            ${eventRows || "<li>NO SYNTHETIC EVENTS</li>"}
+          </ol>
+        </section>
+      `;
+    }
+
+    function renderReady() {
+      return `
+        ${renderStatus("READY", "조건을 고른 뒤 최초 draw 요청 · 아직 round/track lock 없음")}
+        <h1 class="screen-heading">배틀 비트 준비</h1>
+        <p class="screen-lead">배틀 유형과 에너지를 고르면 한 개의 가상 비트를 요청합니다.</p>
+
+        <section class="section" aria-labelledby="battle-type-label">
+          <h2 class="section-label" id="battle-type-label"><span>배틀 유형</span><span>필수</span></h2>
+          <div class="choice-grid">
+            <button type="button" data-battle="rap" aria-pressed="${appState.battleType === "rap"}">RAP</button>
+            <button type="button" data-battle="dance" aria-pressed="${appState.battleType === "dance"}">DANCE</button>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="energy-label">
+          <h2 class="section-label" id="energy-label"><span>에너지</span><span>1개 선택</span></h2>
+          <div class="choice-grid three">
+            ${["raw", "bounce", "drive"].map(value => `
+              <button type="button" data-energy="${value}" aria-pressed="${appState.energy === value}">${label(value)}</button>
+            `).join("")}
+          </div>
+        </section>
+
+        <button type="button" class="button-primary primary-action" data-action="randomize">랜덤 비트 요청</button>
+        <p class="helper">추천 뒤 별도 Start 없이 즉시 synthetic Playing을 시도합니다.</p>
+        <div class="context-strip" aria-label="현재 조건 요약">
+          <div class="context-item"><strong>${label(appState.battleType)}</strong><span>배틀 유형</span></div>
+          <div class="context-item"><strong>${label(appState.energy)}</strong><span>에너지</span></div>
+          <div class="context-item"><strong>V1.1</strong><span>Fair Round Lock</span></div>
+        </div>
+        ${renderContractTrace()}
+      `;
+    }
+
+    function transientSpec(phase) {
+      return {
+        requesting: {
+          stateId: "S-REQUESTING",
+          title: "REQUESTING",
+          authority: "pending system work",
+          trigger: "ACT-RANDOMIZE",
+          body: "최초 draw에서 조건·최근 기록·적용 제외를 계산 중입니다.",
+          allowed: "CANCEL PENDING",
+          forbidden: "SUCCESS · PLAYING · ROUND LOCK"
+        },
+        "new-round-requesting": {
+          stateId: "S-NEW-ROUND-REQUESTING",
+          title: "NEW ROUND REQUESTING",
+          authority: "pending system work",
+          trigger: "ACT-NEW-ROUND-REROLL",
+          body: "새 draw를 계산하지만 last-safe round/track은 confirmed Playing까지 유지합니다.",
+          allowed: "CANCEL PENDING",
+          forbidden: "EARLY ROUND +1 · TRACK REPLACEMENT"
+        },
+        recommended: {
+          stateId: "S-RECOMMENDED",
+          title: "RECOMMENDED",
+          authority: "system-recommendation",
+          trigger: "F-40 → F-50 AUTOMATIC",
+          body: "후보는 SYSTEM PICK일 뿐 사용자 선택이나 재생 성공이 아닙니다.",
+          allowed: "AUTOMATIC PLAYBACK ATTEMPT",
+          forbidden: "USER CHOSE · CONFIRMED OUTCOME"
+        },
+        starting: {
+          stateId: "S-STARTING",
+          title: "STARTING",
+          authority: "user-commitment executing",
+          trigger: "F-50 AUTOPLAY ATTEMPT",
+          body: "별도 Start 버튼 없이 synthetic playback 성공 신호를 기다립니다.",
+          allowed: "CANCEL · WAIT",
+          forbidden: "PLAYING BEFORE SUCCESS"
+        },
+        restarting: {
+          stateId: "S-RESTARTING",
+          title: "RESTARTING",
+          authority: "user-commitment executing",
+          trigger: "ACT-RESTART-TRACK",
+          body: "잠긴 동일 track을 00:00부터 재시도하며 round/draw/track을 바꾸지 않습니다.",
+          allowed: "CANCEL · WAIT",
+          forbidden: "NEW DRAW · RECOMMENDATION · ROUND"
+        },
+        recovering: {
+          stateId: "S-RECOVERING",
+          title: "RECOVERING",
+          authority: "pending system work",
+          trigger: "F-R3 SAME-DRAW RETRY",
+          body: "authorized draw와 last-safe lock을 보존한 채 복구 결과를 기다립니다.",
+          allowed: "CANCEL",
+          forbidden: "RECOVERED OUTCOME BEFORE PLAYING"
+        }
+      }[phase];
+    }
+
+    function renderTransient() {
+      const spec = transientSpec(appState.transientPhase);
+      const retainedRound = appState.round?.id || "NONE / ROUND OPEN";
+      const retainedTrack = appState.round?.trackId || "NONE";
+      const retainedDraw = appState.round?.drawId || "NONE";
+      const authorizedDraw = appState.pendingDraw?.id || retainedDraw;
+      const attemptId = appState.pendingDraw?.attemptId || attemptLabel(appState.attemptSequence);
+      const phaseOptions = [
+        ["requesting", "REQUESTING"],
+        ["new-round-requesting", "NEW ROUND REQUEST"],
+        ["recommended", "RECOMMENDED"],
+        ["starting", "STARTING"],
+        ["restarting", "RESTARTING"],
+        ["recovering", "RECOVERING"]
+      ];
+
+      return `
+        ${renderStatus(spec.title, `${spec.authority} · NOT SUCCESS · NOT PLAYING`)}
+        <section class="review-control" aria-labelledby="phase-review-label">
+          <p class="review-control-label" id="phase-review-label">Wireframe review control · not a product action</p>
+          <div class="phase-review-grid">
+            ${phaseOptions.map(([value, text]) => `
+              <button type="button" data-transient-phase="${value}" aria-pressed="${appState.transientPhase === value}">${text}</button>
+            `).join("")}
+          </div>
+        </section>
+        <section class="phase-panel" aria-labelledby="transient-title">
+          <p class="message-code">FR-TRANSIENT · ${spec.stateId}</p>
+          <h1 class="screen-heading" id="transient-title">${spec.title}</h1>
+          <p class="screen-lead">${spec.body}</p>
+          <dl class="phase-contract">
+            <div class="fact-row"><dt>Authority</dt><dd>${spec.authority}</dd></div>
+            <div class="fact-row"><dt>Trigger</dt><dd>${spec.trigger}</dd></div>
+            <div class="fact-row"><dt>Retained round</dt><dd>${retainedRound}</dd></div>
+            <div class="fact-row"><dt>Retained draw</dt><dd>${retainedDraw}</dd></div>
+            <div class="fact-row"><dt>Retained track</dt><dd>${retainedTrack}</dd></div>
+            <div class="fact-row"><dt>Authorized draw</dt><dd>${authorizedDraw}</dd></div>
+            <div class="fact-row"><dt>Attempt</dt><dd>${attemptId}</dd></div>
+            <div class="fact-row"><dt>Candidate</dt><dd>${appState.transientCandidateId || "NONE / NOT SELECTED"}</dd></div>
+            <div class="fact-row"><dt>Outcome</dt><dd>NOT CONFIRMED · NO PLAYING</dd></div>
+            <div class="fact-row"><dt>Allowed</dt><dd>${spec.allowed}</dd></div>
+            <div class="fact-row"><dt>Forbidden</dt><dd>${spec.forbidden}</dd></div>
+          </dl>
+        </section>
+        <div class="feedback" role="status">${appState.feedback}</div>
+        ${renderContractTrace()}
+      `;
+    }
+
+    function renderPlaying() {
+      const track = currentTrack();
+      const isSaved = appState.savedIds.has(track.id);
+      const pendingExclude = appState.pendingExclusions.find(item => item.trackId === track.id);
+      const status = appState.paused ? "PAUSED" : "PLAYING";
+      const statusDetail = appState.paused
+        ? "same round/track/position 유지 · resume 또는 same-track restart"
+        : "confirmed synthetic runtime + round lock · 실제 오디오 증거 아님";
+      const progressPercent = Math.round((appState.positionSeconds / 60) * 100);
+      const timeLabel = `00:${String(appState.positionSeconds).padStart(2, "0")}`;
+
+      return `
+        ${renderStatus(status, statusDetail)}
+        ${renderRoundLock()}
+        <div class="recommendation-line"><strong>SYSTEM PICK</strong> · ${label(appState.battleType)} / ${label(appState.energy)} · confirmed Playing과 lock을 한 전이에서 반영</div>
+        <div class="wire-art" role="img" aria-label="가상 트랙 커버 자리 표시자">COVER PLACEHOLDER · SYNTHETIC ONLY</div>
+        <div class="track-row">
+          <div>
+            <h1 class="track-title">${track.title}</h1>
+            <p class="track-alias">${track.alias} · ${track.id}</p>
+          </div>
+          <span class="bpm">${track.bpm} BPM</span>
+        </div>
+        <div class="progress" aria-label="가상 재생 진행률 ${progressPercent}%"><span style="width:${progressPercent}%"></span></div>
+        <div class="time-row"><span>${timeLabel}${appState.paused ? " · PAUSED" : ""}</span><span>01:00</span></div>
+
+        <button type="button" class="playback-action" data-action="pause">${appState.paused ? "RESUME SAME TRACK" : "PAUSE"}</button>
+        <div class="round-actions" aria-label="라운드 행동">
+          <button type="button" data-action="restart">RESTART SAME TRACK</button>
+          <button type="button" class="button-primary" data-action="new-round">NEW ROUND / REROLL</button>
+        </div>
+        <div class="utility-actions" aria-label="트랙 기록 행동">
+          <button type="button" data-action="save" aria-pressed="${isSaved}">${isSaved ? "SAVED · UNDO" : "SAVE"}</button>
+          <button type="button" data-action="exclude-next" aria-pressed="${Boolean(pendingExclude)}">${pendingExclude ? "UNDO NEXT-ROUND EXCLUDE" : "EXCLUDE NEXT ROUND"}</button>
+        </div>
+        ${pendingExclude ? `
+          <div class="pending-note"><strong>PENDING</strong> · ${track.id} 제외는 ${roundLabel(pendingExclude.effectiveRound)}부터 적용 · current track/round/draw 유지</div>
+        ` : ""}
+        <div class="feedback" role="status">${appState.feedback}</div>
+        ${renderContractTrace()}
+      `;
+    }
+
+    function renderEmpty() {
+      const safeRound = appState.round;
+      const authorizedDraw = appState.pendingDraw;
+
+      return `
+        ${renderStatus("EMPTY", "target pool 0 · last-safe round/track 유지 · current round 미증가")}
+        ${renderRoundLock()}
+        <div class="message-panel">
+          <p class="message-code">F-E1 · CONTENT POOL</p>
+          <h1 class="screen-heading">조건에 맞는 비트가 없습니다</h1>
+          <p>임의의 트랙을 Playing으로 표시하지 않습니다. 두 복구 행동은 새 draw를 만들지 않고 동일 authorized draw에서 pool만 재평가합니다.</p>
+          <dl class="fact-list">
+            <div class="fact-row"><dt>Last-safe round</dt><dd>${safeRound.id} · ${safeRound.trackId}</dd></div>
+            <div class="fact-row"><dt>Last-safe draw</dt><dd>${safeRound.drawId}</dd></div>
+            <div class="fact-row"><dt>Authorized draw</dt><dd>${authorizedDraw.id} · TARGET ${roundLabel(authorizedDraw.targetRound)}</dd></div>
+            <div class="fact-row"><dt>재생 판정</dt><dd>NO NEW PLAYING</dd></div>
+          </dl>
+        </div>
+        <div class="recovery-actions" aria-label="빈 상태 복구">
+          <button type="button" class="button-primary" data-action="relax">조건 완화 · REUSE ${authorizedDraw.id}</button>
+          <button type="button" data-action="undo-exclusion">제외 취소 · REUSE ${authorizedDraw.id}</button>
+        </div>
+        <div class="feedback" role="status">${appState.feedback}</div>
+        ${renderContractTrace()}
+      `;
+    }
+
+    function renderError() {
+      const safeRound = appState.round;
+      const isDrawError = appState.errorScope === "draw";
+      const activeDrawId = isDrawError ? appState.pendingDraw.id : safeRound.drawId;
+      const failureLabel = isDrawError ? `${appState.drawFailureCount}/3` : "RESTART ATTEMPT";
+      const fallbackAvailable = isDrawError && appState.drawFailureCount >= 3;
+
+      return `
+        ${renderStatus("ERROR", isDrawError
+          ? "draw/recommendation failure · same-draw retry · last-safe lock 유지"
+          : "restart failure · same-track only · fallback/new draw 금지")}
+        ${renderRoundLock()}
+        <div class="scope-switcher" aria-label="오류 범위 검토">
+          <button type="button" data-error-scope="draw" aria-pressed="${isDrawError}">DRAW FAILURE</button>
+          <button type="button" data-error-scope="restart" aria-pressed="${!isDrawError}">RESTART FAILURE</button>
+        </div>
+        <div class="message-panel">
+          <p class="message-code">F-E2 · ${isDrawError ? "DRAW / RECOMMENDATION" : "LOCKED-TRACK RESTART"}</p>
+          <h1 class="screen-heading">${isDrawError ? "다음 비트를 가져오지 못했습니다" : "같은 트랙을 재시작하지 못했습니다"}</h1>
+          <p>${isDrawError
+            ? "현재 round를 지우지 않습니다. retry와 fallback은 이미 승인된 동일 draw 안에서만 동작합니다."
+            : "현재 locked track을 다른 track으로 대체하지 않습니다. same-track restart만 복구로 허용합니다."}</p>
+          <dl class="fact-list">
+            <div class="fact-row"><dt>Failure scope</dt><dd>${isDrawError ? "DRAW" : "RESTART"} · ${failureLabel}</dd></div>
+            <div class="fact-row"><dt>Last-safe</dt><dd>${safeRound.id} · ${safeRound.trackId}</dd></div>
+            <div class="fact-row"><dt>Retained draw</dt><dd>${activeDrawId}</dd></div>
+            <div class="fact-row"><dt>허용 복구</dt><dd>${isDrawError ? "SAME DRAW" : "SAME TRACK ONLY"}</dd></div>
+          </dl>
+        </div>
+        <div class="recovery-actions" aria-label="오류 복구">
+          ${isDrawError ? `
+            <button type="button" class="button-primary" data-action="retry-same-draw">RETRY SAME DRAW · ${activeDrawId}</button>
+            <button type="button" data-action="fallback" ${fallbackAvailable ? "" : "disabled"}>${fallbackAvailable ? "LOCAL FALLBACK · 3/3" : "LOCAL FALLBACK · 3/3 필요"}</button>
+            <button type="button" data-action="cycle-failure-count">실패 횟수 검토 · ${appState.drawFailureCount}/3</button>
+          ` : `
+            <button type="button" class="button-primary" data-action="restart-from-error">RESTART SAME TRACK · ${safeRound.trackId}</button>
+          `}
+        </div>
+        <div class="feedback" role="status">${appState.feedback}</div>
+        ${renderContractTrace()}
+      `;
+    }
+
+    function render() {
+      document.querySelector("#frame-id").textContent = frameIds[appState.view];
+      document.querySelector("#condition-summary").textContent = `${label(appState.battleType)} · ${label(appState.energy)}`;
+
+      stateButtons.forEach(button => {
+        button.setAttribute("aria-selected", String(button.dataset.state === appState.view));
+      });
+
+      if (appState.view === "ready") screen.innerHTML = renderReady();
+      if (appState.view === "transient") screen.innerHTML = renderTransient();
+      if (appState.view === "playing") screen.innerHTML = renderPlaying();
+      if (appState.view === "empty") screen.innerHTML = renderEmpty();
+      if (appState.view === "error") screen.innerHTML = renderError();
+    }
+
+    stateButtons.forEach(button => {
+      button.addEventListener("click", () => resetReviewState(button.dataset.state));
+    });
+
+    document.addEventListener("click", event => {
+      const button = event.target.closest("button");
+      if (!button || button.dataset.state || button.disabled) return;
+
+      if (button.dataset.battle) {
+        appState.battleType = button.dataset.battle;
+        render();
+        return;
+      }
+
+      if (button.dataset.energy) {
+        appState.energy = button.dataset.energy;
+        render();
+        return;
+      }
+
+      if (button.dataset.errorScope) {
+        setErrorScope(button.dataset.errorScope);
+        return;
+      }
+
+      if (button.dataset.transientPhase) {
+        seedTransientPhase(button.dataset.transientPhase);
+        return;
+      }
+
+      const action = button.dataset.action;
+      if (!action) return;
+
+      if (action === "randomize") {
+        beginDraw(1, "ACT-RANDOMIZE");
+        completePendingDraw();
+        appState.feedback = "별도 Start 없이 SYSTEM PICK → STARTING → synthetic Playing+Round Lock을 확인했습니다.";
+        render();
+      }
+
+      if (action === "pause") {
+        appState.paused = !appState.paused;
+        setFeedback(appState.paused
+          ? "같은 round/track/draw와 00:23 위치를 유지했습니다."
+          : "같은 locked track의 synthetic Playing을 재개했습니다.");
+      }
+
+      if (action === "restart") {
+        restartSameTrack();
+      }
+
+      if (action === "new-round") {
+        requestNewRound();
+      }
+
+      if (action === "save") {
+        const trackId = currentTrack().id;
+        const willSave = !appState.savedIds.has(trackId);
+        if (willSave) appState.savedIds.add(trackId);
+        else appState.savedIds.delete(trackId);
+        setFeedback(willSave
+          ? "이 기기 세션에 저장했습니다. round/track/draw는 유지됩니다."
+          : "저장을 취소했습니다. round/track/draw는 유지됩니다.");
+      }
+
+      if (action === "exclude-next") {
+        const track = currentTrack();
+        const existingIndex = appState.pendingExclusions.findIndex(item => item.trackId === track.id);
+
+        if (existingIndex >= 0) {
+          const [removed] = appState.pendingExclusions.splice(existingIndex, 1);
+          appendEvent("EV-EXCLUDE-DEFERRED", `${removed.trackId} · UNDO BEFORE ${roundLabel(removed.effectiveRound)}`);
+          setFeedback("다음 round 제외 예약을 취소했습니다. current lock은 그대로입니다.");
+        } else {
+          const effectiveRound = appState.round.number + 1;
+          appState.pendingExclusions.push({ trackId: track.id, effectiveRound });
+          appendEvent("EV-EXCLUDE-DEFERRED", `${track.id} · EFFECTIVE ${roundLabel(effectiveRound)}`);
+          setFeedback(`${track.id} 제외는 ${roundLabel(effectiveRound)}부터 적용됩니다. current track은 교체하지 않았습니다.`);
+        }
+      }
+
+      if (action === "relax") {
+        appState.energy = "bounce";
+        const reusedDraw = appState.pendingDraw.id;
+        completePendingDraw("RELAX FILTER");
+        appState.feedback = `${reusedDraw}를 재사용해 pool을 재평가했습니다. 새 draw는 만들지 않았습니다.`;
+        render();
+      }
+
+      if (action === "undo-exclusion") {
+        const reusedDraw = appState.pendingDraw.id;
+        const removed = appState.pendingExclusions.pop();
+        if (removed) {
+          appendEvent("EV-EXCLUDE-DEFERRED", `${removed.trackId} · UNDO BEFORE ${roundLabel(removed.effectiveRound)}`);
+        }
+        completePendingDraw("UNDO EXCLUSION");
+        appState.feedback = `${reusedDraw}를 재사용해 제외를 취소하고 복구했습니다. 새 draw는 만들지 않았습니다.`;
+        render();
+      }
+
+      if (action === "retry-same-draw") {
+        const reusedDraw = appState.pendingDraw.id;
+        appState.attemptSequence += 1;
+        appState.pendingDraw.attemptId = attemptLabel(appState.attemptSequence);
+        completePendingDraw("SAME-DRAW RETRY");
+        appState.feedback = `${reusedDraw}의 새 attempt만 만들었습니다. last-safe lock은 성공 전까지 유지되었습니다.`;
+        render();
+      }
+
+      if (action === "fallback") {
+        if (appState.errorScope !== "draw" || appState.drawFailureCount < 3) return;
+        const reusedDraw = appState.pendingDraw.id;
+        completePendingDraw("LOCAL FALLBACK", true);
+        appState.feedback = `${reusedDraw} 안의 LOCAL FALLBACK으로 복구했습니다. 네트워크 추천으로 간주하지 않습니다.`;
+        render();
+      }
+
+      if (action === "cycle-failure-count") {
+        appState.drawFailureCount = appState.drawFailureCount >= 3 ? 1 : appState.drawFailureCount + 1;
+        setFeedback(`Draw failure gate ${appState.drawFailureCount}/3 · fallback ${appState.drawFailureCount >= 3 ? "AVAILABLE" : "LOCKED"}.`);
+      }
+
+      if (action === "restart-from-error") {
+        restartSameTrack("SAME-TRACK RESTART");
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>

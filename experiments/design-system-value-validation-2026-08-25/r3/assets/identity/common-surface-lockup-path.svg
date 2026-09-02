@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 146" role="img" aria-labelledby="title desc">
+  <title id="title">COMMON SURFACE 경로형 가로 락업 R3</title>
+  <desc id="desc">라이브 폰트에 의존하지 않는 C/S 심벌과 한 줄 영문 워드마크</desc>
+  <defs>
+    <path id="g-c" d="M0 0h40v8H10v44h30v8H0z"/>
+    <path id="g-o" fill-rule="evenodd" d="M0 0h40v60H0zM10 8v44h20V8z"/>
+    <path id="g-m" d="M0 60V0h10l10 24L30 0h10v60H30V22l-7 18h-6l-7-18v38z"/>
+    <path id="g-n" d="M0 60V0h10l20 40V0h10v60H30L10 20v40z"/>
+    <path id="g-s" d="M40 0H0v34h30v18H0v8h40V26H10V8h30z"/>
+    <path id="g-u" d="M0 0h10v52h20V0h10v60H0z"/>
+    <path id="g-r" fill-rule="evenodd" d="M0 60V0h40v34H29l13 26H30L18 34h-8v26zM10 8v18h20V8z"/>
+    <path id="g-f" d="M0 60V0h40v8H10v18h24v8H10v26z"/>
+    <path id="g-a" fill-rule="evenodd" d="M0 60L14 0h14l14 60H32l-4-18H14l-4 18zM16 34h10l-5-24z"/>
+    <path id="g-e" d="M0 0h40v8H10v18h24v8H10v18h30v8H0z"/>
+  </defs>
+  <g transform="translate(8 13)">
+    <path fill="#1A1713" d="M0 0h94v24H24v28h56l18 10-18 10H24v24h70v24H0V72l18-10L0 52z"/>
+    <path fill="#C7382C" d="M42 24h78v38H96V48H58L38 60l20 12h38v24H42L16 80l18-18-18-18z"/>
+    <path fill="#F3EFE7" d="M58 48h38v14H80L60 51zM58 72h38v8H72z"/>
+  </g>
+  <g fill="#1A1713" transform="translate(156 44)">
+    <use href="#g-c" x="0"/><use href="#g-o" x="50"/><use href="#g-m" x="100"/><use href="#g-m" x="150"/><use href="#g-o" x="200"/><use href="#g-n" x="250"/>
+    <use href="#g-s" x="330"/><use href="#g-u" x="380"/><use href="#g-r" x="430"/><use href="#g-f" x="480"/><use href="#g-a" x="530"/><use href="#g-c" x="580"/><use href="#g-e" x="630"/>
+  </g>
+  <rect x="954" y="34" width="12" height="78" fill="#C7382C"/>
+</svg>

@@ -1,0 +1,154 @@
+{
+  "manifestVersion": "0.3.0",
+  "generated": true,
+  "generatedFrom": [
+    "design-packs/README.md",
+    "ux-presets/README.md"
+  ],
+  "project": "C5 UES Lab",
+  "system": "Universal Experience System",
+  "systemAbbreviation": "UES",
+  "title": "Evidence-driven Experience System Laboratory",
+  "sourceOfTruth": {
+    "uxSystem": "docs/04-universal-experience-system.md",
+    "designPackRegistry": "design-packs/README.md",
+    "uxPresetRegistry": "ux-presets/README.md",
+    "workflow": "design-packs/00-md-first-experiment-workflow.md"
+  },
+  "authorityVocabulary": [
+    "system-recommendation",
+    "user-draft",
+    "user-commitment",
+    "confirmed-outcome",
+    "unavailable-or-invalid"
+  ],
+  "evidenceVocabulary": [
+    "OBSERVED",
+    "BUILT",
+    "CHECKED",
+    "OPEN",
+    "REJECTED"
+  ],
+  "designPacks": [
+    {
+      "id": "pack:rasterline",
+      "name": "Rasterline",
+      "version": "0.3.0",
+      "status": "experimental",
+      "canonical": "design-packs/rasterline-system/rasterline-system.md",
+      "preview": "design-packs/rasterline-system/preview.html"
+    },
+    {
+      "id": "pack:korean-commercial",
+      "name": "Korean Commercial",
+      "version": "2.0",
+      "status": "experimental",
+      "canonical": "design-packs/korean-commercial-system/korean-commercial-system.md",
+      "preview": "design-packs/korean-commercial-system/preview.html"
+    },
+    {
+      "id": "pack:industrial-swiss",
+      "name": "Industrial Swiss",
+      "version": "1.0.0",
+      "status": "experimental",
+      "canonical": "design-packs/industrial-swiss-system/industrial-swiss-system.md",
+      "preview": "design-packs/industrial-swiss-system/preview.html"
+    },
+    {
+      "id": "pack:90s-bmw-system",
+      "name": "90s BMW",
+      "version": "0.1.0",
+      "status": "experimental",
+      "canonical": "design-packs/90s-bmw-system/90s-bmw-system.md",
+      "preview": "design-packs/90s-bmw-system/preview.html"
+    },
+    {
+      "id": "pack:royal-mail-service",
+      "name": "Royal Mail Service",
+      "version": "1.0.0",
+      "status": "experimental",
+      "canonical": "design-packs/royal-mail-system/royal-mail-system.md",
+      "preview": "design-packs/royal-mail-system/preview.html"
+    },
+    {
+      "id": "pack:la-poste-civic-service",
+      "name": "La Poste Civic Service",
+      "version": "1.0.0",
+      "status": "experimental",
+      "canonical": "design-packs/la-poste-system/la-poste-system.md",
+      "preview": "design-packs/la-poste-system/preview.html"
+    }
+  ],
+  "uxPresets": [
+    {
+      "id": "decision.reserve",
+      "name": "Reserve",
+      "version": "0.1.0",
+      "status": "experimental",
+      "goal": "one suitable option, quickly",
+      "commitment": "commit one valid candidate",
+      "canonical": "ux-presets/decision.reserve.md"
+    },
+    {
+      "id": "decision.compare",
+      "name": "Compare",
+      "version": "0.1.0",
+      "status": "experimental",
+      "goal": "make a defensible choice among a small set",
+      "commitment": "choose and commit a winner",
+      "canonical": "ux-presets/decision.compare.md"
+    },
+    {
+      "id": "decision.plan",
+      "name": "Plan",
+      "version": "0.1.0",
+      "status": "experimental",
+      "goal": "make a feasible multi-object arrangement",
+      "commitment": "commit a valid composition",
+      "canonical": "ux-presets/decision.plan.md"
+    }
+  ],
+  "checks": {
+    "requiredPackFields": [
+      "id",
+      "name",
+      "version",
+      "status",
+      "canonical",
+      "preview"
+    ],
+    "requiredPresetFields": [
+      "id",
+      "name",
+      "version",
+      "status",
+      "goal",
+      "commitment",
+      "canonical"
+    ],
+    "validStatuses": [
+      "experimental",
+      "candidate",
+      "validated",
+      "archived"
+    ],
+    "openEvidenceFiles": [
+      "design-packs/90s-bmw-system/90s-bmw-system.md",
+      "design-packs/industrial-swiss-system/industrial-swiss-system.md",
+      "design-packs/industrial-swiss-system/validation-plan.md",
+      "design-packs/korean-commercial-system/flows-and-qa.md",
+      "design-packs/korean-commercial-system/korean-commercial-system.md",
+      "design-packs/la-poste-system/la-poste-system.md",
+      "design-packs/rasterline-system/qa.md",
+      "design-packs/rasterline-system/rasterline-system.md",
+      "design-packs/rasterline-system/runtime-evidence.md",
+      "design-packs/royal-mail-system/royal-mail-system.md"
+    ],
+    "markdownLinkRoots": [
+      "README.md",
+      "docs",
+      "design-packs",
+      "ux-presets"
+    ]
+  }
+}

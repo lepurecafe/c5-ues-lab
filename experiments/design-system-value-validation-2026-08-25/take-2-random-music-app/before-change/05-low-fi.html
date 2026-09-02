@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" href="data:,">
+  <meta name="color-scheme" content="light">
+  <title>Battle Beat Randomizer — Low-fi</title>
+  <style>
+    :root {
+      --ink: #111111;
+      --ink-soft: #555555;
+      --line: #8a8a8a;
+      --line-soft: #cdcdcd;
+      --paper: #ffffff;
+      --surface: #f2f2f2;
+      --surface-strong: #dedede;
+      --disabled: #eeeeee;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --target: 44px;
+      --phone-width: 402px;
+      --phone-height: 874px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--surface-strong);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      background: var(--surface-strong);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: start center;
+      padding: 24px;
+      background: var(--surface-strong);
+    }
+
+    button {
+      min-width: 0;
+      min-height: var(--target);
+      margin: 0;
+      border: 1.5px solid var(--ink);
+      border-radius: 2px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: var(--paper);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    button:hover {
+      background: var(--surface);
+    }
+
+    button:active {
+      background: var(--surface-strong);
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    button[aria-pressed="true"],
+    button[aria-selected="true"],
+    .button-primary {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    button[aria-pressed="true"]:hover,
+    button[aria-selected="true"]:hover,
+    .button-primary:hover {
+      background: #333333;
+    }
+
+    button:disabled {
+      border-color: var(--line-soft);
+      color: var(--line);
+      background: var(--disabled);
+      cursor: not-allowed;
+    }
+
+    .phone {
+      width: min(100%, var(--phone-width));
+      min-height: var(--phone-height);
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      background: var(--paper);
+    }
+
+    .prototype-toolbar {
+      padding: max(12px, env(safe-area-inset-top)) 16px 12px;
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .prototype-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .state-switcher {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .state-switcher button {
+      min-height: var(--target);
+      padding: 8px 4px;
+      border-color: var(--line);
+      font-size: 11px;
+      letter-spacing: 0.02em;
+    }
+
+    .app-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .app-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .app-meta {
+      margin: 3px 0 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .synthetic-tag {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .screen {
+      min-height: 690px;
+      padding: 16px 16px calc(20px + env(safe-area-inset-bottom));
+    }
+
+    .status-rail {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      min-height: 52px;
+      margin-bottom: 18px;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .status-code {
+      min-width: 86px;
+      padding-right: 10px;
+      border-right: 1px solid var(--line);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .status-detail {
+      min-width: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .screen-heading {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 8vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+    }
+
+    .screen-lead {
+      margin: 0 0 20px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .section {
+      margin-top: 20px;
+    }
+
+    .section:first-of-type {
+      margin-top: 0;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 8px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .choice-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .choice-grid button {
+      min-height: 52px;
+    }
+
+    .primary-action {
+      width: 100%;
+      min-height: 56px;
+      margin-top: 22px;
+      font-size: 16px;
+    }
+
+    .helper {
+      margin: 8px 0 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .wire-art {
+      min-height: 132px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      border: 1.5px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .recommendation-line {
+      margin-bottom: 12px;
+      padding: 9px 10px;
+      border-left: 4px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .track-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .track-title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      overflow-wrap: anywhere;
+    }
+
+    .track-alias {
+      margin: 5px 0 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+    }
+
+    .bpm {
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .progress {
+      height: 10px;
+      margin: 16px 0 6px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .progress > span {
+      display: block;
+      width: 38%;
+      height: 100%;
+      background: var(--ink);
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .fast-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .fast-actions button {
+      min-height: 52px;
+    }
+
+    .utility-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .context-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+    }
+
+    .context-item {
+      min-width: 0;
+      padding: 10px 8px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .context-item:last-child {
+      border-right: 0;
+    }
+
+    .context-item strong,
+    .context-item span {
+      display: block;
+    }
+
+    .context-item strong {
+      margin-bottom: 4px;
+      font-size: 11px;
+      line-height: 1.1;
+    }
+
+    .context-item span {
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .message-panel {
+      padding: 18px;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .message-code {
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+
+    .message-panel h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .message-panel p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .fact-list {
+      margin: 16px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact-row {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .fact-row dt {
+      color: var(--ink-soft);
+      font-weight: 700;
+    }
+
+    .fact-row dd {
+      margin: 0;
+      font-weight: 700;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .recovery-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .recovery-actions button {
+      width: 100%;
+      min-height: 52px;
+    }
+
+    .feedback {
+      min-height: 38px;
+      margin-top: 12px;
+      padding: 8px 10px;
+      border: 1px dashed var(--line);
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .feedback:empty {
+      visibility: hidden;
+    }
+
+    @media (max-width: 430px) {
+      body {
+        min-height: 100svh;
+        display: block;
+        padding: 0;
+        background: var(--paper);
+      }
+
+      .phone {
+        width: 100%;
+        min-height: 100svh;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .prototype-toolbar,
+      .app-header,
+      .screen {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .state-switcher button {
+        font-size: 10px;
+        letter-spacing: 0;
+      }
+
+      .choice-grid.three {
+        gap: 6px;
+      }
+
+      .choice-grid.three button {
+        padding-inline: 6px;
+        font-size: 12px;
+      }
+
+      .fact-row {
+        grid-template-columns: 96px minmax(0, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone" aria-label="Battle Beat Randomizer 로우파이 프로토타입">
+    <section class="prototype-toolbar" aria-label="프로토타입 상태 전환">
+      <div class="prototype-label">
+        <span>Low-fi state review</span>
+        <span id="frame-id">FR-READY</span>
+      </div>
+      <div class="state-switcher" role="tablist" aria-label="검토할 화면 상태">
+        <button type="button" role="tab" data-state="ready" aria-selected="true">READY</button>
+        <button type="button" role="tab" data-state="playing" aria-selected="false">PLAYING</button>
+        <button type="button" role="tab" data-state="empty" aria-selected="false">EMPTY</button>
+        <button type="button" role="tab" data-state="error" aria-selected="false">ERROR</button>
+      </div>
+    </section>
+
+    <header class="app-header">
+      <div>
+        <p class="app-title">BATTLE BEAT RANDOMIZER</p>
+        <p class="app-meta" id="condition-summary">RAP · BOUNCE</p>
+      </div>
+      <span class="synthetic-tag">SYNTHETIC</span>
+    </header>
+
+    <section class="screen" id="screen" role="tabpanel" tabindex="-1" aria-live="polite"></section>
+  </main>
+
+  <script>
+    const tracks = [
+      { id: "SYN-014", title: "CONCRETE STEP", alias: "VIRTUAL UNIT 04", bpm: 94 },
+      { id: "SYN-021", title: "BREAK LINE", alias: "VIRTUAL UNIT 07", bpm: 102 },
+      { id: "SYN-033", title: "FLOOR SIGNAL", alias: "VIRTUAL UNIT 11", bpm: 88 }
+    ];
+
+    const appState = {
+      view: "ready",
+      battleType: "rap",
+      energy: "bounce",
+      trackIndex: 0,
+      paused: false,
+      savedIds: new Set(),
+      excludedIds: new Set(),
+      excludedOrder: [],
+      feedback: ""
+    };
+
+    const frameIds = {
+      ready: "FR-READY",
+      playing: "FR-PLAYING",
+      empty: "FR-EMPTY",
+      error: "FR-ERROR"
+    };
+
+    const screen = document.querySelector("#screen");
+    const stateButtons = [...document.querySelectorAll("[data-state]")];
+
+    function label(value) {
+      return String(value).toUpperCase();
+    }
+
+    function currentTrack() {
+      return tracks[appState.trackIndex];
+    }
+
+    function setFeedback(message) {
+      appState.feedback = message;
+      render();
+    }
+
+    function renderStatus(code, detail) {
+      return `
+        <div class="status-rail" aria-label="현재 상태">
+          <strong class="status-code">${code}</strong>
+          <span class="status-detail">${detail}</span>
+        </div>
+      `;
+    }
+
+    function renderReady() {
+      return `
+        ${renderStatus("READY", "조건을 고른 뒤 랜덤 요청 · 아직 재생되지 않음")}
+        <h1 class="screen-heading">배틀 비트 준비</h1>
+        <p class="screen-lead">배틀 유형과 에너지를 고르면 한 개의 가상 비트를 요청합니다.</p>
+
+        <section class="section" aria-labelledby="battle-type-label">
+          <h2 class="section-label" id="battle-type-label"><span>배틀 유형</span><span>필수</span></h2>
+          <div class="choice-grid">
+            <button type="button" data-battle="rap" aria-pressed="${appState.battleType === "rap"}">RAP</button>
+            <button type="button" data-battle="dance" aria-pressed="${appState.battleType === "dance"}">DANCE</button>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="energy-label">
+          <h2 class="section-label" id="energy-label"><span>에너지</span><span>1개 선택</span></h2>
+          <div class="choice-grid three">
+            ${["raw", "bounce", "drive"].map(value => `
+              <button type="button" data-energy="${value}" aria-pressed="${appState.energy === value}">${label(value)}</button>
+            `).join("")}
+          </div>
+        </section>
+
+        <button type="button" class="button-primary primary-action" data-action="randomize">랜덤 비트 요청</button>
+        <p class="helper">요청 후 별도 Start 없이 synthetic Playing을 시도합니다.</p>
+        <div class="context-strip" aria-label="현재 조건 요약">
+          <div class="context-item"><strong>${label(appState.battleType)}</strong><span>배틀 유형</span></div>
+          <div class="context-item"><strong>${label(appState.energy)}</strong><span>에너지</span></div>
+          <div class="context-item"><strong>0 / 4</strong><span>최근 기록</span></div>
+        </div>
+      `;
+    }
+
+    function renderPlaying() {
+      const track = currentTrack();
+      const isSaved = appState.savedIds.has(track.id);
+      const status = appState.paused ? "PAUSED" : "PLAYING";
+      const statusDetail = appState.paused
+        ? "같은 가상 트랙과 위치를 유지 · 재개 또는 다시 뽑기"
+        : "synthetic runtime 확인 · 실제 오디오 증거 아님";
+
+      return `
+        ${renderStatus(status, statusDetail)}
+        <div class="recommendation-line"><strong>SYSTEM PICK</strong> · ${label(appState.battleType)} / ${label(appState.energy)} 조건 적합 · 최근 4곡 중복 없음</div>
+        <div class="wire-art" role="img" aria-label="가상 트랙 커버 자리 표시자">COVER PLACEHOLDER · SYNTHETIC</div>
+        <div class="track-row">
+          <div>
+            <h1 class="track-title">${track.title}</h1>
+            <p class="track-alias">${track.alias} · ${track.id}</p>
+          </div>
+          <span class="bpm">${track.bpm} BPM</span>
+        </div>
+        <div class="progress" aria-label="가상 재생 진행률 38%"><span></span></div>
+        <div class="time-row"><span>${appState.paused ? "00:23 · 일시정지" : "00:23"}</span><span>01:00</span></div>
+
+        <div class="fast-actions" aria-label="핵심 재생 행동">
+          <button type="button" data-action="pause">${appState.paused ? "재개" : "일시정지"}</button>
+          <button type="button" class="button-primary" data-action="reroll">다시 뽑기</button>
+        </div>
+        <div class="utility-actions" aria-label="트랙 기록 행동">
+          <button type="button" data-action="save" aria-pressed="${isSaved}">${isSaved ? "저장됨 · 취소" : "저장"}</button>
+          <button type="button" data-action="exclude">제외 후 다시 뽑기</button>
+        </div>
+        <div class="feedback" role="status">${appState.feedback}</div>
+        <div class="context-strip" aria-label="세션 문맥">
+          <div class="context-item"><strong>${label(appState.battleType)}</strong><span>현재 유형</span></div>
+          <div class="context-item"><strong>${label(appState.energy)}</strong><span>현재 에너지</span></div>
+          <div class="context-item"><strong>${appState.excludedIds.size}</strong><span>제외 수</span></div>
+        </div>
+      `;
+    }
+
+    function renderEmpty() {
+      return `
+        ${renderStatus("EMPTY", "현재 조건과 제외 기록을 적용한 결과 0개")}
+        <div class="message-panel">
+          <p class="message-code">F-E1 · CONTENT POOL</p>
+          <h1 class="screen-heading">조건에 맞는 비트가 없습니다</h1>
+          <p>임의의 트랙을 Playing으로 표시하지 않습니다. 현재 조건을 유지한 채 복구 방법을 선택하세요.</p>
+          <dl class="fact-list">
+            <div class="fact-row"><dt>배틀 유형</dt><dd>${label(appState.battleType)}</dd></div>
+            <div class="fact-row"><dt>에너지</dt><dd>${label(appState.energy)}</dd></div>
+            <div class="fact-row"><dt>최근 제외</dt><dd>4 TRACKS</dd></div>
+            <div class="fact-row"><dt>재생 상태</dt><dd>NOT PLAYING</dd></div>
+          </dl>
+        </div>
+        <div class="recovery-actions" aria-label="빈 상태 복구">
+          <button type="button" class="button-primary" data-action="relax">조건 완화 후 다시 요청</button>
+          <button type="button" data-action="undo-exclusion">최근 제외 1건 되돌리기</button>
+          <button type="button" data-action="back-ready">조건 다시 선택</button>
+        </div>
+        <div class="feedback" role="status">${appState.feedback}</div>
+      `;
+    }
+
+    function renderError() {
+      return `
+        ${renderStatus("ERROR", "추천 요청 실패 · 조건과 마지막 안전 문맥 유지")}
+        <div class="message-panel">
+          <p class="message-code">F-E2 · RECOMMENDATION</p>
+          <h1 class="screen-heading">비트를 가져오지 못했습니다</h1>
+          <p>추천 단계에서 응답이 중단되었습니다. Playing으로 표시하지 않았으며, 같은 조건으로 다시 시도할 수 있습니다.</p>
+          <dl class="fact-list">
+            <div class="fact-row"><dt>실패 범위</dt><dd>RECOMMENDATION</dd></div>
+            <div class="fact-row"><dt>유지된 조건</dt><dd>${label(appState.battleType)} · ${label(appState.energy)}</dd></div>
+            <div class="fact-row"><dt>마지막 안전 상태</dt><dd>READY</dd></div>
+            <div class="fact-row"><dt>재생 상태</dt><dd>NOT PLAYING</dd></div>
+          </dl>
+        </div>
+        <div class="recovery-actions" aria-label="오류 복구">
+          <button type="button" class="button-primary" data-action="retry">동일 조건으로 재시도</button>
+          <button type="button" data-action="fallback">Local fallback 사용</button>
+          <button type="button" data-action="back-ready">조건 다시 선택</button>
+        </div>
+        <div class="feedback" role="status">${appState.feedback}</div>
+      `;
+    }
+
+    function render() {
+      document.querySelector("#frame-id").textContent = frameIds[appState.view];
+      document.querySelector("#condition-summary").textContent = `${label(appState.battleType)} · ${label(appState.energy)}`;
+
+      stateButtons.forEach(button => {
+        button.setAttribute("aria-selected", String(button.dataset.state === appState.view));
+      });
+
+      if (appState.view === "ready") screen.innerHTML = renderReady();
+      if (appState.view === "playing") screen.innerHTML = renderPlaying();
+      if (appState.view === "empty") screen.innerHTML = renderEmpty();
+      if (appState.view === "error") screen.innerHTML = renderError();
+    }
+
+    function setView(nextView, feedback = "") {
+      appState.view = nextView;
+      appState.feedback = feedback;
+      render();
+    }
+
+    stateButtons.forEach(button => {
+      button.addEventListener("click", () => setView(button.dataset.state));
+    });
+
+    document.addEventListener("click", event => {
+      const button = event.target.closest("button");
+      if (!button || button.dataset.state) return;
+
+      if (button.dataset.battle) {
+        appState.battleType = button.dataset.battle;
+        render();
+        return;
+      }
+
+      if (button.dataset.energy) {
+        appState.energy = button.dataset.energy;
+        render();
+        return;
+      }
+
+      const action = button.dataset.action;
+      if (!action) return;
+
+      if (action === "randomize") {
+        appState.paused = false;
+        setView("playing", "랜덤 요청 → SYSTEM PICK → synthetic Playing 상태가 확인되었습니다.");
+      }
+
+      if (action === "pause") {
+        appState.paused = !appState.paused;
+        setFeedback(appState.paused ? "같은 트랙과 위치를 유지했습니다." : "같은 트랙의 synthetic Playing을 재개했습니다.");
+      }
+
+      if (action === "reroll") {
+        appState.trackIndex = (appState.trackIndex + 1) % tracks.length;
+        appState.paused = false;
+        setFeedback("현재 조건을 유지해 새 가상 트랙으로 교체했습니다.");
+      }
+
+      if (action === "save") {
+        const trackId = currentTrack().id;
+        const willSave = !appState.savedIds.has(trackId);
+        if (willSave) appState.savedIds.add(trackId);
+        else appState.savedIds.delete(trackId);
+        setFeedback(willSave ? "이 기기 세션에 저장했습니다. 재생은 유지됩니다." : "저장을 취소했습니다. 재생은 유지됩니다.");
+      }
+
+      if (action === "exclude") {
+        const excludedTrack = currentTrack();
+        appState.excludedIds.add(excludedTrack.id);
+        appState.excludedOrder.push(excludedTrack.id);
+        appState.savedIds.delete(excludedTrack.id);
+        appState.trackIndex = (appState.trackIndex + 1) % tracks.length;
+        appState.paused = false;
+        setFeedback(`${excludedTrack.title} 제외 후 다른 가상 트랙을 요청했습니다.`);
+      }
+
+      if (action === "relax") {
+        appState.energy = "bounce";
+        setView("playing", "에너지 조건을 BOUNCE로 완화해 가상 트랙을 찾았습니다.");
+      }
+
+      if (action === "undo-exclusion") {
+        const lastExcluded = appState.excludedOrder.pop();
+        if (lastExcluded) appState.excludedIds.delete(lastExcluded);
+        setView("playing", "최근 제외 1건을 되돌려 가상 트랙을 복구했습니다.");
+      }
+
+      if (action === "retry") {
+        setView("playing", "같은 조건으로 재시도해 synthetic Playing 상태를 확인했습니다.");
+      }
+
+      if (action === "fallback") {
+        setView("playing", "LOCAL FALLBACK으로 복구했습니다. 네트워크 추천으로 간주하지 않습니다.");
+      }
+
+      if (action === "back-ready") {
+        setView("ready", "조건은 유지되었습니다.");
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>

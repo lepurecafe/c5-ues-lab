@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 180" role="img" aria-labelledby="title desc">
+  <title id="title">COMMON SURFACE 워드마크 r1</title>
+  <desc id="desc">각진 정보형 문자와 신호색 기준점을 사용하는 COMMON SURFACE 워드마크</desc>
+  <rect width="840" height="180" fill="#F3EFE7"/>
+  <rect x="20" y="18" width="12" height="144" fill="#C7382C"/>
+  <g fill="#1A1713" font-family="Arial Narrow, Arial, sans-serif" font-weight="900" letter-spacing="-7">
+    <text x="58" y="83" font-size="74">COMMON</text>
+    <text x="58" y="151" font-size="74">SURFACE</text>
+  </g>
+  <path d="M679 43h137M679 91h137M679 139h137" stroke="#1A1713" stroke-width="5"/>
+</svg>
