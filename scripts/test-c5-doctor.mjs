@@ -183,6 +183,27 @@ try {
   symlinkSync(join(tempRoot, 'docs'), join(tempRoot, 'docs/loop'));
   assert.equal(run().output.status, 'pass', 'directory symlink cycles must terminate');
   cases++;
+  resetFiles();
+  write('docs/README.md', '[Missing](missing.md)');
+  symlinkSync('README.md', join(tempRoot, 'docs/README'));
+  assert(hasCode(run(), 'ERR_MARKDOWN_LINK_BROKEN'), 'non-Markdown alias must not hide a broken Markdown link');
+  cases++;
+  rmSync(join(tempRoot, 'docs/README'));
+  rmSync(join(tempRoot, 'docs/README.md'));
+  write('docs/source-text', '[Missing](missing.md)');
+  symlinkSync('source-text', join(tempRoot, 'docs/alias.md'));
+  assert(hasCode(run(), 'ERR_MARKDOWN_LINK_BROKEN'), 'Markdown alias to an extensionless file must be scanned');
+  cases++;
+  rmSync(join(tempRoot, 'docs/alias.md'));
+  rmSync(join(tempRoot, 'docs/source-text'));
+  write('docs/a/source.md', '[Local](local.md)');
+  write('docs/a/local.md', '# Exists only beside the original');
+  mkdirSync(join(tempRoot, 'docs/b'), {recursive: true});
+  symlinkSync('../a/source.md', join(tempRoot, 'docs/b/alias.md'));
+  const relativeAlias = run();
+  assert(hasCode(relativeAlias, 'ERR_MARKDOWN_LINK_BROKEN'), 'Markdown aliases must retain their own relative link context');
+  assert(relativeAlias.output.results.some(item => item.data?.findings?.some(finding => finding.file === 'docs/b/alias.md')));
+  cases++;
   console.log(`UES Doctor tests: PASS (${cases} cases: normal, malformed input, fixed contract, paths/scopes, metadata, evidence, links)`);
 } finally {
   rmSync(tempRoot, {recursive: true, force: true});

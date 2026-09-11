@@ -41,19 +41,20 @@ function readCanonicalMeta(relativePath) {
 
 function markdownFiles(entries) {
   const files = new Set();
-  const visited = new Set();
+  const visitedDirectories = new Set();
   const visit = (path) => {
     path = safePath(relative(root, path));
-    const real = realpathSync(path);
-    if (visited.has(real)) return;
-    visited.add(real);
     const info = statSync(path);
     if (info.isDirectory()) {
+      const real = realpathSync(path);
+      if (visitedDirectories.has(real)) return;
+      visitedDirectories.add(real);
       for (const name of readdirSync(path)) {
         if (name.startsWith('.') || name === 'node_modules' || name === 'graphify-out') continue;
         visit(resolve(path, name));
       }
-    } else if (extname(path).toLowerCase() === '.md') {
+    } else if (info.isFile() && extname(path).toLowerCase() === '.md') {
+      // Keep each Markdown path: aliases can have different relative link bases.
       files.add(path);
     }
   };
