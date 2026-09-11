@@ -1,5 +1,7 @@
 # Product Brief — Battle Beat Randomizer
 
+> **RETIRED — 2026-09-11.** 폐기된 실험 계획의 역사적 Brief다. 아래 frozen/pending 문구는 재개 지시가 아니다. [상태 결정](../../../docs/experiment-status.md)
+
 > Product Binding: `binding.battle-beat-randomizer@1.1.0`
 >
 > Composition: `composition.random-music-app.take-2.r2` (baseline `r1` preserved in `before-change/`)

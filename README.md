@@ -2,9 +2,15 @@
 
 > **Evidence-driven Experience System Laboratory**
 
-이 작업공간은 제품 맥락, UX 행동 계약, 시각 표현, 매체 투영, 검증 증거를 분리하고 다시 조합하는 **Universal Experience System (UES)** 개인 연구 랩이다. 댄스배틀·랩배틀용 랜덤 비트 메이커 `Take 2`는 이 시스템을 검증하는 첫 번째 Product Binding이다.
+이 작업공간은 제품 맥락, UX 행동 계약, 시각 표현, 매체 투영, 검증 증거를 분리하고 다시 조합하는 **Universal Experience System (UES)** 개인 연구 랩이다. 사람의 목표·상황·의미·개성을 유지하며 여러 매체의 결과물을 제작·수정하는 범용 도구를 지향한다.
+
+`Take 2`는 **폐기된 실험 계획**이다(2026-09-11 사용자 확인). 관련 파일은 과거 기록으로 보존하며 현재 검증 사례나 재개 대상으로 사용하지 않는다. 다음 실험은 추후 별도로 설계한다. [실험 상태와 적용 경계](docs/experiment-status.md)를 우선 확인한다.
 
 ## C5 운영 도구
+
+- [범용 경험 설계 도구 개선안](docs/ues-general-purpose-tool-roadmap.md) — 목표, 사용성, 다양한 상황·결과물, 우선순위와 검증 계획
+- [Draft PR #1 검토 기록](docs/pr-1-review-2026-09-11.md) · [Graphify 갱신 기록](docs/graphify-refresh-2026-09-11.md)
+- [P0 신뢰성 보강 기록](docs/p0-reliability-hardening.md) — Doctor 입력·범위 검증, 결과 정합성, Take 2 폐기 정정
 
 - [UES Manifest](c5-manifest.json) — Pack, Preset, 정본 문서, 버전, 상태를 AI와 도구가 읽는 색인
 - [UES Doctor Error Codes](docs/error-codes.md) — 검사 결과의 고정 코드와 대응 규칙
@@ -23,23 +29,21 @@ node scripts/c5-doctor.mjs --json
 node scripts/test-c5-doctor.mjs
 ```
 
-`c5-manifest.json`의 Pack/Preset 목록·ID·버전·경로는 Registry와 정본 Markdown에서 생성하므로 직접 수정하지 않는다. `PASS`는 정상, `WARN`은 문서에 실제 미완료 증거가 남은 상태, `FAIL`은 경로·구조·링크·계약을 수정해야 하는 상태다. GitHub 저장소에서는 같은 검사가 `.github/workflows/c5-doctor.yml`로 자동 실행된다.
+`c5-manifest.json`의 Pack/Preset 목록·ID·버전·경로는 Registry와 정본 Markdown에서 생성하므로 직접 수정하지 않는다. [버전 있는 입력 Schema](schemas/c5-manifest-v0.3.schema.json)는 Doctor에 포함되며 Manifest가 검사 규칙을 완화할 수 없다. `PASS`는 명시된 검사 범위 통과, `WARN`은 미완료 증거 표식 발견, `FAIL`은 입력·경로·구조·링크·계약 수정 필요, `SKIP / NOT_RUN`은 선행 실패로 검사를 실행하지 못했다는 뜻이다. 구조 PASS가 경험의 의미·실행·사용성 PASS를 뜻하지 않는다. GitHub에서는 기존 `.github/workflows/c5-doctor.yml`이 같은 명령을 실행한다. 로컬 변경은 push 전까지 원격 CI에 반영되지 않는다.
 
 현재 정본 문서:
 
-- [UX/UI 학습 및 제작 계획](docs/00-ux-ui-learning-plan.md)
-- [음원 소스 및 재생 전략](docs/01-audio-source-and-playback-strategy.md)
-- [재생 중 영상·오디오 녹음 기술 검토](docs/02-playback-recording-feasibility.md)
 - [Universal Experience System v0.5](docs/04-universal-experience-system.md) — Product Binding 위에서 UX Preset과 Design Pack을 조합하고 매체·유저플로우·로우파이·하이파이·구현 투영으로 연결하는 experimental canonical foundation
 - [UX Preset Registry](ux-presets/README.md) — Reserve·Compare·Plan을 상태 보존, 권한/커밋, 호환성, 최소 검증까지 갖춘 재사용 가능한 행동 계약으로 운영
 - [UX System v2](docs/03-ux-system.md) — C5 실험에서 검증된 행동·상태·복구 계약을 보존한 선행 문서
 
-첫 번째 실행 단위는 코드 구현이 아니라 `관찰 → 핵심 과업 정의 → 와이어프레임 → 사용성 검증`이다.
+현재 실행 단위는 운영 도구의 신뢰성 보강이다. 새 실험의 대상·과업·결과물·검증 기준은 추후 설계하며 지금 확정하지 않는다.
 
-현재 디자인 시스템 검증용 구현 샘플:
+보존된 디자인 시스템 실험 자료:
 
 - [Design Pack Adapter Lab](experiments/design-pack-adapter-lab/README.md) — UX System을 고정하고 USPS, Apple, Royal Mail 디자인 팩을 전환해 비교하는 인터랙티브 프로토타입
-- [2026-08-25 Design System Tool Value Validation](experiments/design-system-value-validation-2026-08-25/README.md) — COMMON SURFACE 스킨케어·머천다이즈 브랜드의 다중 매체 유지관리와 독립 랜덤 음악 앱의 Flowchart→Low-fi→High-fi 파이프라인 가치를 수치화하는 실행 계획
+- [2026-08-25 Design System Tool Value Validation](experiments/design-system-value-validation-2026-08-25/README.md) — COMMON SURFACE 과거 결과와 폐기된 Take 2 계획의 보존 기록; [최신 결과표](experiments/design-system-value-validation-2026-08-25/results/results-summary.md)
+- [초기 UX/UI 학습 계획](docs/00-ux-ui-learning-plan.md), [음원 전략](docs/01-audio-source-and-playback-strategy.md), [녹음 기술 검토](docs/02-playback-recording-feasibility.md) — 초기 랜덤 음악 맥락의 참고 자료이며 현재 실험 실행 지시가 아님
 
 추가 디자인팩 문서:
 

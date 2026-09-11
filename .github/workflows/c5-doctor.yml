@@ -9,6 +9,7 @@ on:
       - 'design-packs/**'
       - 'ux-presets/**'
       - 'scripts/**'
+      - 'schemas/**'
       - '.github/workflows/c5-doctor.yml'
   pull_request:
     paths:
@@ -18,6 +19,7 @@ on:
       - 'design-packs/**'
       - 'ux-presets/**'
       - 'scripts/**'
+      - 'schemas/**'
       - '.github/workflows/c5-doctor.yml'
   workflow_dispatch:
 

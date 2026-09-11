@@ -174,4 +174,6 @@ R3 계약에는 `externally-authorized`, `approved`, `safe`, `recalled`, `clinic
 
 ## 11. Completion ceiling
 
-현재 허용 주장은 `R3 0.2.0 synthetic composition implemented · E1/E2/E3 local prototype · independent recheck pending`이다. release는 exact H01의 **로컬 commit만** 복원하며 claim·실제 판매·재고·fulfillment를 복원하지 않는다. 실제 제품 HOLD, 고객 통지, 안전, recall, 광고 철회, 전체 접근성 또는 실제 rollback 성공은 E4 증거 없이 완료로 표기하지 않는다. 상세 gap은 [`../evidence/05-rights-production-gaps.md`](../evidence/05-rights-production-gaps.md)에 고정한다.
+현재 기록된 허용 주장은 `R3 0.2.0 qa=029 · independent local E3 hard gate PASS · P0/P1 0/0 · R3-A/B 63/63 · Stage REVISE · 조건부 유효 · C2`다. 근거는 [`../evidence/07-independent-review.md`](../evidence/07-independent-review.md) §11의 **2026-08-26 20:28 KST** 독립 재평가다. 이는 해당 snapshot의 기록이며, 2026-09-11 문서 정정을 새 runtime 재검증으로 세지 않는다. 같은 `0.2.0`의 감사 중 의미 변경·증거 분모 drift와 전체 recovery suite 미완결은 남아 있고, `0.1.1`의 STOP도 역사 판정으로 보존한다.
+
+release는 exact H01의 **로컬 commit만** 복원하며 claim·실제 판매·재고·fulfillment를 복원하지 않는다. [사용자 평가](../evidence/08-user-evaluation.md)는 계속 대기다. 실제 제품 HOLD, 고객 통지, 안전, recall, 광고 철회, 전체 접근성 또는 실제 rollback 성공은 E4 증거 없이 완료로 표기하지 않는다. 상세 gap은 [`../evidence/05-rights-production-gaps.md`](../evidence/05-rights-production-gaps.md)와 독립 검토 §11.6–11.8에 있다.

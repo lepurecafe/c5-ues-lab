@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UES Manifest 0.3 contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifestVersion", "generated", "generatedFrom", "project", "system", "systemAbbreviation", "title", "sourceOfTruth", "authorityVocabulary", "evidenceVocabulary", "designPacks", "uxPresets", "checks"],
+  "properties": {
+    "manifestVersion": {"const": "0.3.0"},
+    "generated": {"const": true},
+    "generatedFrom": {"$ref": "#/$defs/strings"},
+    "project": {"$ref": "#/$defs/text"},
+    "system": {"$ref": "#/$defs/text"},
+    "systemAbbreviation": {"$ref": "#/$defs/text"},
+    "title": {"$ref": "#/$defs/text"},
+    "sourceOfTruth": {
+      "type": "object", "additionalProperties": false,
+      "required": ["uxSystem", "designPackRegistry", "uxPresetRegistry", "workflow"],
+      "properties": {
+        "uxSystem": {"$ref": "#/$defs/text"},
+        "designPackRegistry": {"$ref": "#/$defs/text"},
+        "uxPresetRegistry": {"$ref": "#/$defs/text"},
+        "workflow": {"$ref": "#/$defs/text"}
+      }
+    },
+    "authorityVocabulary": {"const": ["system-recommendation", "user-draft", "user-commitment", "confirmed-outcome", "unavailable-or-invalid"]},
+    "evidenceVocabulary": {"const": ["OBSERVED", "BUILT", "CHECKED", "OPEN", "REJECTED"]},
+    "designPacks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pack"}},
+    "uxPresets": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/preset"}},
+    "checks": {
+      "type": "object", "additionalProperties": false,
+      "required": ["requiredPackFields", "requiredPresetFields", "validStatuses", "openEvidenceFiles", "markdownLinkRoots"],
+      "properties": {
+        "requiredPackFields": {"const": ["id", "name", "version", "status", "canonical", "preview"]},
+        "requiredPresetFields": {"const": ["id", "name", "version", "status", "goal", "commitment", "canonical"]},
+        "validStatuses": {"const": ["experimental", "candidate", "validated", "archived"]},
+        "openEvidenceFiles": {"$ref": "#/$defs/strings"},
+        "markdownLinkRoots": {"$ref": "#/$defs/strings"}
+      }
+    }
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "strings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "status": {"enum": ["experimental", "candidate", "validated", "archived"]},
+    "pack": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "version", "status", "canonical", "preview"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "name": {"$ref": "#/$defs/text"},
+        "version": {"$ref": "#/$defs/text"}, "status": {"$ref": "#/$defs/status"},
+        "canonical": {"$ref": "#/$defs/text"}, "preview": {"$ref": "#/$defs/text"}
+      }
+    },
+    "preset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "version", "status", "goal", "commitment", "canonical"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "name": {"$ref": "#/$defs/text"},
+        "version": {"$ref": "#/$defs/text"}, "status": {"$ref": "#/$defs/status"},
+        "goal": {"$ref": "#/$defs/text"}, "commitment": {"$ref": "#/$defs/text"},
+        "canonical": {"$ref": "#/$defs/text"}
+      }
+    }
+  }
+}
