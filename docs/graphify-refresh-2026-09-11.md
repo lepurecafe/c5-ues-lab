@@ -4,6 +4,8 @@
 > 범위: 이 C5 저장소의 선택된 텍스트. Vault 전체 그래프와 자동화 설정은 대상이 아니다.
 >
 > **후속 상태: STALE.** 아래 수치는 같은 날 P0 구현·Take 2 폐기 정정 **이전** snapshot이다. [P0 현재 상태](p0-reliability-hardening.md)와 [실험 상태](experiment-status.md)가 우선한다. 해당 변경을 의미 재추출하지 않았으며 이전 해시·그래프는 역사 snapshot으로 유지한다.
+>
+> **2026-09-12 후속 갱신 완료:** [최신 갱신·PR #2 병합 기록](graphify-refresh-2026-09-12.md). 이 문서의 STALE 표시는 아래의 이전 snapshot에 해당한다.
 
 ## 원본과 갱신 범위
 
