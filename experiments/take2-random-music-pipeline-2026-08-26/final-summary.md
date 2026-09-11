@@ -1,5 +1,7 @@
 # Take 2 Final Result
 
+> **RETIRED — 2026-09-11.** 아래 Continue 판정은 당시 기록으로 대체되었다. 현재는 폐기된 실험이며 추가 실행하지 않는다. [상태 결정](../../docs/experiment-status.md)
+
 ## Decision
 
 **Continue experimenting — provisional value demonstrated.**

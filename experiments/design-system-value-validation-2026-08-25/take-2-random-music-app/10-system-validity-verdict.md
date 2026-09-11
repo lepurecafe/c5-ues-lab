@@ -1,5 +1,7 @@
 # Take 2 — System Validity Verdict
 
+> **RETIRED — 2026-09-11.** 아래 점수와 지속 운영 판정은 당시 평가 기록으로만 보존한다. 현재 UES 유효성의 입증이나 추가 실행 근거가 아니다. [상태 결정](../../../docs/experiment-status.md)
+
 > **최종 판정: 8.6/10 · E2 · C2 — 지속 운영 가치 있음, 보정 조건부**
 >
 > Artifact Quality: `92.4/100` (`Flow 90 · Low-fi 92 · High-fi 94`)

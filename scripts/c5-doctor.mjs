@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-import {existsSync, readFileSync, readdirSync, statSync} from 'node:fs';
-import {dirname, extname, relative, resolve} from 'node:path';
+import {existsSync, readFileSync, readdirSync, realpathSync, statSync} from 'node:fs';
+import {dirname, extname, isAbsolute, relative, resolve, sep} from 'node:path';
+import {validateManifest} from './manifest-contract.mjs';
 
 const root = resolve(process.env.C5_DOCTOR_ROOT ?? resolve(import.meta.dirname, '..'));
 const manifestPath = resolve(root, 'c5-manifest.json');
@@ -12,19 +13,22 @@ function report(level, code, message, detail = '', data = undefined) {
   results.push({level, code, message, ...(detail ? {detail} : {}), ...(data ? {data} : {})});
 }
 
-function checkFile(relativePath, code = 'ERR_FILE_NOT_FOUND') {
-  if (!relativePath || !existsSync(resolve(root, relativePath))) {
-    report('FAIL', code, `파일을 찾을 수 없습니다: ${relativePath ?? '(missing path)'}`);
-    return false;
-  }
-  return true;
+function safePath(relativePath) {
+  const path = resolve(root, relativePath);
+  const outside = value => value === '..' || value.startsWith(`..${sep}`) || isAbsolute(value);
+  if (isAbsolute(relativePath) || outside(relative(root, path))) throw new Error(`workspace 밖의 경로: ${relativePath}`);
+  if (existsSync(path) && outside(relative(realpathSync(root), realpathSync(path)))) throw new Error(`workspace 밖으로 연결된 경로: ${relativePath}`);
+  return path;
 }
 
-function checkRequiredFields(item, fields, label) {
-  for (const field of fields) {
-    if (item[field] === undefined || item[field] === '') {
-      report('FAIL', 'ERR_REQUIRED_FIELD_MISSING', `${label}에 필수 항목이 없습니다: ${field}`);
-    }
+function checkFile(relativePath, code = 'ERR_FILE_NOT_FOUND') {
+  try {
+    const path = safePath(relativePath);
+    if (!statSync(path).isFile()) throw new Error('일반 파일이 아닙니다.');
+    return true;
+  } catch (error) {
+    report('FAIL', code, `파일을 사용할 수 없습니다: ${relativePath}`, error.message);
+    return false;
   }
 }
 
@@ -37,8 +41,12 @@ function readCanonicalMeta(relativePath) {
 
 function markdownFiles(entries) {
   const files = new Set();
+  const visited = new Set();
   const visit = (path) => {
-    if (!existsSync(path)) return;
+    path = safePath(relative(root, path));
+    const real = realpathSync(path);
+    if (visited.has(real)) return;
+    visited.add(real);
     const info = statSync(path);
     if (info.isDirectory()) {
       for (const name of readdirSync(path)) {
@@ -51,6 +59,30 @@ function markdownFiles(entries) {
   };
   for (const entry of entries) visit(resolve(root, entry));
   return [...files].sort();
+}
+
+function checkedScope(entries, name, filesOnly = false) {
+  try {
+    const files = new Set();
+    for (const entry of entries) {
+      const path = safePath(entry);
+      if (filesOnly && (!statSync(path).isFile() || extname(path).toLowerCase() !== '.md')) throw new Error(`${entry}: Markdown 파일이 아닙니다.`);
+      const found = markdownFiles([entry]);
+      if (!found.length) throw new Error(`${entry}: 검사할 Markdown 문서가 없습니다.`);
+      found.forEach(file => files.add(file));
+    }
+    return [...files].sort();
+  } catch (error) {
+    report('FAIL', 'ERR_CHECK_SCOPE_INVALID', `${name} 검사 범위를 사용할 수 없습니다.`, error.message);
+    report('SKIP', 'SKIP_CHECK_NOT_RUN', `${name}: NOT_RUN`, '', {check: name, status: 'NOT_RUN', files: 0});
+    return null;
+  }
+}
+
+function skipContentChecks() {
+  for (const check of ['openEvidence', 'markdownLinks']) {
+    report('SKIP', 'SKIP_CHECK_NOT_RUN', `${check}: NOT_RUN — Manifest 입력 검증 실패`, '', {check, status: 'NOT_RUN', files: 0});
+  }
 }
 
 function contentLines(path) {
@@ -117,32 +149,38 @@ if (!existsSync(manifestPath)) {
   }
 }
 
-if (manifest) {
-  for (const source of Object.values(manifest.sourceOfTruth ?? {})) {
+let schemaErrors = [];
+if (!results.length) {
+  try {
+    schemaErrors = validateManifest(manifest);
+  } catch (error) {
+    report('FAIL', 'ERR_CHECK_FAILED', 'Manifest 입력 검증을 완료하지 못했습니다.', error.message);
+  }
+}
+for (const error of schemaErrors) report('FAIL', error.code, `${error.path}: ${error.message}`);
+
+if (results.some(result => result.level === 'FAIL')) {
+  skipContentChecks();
+} else {
+ try {
+  for (const source of [...Object.values(manifest.sourceOfTruth), ...manifest.generatedFrom]) {
     checkFile(source, 'ERR_SOURCE_OF_TRUTH_MISSING');
   }
 
   const items = [
-    ...(manifest.designPacks ?? []).map((item) => ({...item, kind: 'Design Pack'})),
-    ...(manifest.uxPresets ?? []).map((item) => ({...item, kind: 'UX Preset'})),
+    ...manifest.designPacks.map((item) => ({...item, kind: 'Design Pack'})),
+    ...manifest.uxPresets.map((item) => ({...item, kind: 'UX Preset'})),
   ];
   const seen = new Set();
-  const validStatuses = manifest.checks?.validStatuses ?? [];
-
   for (const item of items) {
-    const fields = item.kind === 'Design Pack'
-      ? manifest.checks?.requiredPackFields ?? []
-      : manifest.checks?.requiredPresetFields ?? [];
-    checkRequiredFields(item, fields, `${item.kind} ${item.id ?? '(unknown)'}`);
-
     if (seen.has(item.id)) report('FAIL', 'ERR_DUPLICATE_ID', `ID가 중복되었습니다: ${item.id}`);
     seen.add(item.id);
 
-    if (!validStatuses.includes(item.status)) {
-      report('FAIL', 'ERR_INVALID_STATUS', `허용되지 않은 상태입니다: ${item.id} → ${item.status}`);
-    }
     if (checkFile(item.canonical)) {
       const source = readCanonicalMeta(item.canonical);
+      if (!source.version || (item.kind === 'Design Pack' && !source.id)) {
+        report('FAIL', 'ERR_CANONICAL_META_MISSING', `정본 필수 메타데이터가 없습니다: ${item.canonical}`);
+      }
       if (source.id && source.id !== item.id) {
         report('FAIL', 'ERR_SOURCE_ID_MISMATCH', `정본 ID와 Manifest ID가 다릅니다: ${item.id} ↔ ${source.id}`);
       }
@@ -153,7 +191,9 @@ if (manifest) {
     if (item.preview) checkFile(item.preview);
   }
 
-  const openEvidence = findOpenEvidence(markdownFiles(manifest.checks?.openEvidenceFiles ?? manifest.checks?.openEvidenceRoots ?? []));
+  const evidenceFiles = checkedScope(manifest.checks.openEvidenceFiles, 'openEvidence', true);
+  if (evidenceFiles) {
+  const openEvidence = findOpenEvidence(evidenceFiles);
   if (openEvidence.length > 0) {
     const fileCount = new Set(openEvidence.map((item) => item.file)).size;
     report('WARN', 'ERR_EVIDENCE_OPEN', `미완료 증거 ${openEvidence.length}개를 ${fileCount}개 문서에서 찾았습니다.`, '', {findings: openEvidence});
@@ -162,18 +202,31 @@ if (manifest) {
       report('WARN', 'ERR_RUNTIME_UNVERIFIED', `런타임·접근성 관련 미완료 증거 ${runtimeEvidence.length}개가 남아 있습니다.`, '', {findings: runtimeEvidence});
     }
   } else {
-    report('PASS', 'OK_NO_OPEN_EVIDENCE', '관리 범위에서 미완료 증거 표식을 찾지 못했습니다.');
+    report('PASS', 'OK_NO_OPEN_EVIDENCE', `관리 범위 ${evidenceFiles.length}개 문서에서 미완료 증거 표식을 찾지 못했습니다.`);
+  }
   }
 
-  const linkFiles = markdownFiles(manifest.checks?.markdownLinkRoots ?? []);
+  const linkFiles = checkedScope(manifest.checks.markdownLinkRoots, 'markdownLinks');
+  if (linkFiles) {
   const brokenLinks = findBrokenLinks(linkFiles);
   if (brokenLinks.length > 0) {
     report('FAIL', 'ERR_MARKDOWN_LINK_BROKEN', `깨진 내부 Markdown 링크 ${brokenLinks.length}개를 찾았습니다.`, '', {findings: brokenLinks});
   } else {
     report('PASS', 'OK_MARKDOWN_LINKS', `내부 Markdown 링크를 확인했습니다: ${linkFiles.length}개 문서.`);
   }
+  }
 
-  report('PASS', 'OK_MANIFEST_VALID', `Manifest ${manifest.manifestVersion} 구조와 등록 항목을 확인했습니다.`);
+  if (!results.some(result => result.level === 'FAIL')) {
+    report('PASS', 'OK_MANIFEST_VALID', `Manifest ${manifest.manifestVersion} 구조와 등록 항목을 확인했습니다. 경험 의미·실제 실행 검증은 포함하지 않습니다.`);
+  }
+ } catch (error) {
+   report('FAIL', 'ERR_CHECK_FAILED', '검사를 완료하지 못했습니다. 결과를 포괄 PASS로 판단하지 마세요.', error.message);
+   for (const check of ['openEvidence', 'markdownLinks']) {
+     if (!results.some(result => (check === 'openEvidence' ? ['ERR_EVIDENCE_OPEN', 'OK_NO_OPEN_EVIDENCE'] : ['ERR_MARKDOWN_LINK_BROKEN', 'OK_MARKDOWN_LINKS']).includes(result.code) || result.data?.check === check)) {
+       report('SKIP', 'SKIP_CHECK_NOT_RUN', `${check}: NOT_RUN — 검사 중 오류`, '', {check, status: 'NOT_RUN'});
+     }
+   }
+ }
 }
 
 const counts = results.reduce((acc, result) => {
@@ -190,6 +243,6 @@ if (jsonMode) {
     const suffix = result.detail ? ` (${result.detail})` : '';
     console.log(`${result.level.padEnd(4)} ${result.code.padEnd(32)} ${result.message}${suffix}`);
   }
-  console.log(`Summary: ${counts.PASS ?? 0} passed, ${counts.WARN ?? 0} warnings, ${counts.FAIL ?? 0} failures`);
+  console.log(`Summary: ${counts.PASS ?? 0} passed, ${counts.WARN ?? 0} warnings, ${counts.FAIL ?? 0} failures, ${counts.SKIP ?? 0} not run`);
 }
 process.exitCode = (counts.FAIL ?? 0) > 0 ? 1 : 0;

@@ -344,15 +344,17 @@ P2/P3는 공통 평가 프레임을 따른다. P0/P1은 총점으로 상쇄할 �
 - [x] claim search across MD, HTML, image copy inventory, staff guidance
 - [ ] keyboard/focus/390px/non-color는 확인; 200% zoom과 screen reader는 외부 접근성 검증 대기
 - [x] synthetic SLA timestamp ledger
-- [ ] independent reviewer score
+- [x] independent reviewer score: `0.2.0 qa=029` R3-A/B `63/63`, P0/P1 `0/0`, hard gate PASS, Stage **REVISE**, `C2` — [독립 검토 §11](../evidence/07-independent-review.md), 2026-08-26 20:28 KST
 - [x] release-not-authorized negative test
 - [x] release and rollback test when synthetic release event is issued
 - [x] malformed release record `13/13` rejection, shared HOLD/release customer Web propagation, H01 `released` / U01 `unaffected` 분리
 - [x] 내부 preview와 고객 Web의 reload·Back retention 브라우저 재생
 - [x] stale reference and link/asset audit
-- [ ] final decision은 독립 reviewer와 사용자 평가를 반영해 확정
+- [x] 독립 최종 문장 **조건부 유효** 기록; hard gate PASS를 Stage PASS로 승격하지 않음
+- [ ] [사용자 평가](../evidence/08-user-evaluation.md) 미실시; 사용자 수용성과 E4·production 완료 판정은 미확정
 
 ## 15. Revision chronology
 
 - `0.1.1-experiment` 재평가는 R3-A `63/100`, R3-B `60/100`, P0/P1 open으로 STOP이었다. 해당 score와 결함 원장은 [`../evidence/07-independent-review.md`](../evidence/07-independent-review.md)에 그대로 남긴다.
-- `0.2.0-experiment`는 release authority, shared customer Web Binding, released/unaffected 분리, retention을 수정한 새 semantic revision이다. validator와 브라우저 E3 통과는 builder 증거이며 독립 acceptance가 아니다.
+- `0.2.0-experiment`는 release authority, shared customer Web Binding, released/unaffected 분리, retention을 수정한 새 semantic revision이다. builder의 validator·브라우저 E3 통과 자체는 독립 acceptance가 아니며, 이후 [독립 검토 §11](../evidence/07-independent-review.md)의 `2026-08-26 20:28 KST · qa=029` 재평가가 별도 E3로 P0/P1 `0/0`와 hard gate PASS를 확인했다. 공식 점수는 R3-A/B 각각 `63/100`, Stage **REVISE**, 허용 문장은 **조건부 유효**, 신뢰도는 `C2`다.
+- `2026-09-11`은 위 독립 결과를 계약에 맞춘 문서 정정일이다. 새 runtime 검증·Stage PASS·사용자 acceptance를 의미하지 않는다. 같은 version의 감사 중 의미 변경, 증거 분모 drift, 전체 recovery suite, 200% zoom·screen reader, 실제 권리·backend·물리 매체·vendor·대표 사용자 증거의 한계는 독립 검토 §11.6–11.8대로 유지한다.

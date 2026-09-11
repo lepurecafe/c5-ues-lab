@@ -1,6 +1,8 @@
 # Take 2 — Random Music App Projection Pipeline
 
-> Status: HTML runtime + editable Figma source complete; independent human-use/audio runtime review pending  
+> **Lifecycle: RETIRED — 폐기된 실험 계획(2026-09-11 사용자 확인).** [현재 상태 결정](../../docs/experiment-status.md)이 아래 역사 기록보다 우선한다. 재개·추가 검증·현재 UES 유효성 입증에 사용하지 않는다.
+>
+> Historical status: HTML runtime + editable Figma source complete; independent human-use/audio runtime review was pending
 > Date: 2026-08-26  
 > Scope isolation: this folder is independent from `COMMON SURFACE` and its R1/R2/R3 work. No existing artifact was modified.
 

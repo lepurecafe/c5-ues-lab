@@ -1,6 +1,8 @@
 # Design System Tool Value Validation — 2026-08-25
 
-> **Status:** ready to run  
+> **Current status (2026-09-11):** 역사적 실험 계획 보존. Take 2 / Track 2는 폐기되었으며 재개하지 않는다. COMMON SURFACE는 기존 기록의 범위에서만 판단한다. [최신 결과표](results/results-summary.md) · [실험 상태 결정](../../docs/experiment-status.md)
+>
+> **Historical status:** ready to run
 > **UES:** `0.5.0-draft`  
 > **Shared foundation:** the existing Markdown Design Pack Library, UX Preset Registry, UES, and evaluation rules  
 > **Track 1 fixture:** fictional all-gender skincare and merchandise brand `COMMON SURFACE`  

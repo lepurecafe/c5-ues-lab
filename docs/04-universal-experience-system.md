@@ -1229,15 +1229,17 @@ The following remain unproven at foundation status:
 
 - one complete experience projected across interactive, editorial, and spatial media;
 - equivalent Markdown-only and Figma-first Design Packs;
-- machine validation of the registry and projection manifests;
+- semantic validation of Composition/Projection manifests and end-to-end consistency across generated outputs (not equivalent to the implemented registry checks below);
 - independent accessibility assessment across non-screen media;
 - reliable generation of user flow, low-fi, high-fi, and production artifacts from one source without semantic drift.
+
+Operational update (2026-09-11): Markdown-to-Manifest generation, drift detection, versioned Manifest input validation, registered source/ID/version checks, bounded OPEN/link scanning, regression tests, and CI command wiring are implemented. These validate the declared operational scope, not experience semantics, real-world execution, accessibility, or human usability. See [P0 implementation and verification](p0-reliability-hardening.md). Take 2 is a retired experiment plan; its historical artifacts do not establish current foundation validity. Future experiments will be designed separately; see [experiment lifecycle decision](experiment-status.md).
 
 ---
 
 ## 15. Foundation success criteria
 
-UES 0.4 becomes a validated baseline when it can:
+The current UES 0.5.0-draft becomes a validated baseline when it can:
 
 1. model at least one transactional, one creative, one learning, and one live/field experience without inventing unnecessary Core concepts;
 2. project one experience into user flow, IA, low-fi, high-fi, and runnable or producible form from shared semantic IDs;
@@ -1261,6 +1263,7 @@ Digital baseline fixtures SHOULD cover authentication, commerce, settings, AI co
 | 0.3.0-draft | 2026-08-24 | Added normative conformance, classified states/conditions/outcomes, detailed transition and exit contracts, Step obligations, edge-state treatment, Pack gap resolution, linked semantic composition levels, governance separation, deterministic agent resolution, and semantic validation. | superseded draft |
 | 0.4.0-draft | 2026-08-24 | Promoted UX Preset to a first-class reusable axis, added the Composition Contract and ownership priority, Preset schema, Preset-Pack compatibility, Composition Manifest, and required output set. | superseded draft |
 | 0.5.0-draft | 2026-08-24 | Added the versioned UX Preset Registry: explicit state retention, authority/commitment vocabulary, Pack/Medium capability floors, and minimum semantic tests for Reserve, Compare, and Plan. | current draft |
+| 0.5.0-draft (evidence correction) | 2026-09-11 | Corrected §14 operational vs semantic validation scope and §15 current version; recorded Take 2 retirement. No Core rule change or maturity promotion. | current draft |
 
 ---
 
