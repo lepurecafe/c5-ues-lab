@@ -1,0 +1,33 @@
+name: Publish C5 web chronicle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'presentations/c5-chronicle/**'
+      - '.github/workflows/c5-chronicle-pages.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: c5-chronicle-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: presentations/c5-chronicle
+      - uses: actions/deploy-pages@v4
+        id: deployment

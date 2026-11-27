@@ -6,7 +6,7 @@
 
 [원본 크기 이미지 (2880 × 5120)](presentations/c5-chronicle-poster-draft/poster-final.png) · [포스터 HTML 소스](presentations/c5-chronicle-poster-draft/v6-Korean-Commercial.html)
 
-[웹 연대기 HTML 소스](presentations/c5-chronicle/index.html)
+[웹 연대기 열기](https://lepurecafe.github.io/c5-ues-lab/) · [시각 자료 아카이브](https://lepurecafe.github.io/c5-ues-lab/archive.html)
 
 > **Evidence-driven Experience System Laboratory**
 
