@@ -6,6 +6,8 @@
 
 [원본 크기 이미지 (2880 × 5120)](presentations/c5-chronicle-poster-draft/poster-final.png) · [포스터 HTML 소스](presentations/c5-chronicle-poster-draft/v6-Korean-Commercial.html)
 
+[웹 연대기 HTML 소스](presentations/c5-chronicle/index.html)
+
 > **Evidence-driven Experience System Laboratory**
 
 이 작업공간은 제품 맥락, UX 행동 계약, 시각 표현, 매체 투영, 검증 증거를 분리하고 다시 조합하는 **Universal Experience System (UES)** 개인 연구 랩이다. 사람의 목표·상황·의미·개성을 유지하며 여러 매체의 결과물을 제작·수정하는 범용 도구를 지향한다.
